@@ -6,7 +6,7 @@
 Plots a 1D graph, of results of between group analysis similar to that in Culhane et al., 2002. 
 }
 \usage{
-between.graph(x, ax=1, cols=NULL, hor=TRUE, ...)
+between.graph(x, ax = 1, cols = NULL, hor = TRUE, scaled=TRUE, centnames=NULL, varnames=NULL, ...)
 }
 
 \arguments{
@@ -18,6 +18,10 @@ between.graph(x, ax=1, cols=NULL, hor=TRUE, ...)
     using \code{\link[made4:getcol]{getcol}} }
   \item{hor}{Logical, indicating whether the graph should be plotted
    horizontally or vertically. The default is a horizontal plot.}
+  \item{scaled}{Logical, indicating whether the coordinates in the graph 
+   should be scaled to fit optimally in plot. Default is TRUE}
+  \item{centnames}{A vector of variables labels. Default is NULL, if NULL the row names of the centroid \$li coordinates will be used.}
+  \item{varnames}{A vector of variables labels. Default is NULL, if NULL the row names of the variable \$ls coordinates will be used.}
   \item{\dots}{further arguments passed to or from other methods }
 }
 \details{

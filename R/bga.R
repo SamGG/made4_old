@@ -66,76 +66,66 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 	}
 
 
-"between.graph" <-
-function(x, ax=1, cols=NULL, hor=TRUE, ...) {
-     # Produce a 1D graph of samples similar to that in the paper by culhane et al., 2002
-     # Bels is the co-ordinates $ls from a between analysis, beli is the centroid $li file from a between anaysis
-     # Ax is the axis. 
-     
-
+"between.graph" <-function (x, ax = 1, cols = NULL, hor = TRUE, scaled=TRUE, centnames=NULL, varnames=NULL, ...) 
+{
     if (!inherits(x, "bga")) 
-          stop("Object of class dudi.bga expected")
+        stop("Object of class dudi.bga expected")
+    bels <- x$bet$ls
+    beli <- x$bet$li
+    classvec <- x$fac
+    if (is.null(cols)) 
+        cols <- getcol(1:length(levels(classvec)))
+    btt <- function(x) {
+        for (i in c(1e-05, 1e-04, 0.001, 0.01, 0.1, 1, 10, 100, 
+            1000, 10000, 1e+05)) {
+            if (min(x) >= min(i * (-1)) && max(x) <= max(i)) {
+                scalefactor = i
+                return(scalefactor)
+            }
+        }
+    }
+    li.nam <- row.names(beli)
+    s.nam <- row.names(bels)
 
-     bels<-x$bet$ls
-     beli<-x$bet$li  
-     classvec<-x$fac
+    if (!is.null(centnames))   li.nam = centnames
+    if (!is.null(varnames))   s.nam =  varnames
 
-     if(is.null(cols)) cols<-getcol(1:length(levels(classvec)))
-
-     btt<- function(x){
-           for (i in  c(1e-5, 1e-4, 1e-3, 1e-2, 1e-1, 1, 1e1, 1e2, 1e3, 1e4,1e5)){
-             if(min(x)>=min(i*(-1))&& max(x)<=max(i)) {
-              	scalefactor=i
-              	return(scalefactor)
-              	#return(x*10/i)
-		}
-             }
-         }
-
- 
-      li.nam<-row.names(beli)
-      s.nam<-row.names(bels)
-      bels.scale<-btt(bels[,ax])
-      bels<-(bels[,ax]*10)/bels.scale
-      beli<-(beli[,ax]*10)/bels.scale
-
-      #plot.new()
-   
-      margin=1
-      par(usr=c(floor(min(bels, beli))-margin,ceiling(max(bels, beli))+margin,-2,3))
-
-
-      graph1D(bels, ax=ax, hor=hor, s.nam=s.nam, col=factor(classvec, labels=cols), width=c(-2,3), scaled=FALSE, ...) 
- 
-
-      if (hor) {
+    if (scaled) {
+    bels.scale <- btt(bels[, ax])
+    bels <- (bels * 10)/bels.scale
+    beli <- (beli * 10)/bels.scale
+    }
+    beli <- beli[, ax]
+    bels <- bels[, ax]
+    margin = 1
+    par(usr = c(floor(min(bels, beli)) - margin, ceiling(max(bels, 
+        beli)) + margin, -2, 3))
+    graph1D(bels, ax = ax, hor = hor, s.nam = s.nam, col = factor(classvec, 
+        labels = cols), width = c(-2, 3), scaled = scaled, ...)
+    if (hor) {
         points(beli, rep(1.5, length(beli)), ...)
-
-         for (i in c(1:length(beli))) {text(beli[i], 1.7,adj=c(0.5,0), li.nam[i])} 
-        abline(h=1.5)
-
-        for (i in c(1:length(levels(classvec)))){
-           Ind=which(classvec== levels(classvec)[i])    
-           bels.sub<-bels[Ind]
-           sapply(bels.sub, segments, y0=0, x1=beli[i], y1=1.5,col=cols[i],...)        
-          }
-      }
-
-
-      if (!hor) {
+        for (i in c(1:length(beli))) {
+            text(beli[i], 1.7, adj = c(0.5, 0), li.nam[i])
+        }
+        abline(h = 1.5)
+        for (i in c(1:length(levels(classvec)))) {
+            Ind = which(classvec == levels(classvec)[i])
+            bels.sub <- bels[Ind]
+            sapply(bels.sub, segments, y0 = 0, x1 = beli[i], 
+                y1 = 1.5, col = cols[i], ...)
+        }
+    }
+    if (!hor) {
         points(rep(1.5, length(beli)), beli, ...)
-
-         for (i in c(1:length(beli))) {text(1.7, beli[i], adj=c(0.5,0), li.nam[i])} 
-         abline(v=1.5)
-
-        for (i in c(1:length(levels(classvec)))){
-           Ind=which(classvec== levels(classvec)[i])    
-           bels.sub<-bels[Ind]
-           sapply(bels.sub, segments, x0=0, y1=beli[i], x1=1.5, col=cols[i],...)        
-          }
-      }
-
-
-     }
-
-
+        for (i in c(1:length(beli))) {
+            text(1.7, beli[i], adj = c(0.5, 0), li.nam[i])
+        }
+        abline(v = 1.5)
+        for (i in c(1:length(levels(classvec)))) {
+            Ind = which(classvec == levels(classvec)[i])
+            bels.sub <- bels[Ind]
+            sapply(bels.sub, segments, x0 = 0, y1 = beli[i], 
+                x1 = 1.5, col = cols[i], ...)
+        }
+    }
+}
