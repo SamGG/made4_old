@@ -57,7 +57,9 @@ of each x,y coordinates in a matrix.
 \examples{
 data(khan)
 
-if (require(ade4, quiet = TRUE)) {khan.bga<-bga(khan$train[1:1000,], khan$train.classes)}
+if (require(ade4, quiet = TRUE)) {
+
+khan.bga<-bga(khan$train, khan$train.classes)}
 
 s.var(khan.bga$bet$ls, col=as.numeric(khan$train.classes), clabel=0.8)
 st.out<-sumstats(khan.bga$bet$ls)

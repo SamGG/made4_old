@@ -75,7 +75,7 @@ for help with the awk command on which this function is based.
 \examples{
 data(khan)
 if (require(ade4, quiet = TRUE)) {
-khan.bga<-bga(khan$train[1:500,], khan$train.classes)
+khan.bga<-bga(khan$train, khan$train.classes)
 }
 
 out.3D <-html3D(khan.bga$bet$ls, khan.bga$fac, writepdb=TRUE, 

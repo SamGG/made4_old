@@ -9,23 +9,29 @@ along with, lung, colon, central nervous system, ovarian, renal, breast and pros
 This panel of cell lines have been subjected to several different DNA microarray studies using
 both Affymetrix and spotted cDNA array technology. This dataset contains subsets from one 
 cDNA spotted (Ross et al., 2000) and one Affymetrix (Staunton et al., 2001) study, and 
-are pre-processed as described by Culhane et al., 2003.
+are pre-processed as described by Culhane et al., 2003.  
 
 }
 \usage{data(NCI60)}
 \format{
   The format is: List of 3
 \itemize{
- \item{\$Ross:}{\code{\link{data.frame}} containing 1375 rows and 60 columns. 
-  1375 gene expression log ratio measurements of the NCI60 cell lines.}
+ \item{\$Ross:}{\code{\link{data.frame}} containing 144 rows and 60 columns. 
+  144 gene expression log ratio measurements of the NCI60 cell lines.}
   
- \item{\$Affy:}{\code{\link{data.frame}} containing 1517 rows and 60 columns. 
-  1517 Affymetrix gene expression average difference measurements of the NCI60 cell lines.}
+ \item{\$Affy:}{\code{\link{data.frame}} containing 144 rows and 60 columns. 
+  144 Affymetrix gene expression average difference measurements of the NCI60 cell lines.}
  
  \item{\$classes:}{Data \code{\link{matrix}} of 60 rows and 2 columns.  
   The first column contains the names of the 60 cell line which were analysed.  
   The second column lists the 9 phenotypes of the cell lines, which are 
   BREAST, CNS, COLON, LEUK, MELAN, NSCLC, OVAR, PROSTATE, RENAL.}
+
+\item{\$Annot:}{Data \code{\link{matrix}} of 144 rows and 4 columns.  
+  The 144 rows contain the 144 genes in the \$Ross and \$Affy datasets, together with their 
+  Unigene IDs, and HUGO Gene Symbols.  The Gene Symbols obtained for the \$Ross and \$Affy datasets differed
+  (see note below), hence both are given. The columns of the \code{matrix} are the IMAGE ID of the clones of the \$Ross dataset, the HUGO Gene Symbols of these IMAGE clone ID obtained from SOURCE, the Affymetrix ID of the \$Affy dataset, and the HUGO Gene Symbols of these Affymetrix IDs obtained using \code{annaffy}. }
+
   }
 }
 \details{
@@ -41,8 +47,9 @@ The data were downloaded from The NCI Genomics and Bioinformatics Group Datasets
 In this study, rows (genes) with greater than 15% of values missing were deemed unreliable 
 and were removed from analysis, reducing the dataset to 5643 spot values per cell line. 
 Remaining missing values were imputed using a K nearest neighbour method, with 16 neighbours 
-and a Euclidean distance metric (Troyanskaya et al., 2001). The dataset NCI60\$Ross 
-contains the subsets of 1375 reported by Scherf et al., 2000.
+and a Euclidean distance metric (Troyanskaya et al., 2001). The dataset \$Ross contains a subset of the 144 genes of the 1375 genes set described by Scherf et al., 2000.  This datasets is available for download from \url{http://bioinf.ucd.ie/people/aedin/R/}. 
+
+In order to reduce the size of the example datasets, the Unigene ID's for each of the 1375 IMAGE ID's for these genes were obtained using SOURCE \url{http://source.stanford.edu}.  These were compared with the Unigene ID's of the 1517 gene subset of the \$Affy dataset.  144 genes were common between the two datasets and these are contained in \$Ross.
 
 
 The Affy data were derived using high density Hu6800 Affymetrix microarrays containing 
@@ -52,8 +59,9 @@ Staunton et al.,  an expression value of 100 units was assigned to all average d
 less than 100. Genes whose expression was invariant across all 60 cell lines were not considered, 
 reducing the dataset to 4515 probe sets. This dataset NCI60\$Affy of 1517 probe set, contains genes 
 in which the minimum change in gene expression across all 60 cell lines was greater than 500 average 
-difference units.  Data were logged (base 2) and median centred.
+difference units.  Data were logged (base 2) and median centred.  This datasets is available for download from \url{http://bioinf.ucd.ie/people/aedin/R/}. 
 
+In order to reduce the size of the example datasets, the Unigene ID's for each of the 1517 Affymetrix ID of these genes were obtained using the function \code{aafUniGene} in the \code{annaffy} Bioconductor package. These 1517 Unigene IDs were compared with the Unigene ID's of the 1375 gene subset of the \$Ross dataset.  144 genes were common between the two datasets and these are contained in \$Affy.
 }
 \source{
 These pre-processed datasets were available as a supplement to the paper:

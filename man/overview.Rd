@@ -28,8 +28,8 @@ correlation metric.}
 \examples{
   data(khan)
 
-  subkhan<-log2(khan$train[1:1000,])
-  overview(subkhan, title="Subset of Khan Training data")}
+  logkhan<-log2(khan$train)
+  overview(logkhan, title="Subset of Khan Training data")}
 
 \keyword{hplot }% at least one, from doc/KEYWORDS
 \keyword{manip }% __ONLY ONE__ keyword per line

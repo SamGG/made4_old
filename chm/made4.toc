@@ -227,7 +227,7 @@
 <param name="Local" value="bga.jackknife.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">
-<param name="Name" value="Microarray gene expression dataset from Khan et al., 2001">
+<param name="Name" value="Microarray gene expression dataset from Khan et al., 2001. Subset of 306 genes.">
 <param name="Local" value="khan.html">
 </OBJECT>
 <LI> <OBJECT type="text/sitemap">

@@ -51,9 +51,7 @@ heatplot(khan$train[1:26,], lowcol="blue", highcol="red",
          labRow = c(64:1), labCol=LETTERS[1:26])
 
 if (require(ade4, quiet = TRUE)) {
- # To speed up analysis, only a subset of the genes are analysed
-khan.sub<-array2ade4(khan$train[1:1000,])  
-khan.coa<-dudi.coa(khan.sub, scan=FALSE, nf=6)
+khan.coa<-dudi.coa(khan$train, scan=FALSE, nf=6)
 }
 
 # Provides a view of the components of the Correspondence analysis 

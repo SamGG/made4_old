@@ -1,7 +1,7 @@
 \name{khan}
 \alias{khan}
 \docType{data}
-\title{Microarray gene expression dataset from Khan et al., 2001}
+\title{Microarray gene expression dataset from Khan et al., 2001. Subset of 306 genes.}
 \description{
  Khan contains gene expression profiles of four types of small round
  blue cell tumours of childhood (SRBCT) published by Khan et
@@ -12,11 +12,11 @@
 
  Khan is dataset containing the following:
  \itemize{
-    \item{\$train:}{\code{\link{data.frame}} of 2308 rows and 64 columns. 
-      The training dataset of 64 arrays and 2308 gene expression values}
-    \item{\$test:}{\code{\link{data.frame}}, of 2308 rows and 25 columns. 
-      The test dataset of 25 arrays and 2308 genes expression values}
-    \item{\$gene.labels.imagesID:}{\code{vector} of 2308 Image clone identifiers
+    \item{\$train:}{\code{\link{data.frame}} of 306 rows and 64 columns. 
+      The training dataset of 64 arrays and 306 gene expression values}
+    \item{\$test:}{\code{\link{data.frame}}, of 306 rows and 25 columns. 
+      The test dataset of 25 arrays and 306 genes expression values}
+    \item{\$gene.labels.imagesID:}{\code{vector} of 306 Image clone identifiers
       corresponding to the rownames of \$train and \$test.}
    \item{\$train.classes:}{\code{\link{factor}} with 4 levels "EWS",
       "BL-NHL", "NB" and "RMS", which correspond to the four groups in 
@@ -24,9 +24,9 @@
     \item{\$test.classes:}{\code{\link{factor}} with 5 levels "EWS",
        "BL-NHL", "NB", "RMS" and "Norm" which correspond to the five 
         groups in the \$test dataset}
-   \item{\$annotation:}{\code{\link{data.frame}} of 2308 rows and 8 columns. 
+   \item{\$annotation:}{\code{\link{data.frame}} of 306 rows and 8 columns. 
        This table contains further gene annotation retrieved from SOURCE 
-       \url{http://SOURCE.stanford.edu} in May 2004.  For each of the 2308 genes, 
+       \url{http://SOURCE.stanford.edu} in May 2004.  For each of the 306 genes, 
        it contains: \itemize{ 
        \item{\$CloneID}{Image Clone ID}
        \item{\$UGCluster}{The Unigene cluster to which the gene is assigned}
@@ -48,9 +48,12 @@
  These were neuroblastoma (NB), rhabdomyosarcoma (RMS), Burkitt lymphoma, a 
  subset of non-Hodgkin lymphoma (BL), and the Ewing family of tumours
  (EWS). Gene expression profiles from both tumour biopsy and cell line 
- samples were obtained and are contained in this dataset. This dataset 
- contains the filtered dataset of 2308 gene expression profiles as described
- by Khan et al., 2001.
+ samples were obtained and are contained in this dataset. The dataset downloaded 
+ from the website contained the filtered dataset of 2308 gene expression profiles as described
+ by Khan et al., 2001.  This dataset is available from the \url{http://bioinf.ucd.ie/people/aedin/R/}.
+
+ In order to reduce the size of the MADE4 package, and produce small example datasets, the top 50 genes from the
+ ends of 3 axes following \code{bga} were selected. This produced a reduced datasets of 306 genes. 
 
 }
 \source{

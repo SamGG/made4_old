@@ -1,15 +1,15 @@
-<html><head><title>Microarray gene expression dataset from Khan et al., 2001</title>
+<html><head><title>Microarray gene expression dataset from Khan et al., 2001. Subset of 306 genes.</title>
 <link rel="stylesheet" type="text/css" href="Rchm.css">
 </head>
 <body>
 
 <table width="100%"><tr><td>khan(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
 <param name="keyword" value="R:   khan">
-<param name="keyword" value=" Microarray gene expression dataset from Khan et al. 2001">
+<param name="keyword" value=" Microarray gene expression dataset from Khan et al. 2001. Subset of 306 genes.">
 </object>
 
 
-<h2>Microarray gene expression dataset from Khan et al. 2001</h2>
+<h2>Microarray gene expression dataset from Khan et al. 2001. Subset of 306 genes.</h2>
 
 
 <h3>Description</h3>
@@ -31,11 +31,11 @@ al. (2001). It also contains further gene annotation retrieved from SOURCE at <a
 <p>
 Khan is dataset containing the following:
 <ul>
-<dt>$train:</dt><dd><code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code> of 2308 rows and 64 columns. 
-The training dataset of 64 arrays and 2308 gene expression values</dd>
-<dt>$test:</dt><dd><code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, of 2308 rows and 25 columns. 
-The test dataset of 25 arrays and 2308 genes expression values</dd>
-<dt>$gene.labels.imagesID:</dt><dd><code>vector</code> of 2308 Image clone identifiers
+<dt>$train:</dt><dd><code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code> of 306 rows and 64 columns. 
+The training dataset of 64 arrays and 306 gene expression values</dd>
+<dt>$test:</dt><dd><code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, of 306 rows and 25 columns. 
+The test dataset of 25 arrays and 306 genes expression values</dd>
+<dt>$gene.labels.imagesID:</dt><dd><code>vector</code> of 306 Image clone identifiers
 corresponding to the rownames of $train and $test.</dd>
 <dt>$train.classes:</dt><dd><code><a onclick="findlink('base', 'factor.html')" style="text-decoration: underline; color: blue; cursor: hand">factor</a></code> with 4 levels "EWS",
 "BL-NHL", "NB" and "RMS", which correspond to the four groups in 
@@ -43,9 +43,9 @@ the $train dataset</dd>
 <dt>$test.classes:</dt><dd><code><a onclick="findlink('base', 'factor.html')" style="text-decoration: underline; color: blue; cursor: hand">factor</a></code> with 5 levels "EWS",
 "BL-NHL", "NB", "RMS" and "Norm" which correspond to the five 
 groups in the $test dataset</dd>
-<dt>$annotation:</dt><dd><code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code> of 2308 rows and 8 columns. 
+<dt>$annotation:</dt><dd><code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code> of 306 rows and 8 columns. 
 This table contains further gene annotation retrieved from SOURCE 
-<a href="http://SOURCE.stanford.edu">http://SOURCE.stanford.edu</a> in May 2004.  For each of the 2308 genes, 
+<a href="http://SOURCE.stanford.edu">http://SOURCE.stanford.edu</a> in May 2004.  For each of the 306 genes, 
 it contains: <ul> 
 <dt>$CloneID</dt><dd>Image Clone ID</dd>
 <dt>$UGCluster</dt><dd>The Unigene cluster to which the gene is assigned</dd>
@@ -68,9 +68,13 @@ genes in of four types of small round blue cell tumours of childhood (SRBCT).
 These were neuroblastoma (NB), rhabdomyosarcoma (RMS), Burkitt lymphoma, a 
 subset of non-Hodgkin lymphoma (BL), and the Ewing family of tumours
 (EWS). Gene expression profiles from both tumour biopsy and cell line 
-samples were obtained and are contained in this dataset. This dataset 
-contains the filtered dataset of 2308 gene expression profiles as described
-by Khan et al., 2001.
+samples were obtained and are contained in this dataset. The dataset downloaded 
+from the website contained the filtered dataset of 2308 gene expression profiles as described
+by Khan et al., 2001.  This dataset is available from the <a href="http://bioinf.ucd.ie/people/aedin/R/">http://bioinf.ucd.ie/people/aedin/R/</a>.
+</p>
+<p>
+In order to reduce the size of the MADE4 package, and produce small example datasets, the top 50 genes from the
+ends of 3 axes following <code>bga</code> were selected. This produced a reduced datasets of 306 genes.
 </p>
 
 
@@ -116,6 +120,6 @@ location.href = link;
 </script>
 
 
-<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+<hr><div align="center">[Package <em>made4</em> version 0.7 <a href="00Index.html">Index]</a></div>
 
 </body></html>
