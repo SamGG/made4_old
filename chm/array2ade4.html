@@ -1,0 +1,128 @@
+<html><head><title>Converts microarray input data into a data frame suitable for analysis
+in ADE4.</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>array2ade4(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   array2ade4">
+<param name="keyword" value=" Converts microarray input data into a data frame suitable for analysis
+in ADE4.">
+</object>
+
+
+<h2>Converts microarray input data into a data frame suitable for analysis
+in ADE4.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Converts input data into a data.frame suitable for analysis
+in ADE4. This function is called by <code>bga</code> and other made4
+function.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+array2ade4(dataset, pos = FALSE, trans = TRUE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+A <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, 
+<code><a onclick="findlink('Biobase', 'exprSet-class.html')" style="text-decoration: underline; color: blue; cursor: hand">exprSet</a></code> or <code><a onclick="findlink('marrayClasses', 'marrayRaw-class.html')" style="text-decoration: underline; color: blue; cursor: hand">marrayRaw</a></code>.  
+If the input is gene expression data in a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>. The 
+rows and columns are expected to contain the variables (genes) and cases (array samples) 
+respectively.
+</td></tr>
+<tr valign="top"><td><code>pos</code></td>
+<td>
+Logical indicating whether to add an integer to <code>dataset</code>, to generate positive <code>data.frame</code>.  Required  for 
+<code>dudi.coa</code> or <code>dudi.nsc</code></td></tr>
+<tr valign="top"><td><code>trans</code></td>
+<td>
+Logical indicating whether <code>dataset</code> should be transposed. Both <code><a onclick="findlink('ade4', 'between.html')" style="text-decoration: underline; color: blue; cursor: hand">between</a></code> 
+group analysis, and <code><a onclick="findlink('ade4', 'coinertia.html')" style="text-decoration: underline; color: blue; cursor: hand">coinertia</a></code> analysis expect that the cases (array samples) 
+are contained in the rows and that the variables (genes) are in the columns. Thus the <code>data.frame</code> must 
+be transposed prior to analysis</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code><a bga.html>bga</a></code> and other functions in made4 call this function and it is
+generally <STRONG>not</STRONG> necessary to call <code>array2ade4</code> this directly.
+</p>
+<p>
+array2ade4 calls <code><a getdata.html>getdata</a></code>, and will accept a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, 
+<code><a onclick="findlink('Biobase', 'exprSet-class.html')" style="text-decoration: underline; color: blue; cursor: hand">exprSet</a></code> or <code><a onclick="findlink('marrayClasses', 'marrayRaw-class.html')" style="text-decoration: underline; color: blue; cursor: hand">marrayRaw</a></code> format. It 
+will also transpose data or add a integer to generate a positive data matrix. 
+</p>
+<p>
+If the input data contains missing values (NA), these must first be removed or imputed (see the R libraries impute() or pamr()).
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Returns a data.frame suitable for analysis by ade4 or made4 functions.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+<code><a getdata.html>getdata</a></code>, <code><a onclick="findlink('vsn', 'getIntensityMatrix.html')" style="text-decoration: underline; color: blue; cursor: hand">getIntensityMatrix</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+library(affy)
+data(geneData)
+class(geneData)
+dim(geneData)
+dim(array2ade4(geneData))
+class(array2ade4(geneData))
+
+eset &lt;- new("exprSet", exprs=geneData)
+eset
+class(eset)
+class(array2ade4(eset))
+dim(array2ade4(eset))
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

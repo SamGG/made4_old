@@ -1,0 +1,114 @@
+<html><head><title>Produce web graph of 3D graph that can be viewed using Chime web browser plug-in from a pdb file</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>chime3D(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   chime3D">
+<param name="keyword" value=" Produce web graph of 3D graph that can be viewed using Chime web browser plug-in from a pdb file">
+</object>
+
+
+<h2>Produce web graph of 3D graph that can be viewed using Chime web browser plug-in from a pdb file</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>chime3D</code> produces a html web page with a 3D graph of a pdb file that can be rotated and manipulated in a web browser that 
+supports the chime plug-in.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+chime3D(pdbfilename, classvec = NULL, title = NULL, filename = "output.html", point.size=40, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>pdbfilename</code></td>
+<td>
+Input pdb filename, this is an output file from <code>html3D</code>.</td></tr>
+<tr valign="top"><td><code>classvec</code></td>
+<td>
+Factor or vector which describes classes in the df. Default is NULL. If specified each group 
+will be coloured in contrasting colours</td></tr>
+<tr valign="top"><td><code>title</code></td>
+<td>
+Character, the title (header) of the web page saved if writehtml is TRUE. The default is NULL.</td></tr>
+<tr valign="top"><td><code>filename</code></td>
+<td>
+Character. The filename of the html to be saved. The default is 
+"output.html".</td></tr>
+<tr valign="top"><td><code>point.size</code></td>
+<td>
+Numeric, size of the points in plot. Default is 40</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Produces a html file, of a 3D graph which can be rotated using the FREEWARE chime (win, MacOS). 
+Will colour samples by classvec if given one, and will produce chime script to highlight groups, spin on/off, 
+and include button for restore for example see <a href="http://bioinf.ucd.ie/research/microarrays/">http://bioinf.ucd.ie/research/microarrays/</a>.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+chime3D output is a html file that can be viewed in any web browser that supports the Chime plug-in.</p>
+
+<h3>Note</h3>
+
+<p>
+Note chime is only available on windows or Mac OS currently. Using the chime plug-in on Linux 
+is slightly complicated but is available if the CrossOver Plug-in is installed. Instructions on installing this and chime on Linux 
+are available at  <a href="http://mirrors.rcsb.org/SMS/STINGm/help/chime_linux.html">http://mirrors.rcsb.org/SMS/STINGm/help/chime_linux.html</a>.
+</p>
+<p>
+If you wish to view a 3D graph in Rasmol, you will need to execute a Rasmol script similar to 
+<pre>
+
+load pdbfilename.pdb; 
+set axes on; 
+select off; 
+connect;
+set ambient 40; 
+rotate x 180; 
+select *;  
+spacefill 40
+</pre>
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>See Also</h3>
+
+
+
+
+<h3>Examples</h3>
+
+<pre>
+
+</pre>
+
+
+
+<hr><div align="center">[Package <em>made4</em> version 0.52 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,136 @@
+<html><head><title>Topgenes, returns a list of variables at the ends (positive, negative or both) of an axis</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>topgenes(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   topgenes">
+<param name="keyword" value=" Topgenes returns a list of variables at the ends (positive negative or both) of an axis">
+</object>
+
+
+<h2>Topgenes returns a list of variables at the ends (positive negative or both) of an axis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>topgenes</code> will return a list of the top N variables from the positive, negative or both ends of an
+axis. That is, it returns a list of variables that have the maximum and/or minimum values in 
+a vector.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+
+topgenes(x, n = 10, axis = 1, labels = row.names(x), ends = "both", ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+A <code><a onclick="findlink('base', 'vector.html')" style="text-decoration: underline; color: blue; cursor: hand">vector</a></code>, <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or
+<code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>. Typically a data frame $co or $li 
+from <code><a onclick="findlink('ade4', 'dudi.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi</a></code> or  $ls, $li, $co from 
+<code><a bga.html>bga</a></code>.</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+An integer indicating the number of variables to be
+returned. Default is 5. </td></tr>
+<tr valign="top"><td><code>axis</code></td>
+<td>
+An integer indicating the column of x. Default is 1
+(first axis, of $co or $li file) </td></tr>
+<tr valign="top"><td><code>labels</code></td>
+<td>
+A vector of row names, for x[,axis]. Default values is
+row.names(x)</td></tr>
+<tr valign="top"><td><code>ends</code></td>
+<td>
+A string, "both", "neg", "pos", indicating whether
+variable label should be return from both, the negative or the
+positive end of an axis.  The default is both.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>topgenes</code> calls <code><a onclick="findlink('ade4', 'genes1d.html')" style="text-decoration: underline; color: blue; cursor: hand">genes1d</a></code>. <code>genes1d</code> is similar to
+<code><a genes.html>genes</a></code>, but returns an index of genes at the ends of
+one axis not two axes.  Given a $co or $li file it will return that variables at the ends of the axis.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Returns a vector or list of vectors.</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+AedinCulhane
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+See Also as <code><a genes.html>genes</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+# Simple example
+a&lt;-rnorm(50)
+order(a)
+topgenes(a, labels=c(1:length(a)), ends="neg")
+
+# Applied example
+data(khan)
+if (require(ade4, quiet = TRUE)) {
+khan.coa&lt;-dudi.coa(khan$train[1:100,1:10], scannf=FALSE, nf=2)
+}
+ind&lt;-topgenes(khan.coa$li, ends="pos")
+ind.ID&lt;-topgenes(khan.coa$li, ends="pos", labels=khan$gene.labels.imagesID)
+ind.symbol&lt;-topgenes(khan.coa$li, ends="pos", labels=khan$annotation$Symbol)
+Top10.pos&lt;- cbind("Gene Symbol"=ind.symbol, 
+      "Clone ID"=ind.ID, "Coordinates"=khan.coa$li[ind,], row.names=c(1:length(ind)))
+Top10.pos
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

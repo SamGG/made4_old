@@ -1,0 +1,528 @@
+% NOTE -- ONLY EDIT THE .Rnw FILE!!!  The .tex file is
+% likely to be overwritten.
+%
+%\VignetteIndexEntry{Made4 An Introduction (HowTo)}
+%\VignetteDepends{ade4}
+%\VignetteKeywords{Multivariate Analysis, Graphics, Expression Data, Microarray}
+%\VignettePackage{made4}
+
+%documentclass[12pt, a4paper]{article}
+\documentclass[12pt]{article}
+
+\usepackage{amsmath,pstricks}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage[authoryear,round]{natbib}
+\usepackage{Sweave}
+
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+
+
+\textwidth=6.2in
+\textheight=8.5in
+%\parskip=.3cm
+\oddsidemargin=.1in
+\evensidemargin=.1in
+\headheight=-.3in
+
+%------------------------------------------------------------
+% newcommand
+%------------------------------------------------------------
+\newcommand{\scscst}{\scriptscriptstyle}
+\newcommand{\scst}{\scriptstyle}
+\newcommand{\Robject}[1]{{\texttt{#1}}}
+\newcommand{\Rfunction}[1]{{\texttt{#1}}}
+\newcommand{\Rclass}[1]{\textit{#1}}
+\newcommand{\Rpackage}[1]{\textit{#1}}
+\newcommand{\Rexpression}[1]{\texttt{#1}}
+\newcommand{\Rmethod}[1]{{\texttt{#1}}}
+\newcommand{\Rfunarg}[1]{{\texttt{#1}}}
+
+
+
+\begin{document}
+
+%------------------------------------------------------------
+\title{Introduction to Multivariate Analysis of Microarray Gene Expression Data using MADE4}
+%------------------------------------------------------------
+\author{Aed\'{i}n Culhane}
+\maketitle
+\tableofcontents
+
+
+<<setup,echo=FALSE,results=hide>>==
+library(ade4)
+library(made4)
+library(scatterplot3d)
+oldopt <- options(digits=3)
+options(width=60)
+on.exit( {options(oldopt)} )
+@ 
+
+%------------------------------------------------------------
+\section{Introduction}
+%------------------------------------------------------------ 
+
+The package \Rpackage{made4} facilitates multivariate analysis of microarray gene expression data.  The package provides a set of 
+functions that utilise and extend multivariate statistical and graphical functions available in \Rpackage{ade4}, \citep{Thioulouse1997}.  
+\Rpackage{made4} accepts gene expression data is a wide variety of input formats, including Bioconductor formats, 
+\Rclass{AffyBatch}, \Rclass{exprSet}, \Rclass{marrayRaw}, and \Robject{data.frame} or \Robject{matrix}.  
+
+%------------------------------------------------------------
+\subsection{Installation}
+%------------------------------------------------------------ 
+
+\Rpackage{made4} requires that \Rpackage{ade4} is installed. \Rpackage{made4} also calls \Rpackage{scatterplot3d}. These can
+be installed, using \Rfunction{install.packages()}. To install \Rpackage{made4}
+
+\begin{verbatim}
+install.packages("made4", 
+    contriburl = "http://bioinf.ucd.ie/people/aedin/R/current")
+\end{verbatim}
+
+ 
+
+%------------------------------------------------------------
+\subsection{Further help}
+%------------------------------------------------------------ 
+More information about \Rpackage{made4} is available at \url{http://bioinf.ucd.ie/people/aedin/R}. This document provides an overview of \Rpackage{made4} 
+functions. These are described in more detail in the other vingettes that accompany this package. 
+
+Extensive tutorials, examples and documentation on multivariate statistical methods are available from the ade4 website 
+\url{http://pbil.univ-lyon1.fr/ADE-4} and \Rpackage{ade4} user support  
+is available through the ADE4 mailing list. The \Rpackage{ade4} homepage is \url{http://pbil.univ-lyon1.fr/ADE-4}.
+
+This tutorial assumes a basic knowledge of R, but we have found that Emmanuel Paradis's \textbf{R for Beginners} is a 
+very good guide to those unfamiliar with R. This is available at \url{http://cran.r-project.org/doc/contrib/rdebuts_en.pdf}.
+
+This documents assumes that data is normalised and preprocessed.  Please refer to the Bioconductor packages \Rpackage{affy}, \Rpackage{arrayMagic} 
+and \Rpackage{limma}, for input and initial pre\--processing of microarray data.  The Bioconductor project website is \url{http://www.bioconductor.org}.
+
+ 
+%------------------------------------------------------------
+\section{Quickstart}
+%------------------------------------------------------------ 
+We will very briefly demonstrate some of the functions in \Rpackage{made4}. To do this 
+we will use a small dataset that is available in the Bioconductor package \Rpackage{factDesign}.  This
+is a dataset of gene expression levels for 500 genes from Affymetrix HGU95av2 chips 
+for eight samples from a breast cancer cell line.  Load the necessary R packages and estrogen dataset. 
+
+<<loadlibs, results=hide>>=
+ library(affy)
+ library(factDesign)
+ library(made4)
+ library(ade4)
+@
+
+<<loadestrogen>>=
+ data(estrogen)
+@
+
+
+This experiment studied the effect of estrogen on the gene expression in estrogen receptor positive breast cancer cells over time.  
+After serum starvation, samples were exposed to estrogen, and mRNA was harvested at two time points (10 or 48 hours).  The control 
+samples were not exposed to estrogen and were harvested at the same time points. Table \ref{exptable} shows the 
+experiemental design, and corresponding samples names. The full data set (12,625 probes, 32 samples) and its analysis 
+are discussed in Scholtens, et al. Analyzing Factorial Designed Microarray Experiments.  
+Journal of Multivariate Analysis. (To appear).  The gene expression values were calculated using the robust multichip 
+average  \Rfunction{rma} method \citep{Irizarry2003} after quantile normalization using the \Rpackage{affy} package.  
+The expression values are reported in log base 2 scale. 
+
+
+\begin{table}[h!]
+\caption{Experimental Conditions for estrogen dataset available in \Rpackage{factDesign}}
+\begin{center}
+\begin{tabular}{l|c|c|}
+\multicolumn{1}{l}{time} & \multicolumn{2}{c}{estrogen} \\
+\multicolumn{1}{l}{} & \multicolumn{1}{c}{absent} & \multicolumn{1}{c}{present} \\
+\cline{2-3}
+ 10 hours & \texttt{et1} & \texttt{Et1} \\
+ & \texttt{et2} & \texttt{Et2} \\
+\cline{2-3}
+ 48 hours &  \texttt{eT1} & \texttt{ET1} \\
+ &  \texttt{eT2} & \texttt{ET2} \\
+\cline{2-3}
+\end{tabular}
+\end{center}
+\label{exptable}
+\end{table}
+
+
+
+
+
+
+
+
+<<phenoData>>=
+estrogen
+pData(estrogen)  # pData obtains
+
+@
+
+%------------------------------------------------------------
+\subsection{Overview}
+%------------------------------------------------------------ 
+
+The \Rpackage{made4} function \Rfunction{overview()} provides a quick way to get an overview or feel for data.  \Rfunction{overview()} 
+will draw a boxplot, histogram and dendrogram of a hierarchical analysis.  Hierarchical clustering is produced using average 
+linkage clustering with a Pearson correlation measure of similarity  \citep{Eisen1998}
+ This gives a quick first glance at the data. 
+
+<<overview.extra, results=hide>>=
+overview(estrogen)
+@
+
+Often labelling the samples using a
+covariate of interest, in this case, the presence of estrogen (ES) or timepoint (TIME) is useful.
+
+\clearpage
+
+\begin{figure}[htbp]
+\begin{center}
+<<overviewEstrogen, fig=TRUE>>=
+overview(estrogen, label=estrogen$TIME)
+@
+\caption{Overview of estrogen data. A) dendrogram showing results of average linkage clustering, B) boxplot and C) histrogram.}
+\label{figure 1} 
+\end{center}
+\end{figure}
+
+
+
+%------------------------------------------------------------
+\subsection{Correspondence Analysis}
+%------------------------------------------------------------ 
+
+The function \Rfunction{ord} simplifies the running of ordination methods such as principal component, correspondence or non-symmetric correspondence analysis. It provides a wrapper which can call each of these methods in \Rpackage{ade4}. To run a correspondence analysis \citep{Fellenberg2001} on this dataset. 
+
+<<ord.coa>>=
+estrogen.coa<- ord(estrogen, type="coa")
+@
+
+Output from \Rfunction{ord} is a list of length 2, containing the ordination results (\$ord) and a factor (\$fac) if input.  The ordination results 
+(estrogen.coa\$ord) contain a list of results (of length 12) which includes the eigenvalues (\$eig), and the projected coordinations of the variables (\$li, 500 genes) and 
+cases (\$co, 8 microarray samples).  
+
+<<output.coa>>=
+names(estrogen.coa)
+estrogen.coa$ord
+@
+
+
+%------------------------------------------------------------
+\subsection{Visualising Results}
+%------------------------------------------------------------ 
+
+There are many functions in \Rpackage{ade4} and \Rpackage{made4} for visualising results from ordination analysis. The simplest way 
+to view the results produced by \Rfunction{ord} is to use \Rfunction{plot}.  \Rexpression{plot(estrogen.ord)} will draw a plot of the 
+eigenvalues, along with plots of the variables (genes) and a plot of the cases (microarray samples).  In this example Microarray 
+samples are colour-coded using the \Rexpression{classvec} \Rexpression{estrogen\$ES}.  
+
+\clearpage
+
+\begin{figure}[ht!]
+\begin{center}
+<<plotcoa, fig=TRUE>>=
+plot(estrogen.coa, classvec=estrogen$ES, arraycol=c("green", "blue"), genecol="pink")
+@
+\caption{\label{figure 2} Correspondence analysis of estrogen dataset. A. plot of the eigenvalues, 
+B. projection of microarray samples in which samples incubated in the absence (green squares) or presence (blue squares) of estrogen,
+C. projection of genes (pink filled circles) and D. biplot showing both genes and samples.  
+Samples and genes with a strong associated are projected in the same direction from the origin.  The greater
+the distance from the origin the stronger the association}
+\end{center}
+\end{figure}
+
+Equally, samples could be coloured by time.
+
+<<example.plot, results=hide>>=
+plot(estrogen.coa, classvec=estrogen$TIME)
+@
+
+
+
+Genes and array projections can also be plotted using \Rfunction{s.var} and \Rfunction{s.groups}.  The function \Rfunction{s.groups} required a class vector (fac), 
+and allowed groups to be coloured in different colours. For example, to plot microarray samples (cases),
+
+<<svar, results=hide>>=
+s.var(estrogen.coa$ord$li)  
+@
+
+To plot microarray samples, colour by group (estrogen presence) as specified by estrogen\$ES
+<<svar3, results=hide>>=
+s.groups(estrogen.coa$ord$li, fac=estrogen$ES)
+@
+
+
+Plot gene projections without labels (clab=0). Typically there are a large number of genes, thus it is not feasible to label all of these.
+The function plotgenes is more useful to use if you wish to add labels when there are lots of variables (genes)
+
+<<svar2, results=hide>>=
+s.var(estrogen.coa$ord$co, clab=0) 
+@
+
+The gene projections can be also visualised with \Rfunction{plotgenes}. The number of genes that are labelled 
+at the end of the axis can be defined. The default is 10.
+
+<<plotgenes, results=hide>>=
+plotgenes(estrogen.coa$ord$co, n=5, col="red")
+@
+
+
+
+By default the variables (genes) are labelled with the rownames of the matrix. 
+Typically these are spot IDs or Affymetrix accession numbers which are not very easy to interpret.  
+But these can be easily labeled by gene symbols, using the \Rpackage{annaffy} annotation package. 
+To retrieve the gene symbols for all of the affymetrix features on the HGU95av2 chip and label genes by gene symbol:
+
+<<plotgenescmd, results=hide>>=
+library(annaffy)
+symbs <- aafSymbol(geneNames(estrogen), "hgu95av2")
+gene.symbs<-getText(symbs) # Extract these as plain text
+plotgenes(estrogen.coa$ord$co, n=10, col="red", varlabels=gene.symbs)
+@
+
+
+\begin{figure}[htbp]
+\begin{center}
+<<plotgenes2, fig=TRUE>>=
+plotgenes(estrogen.coa$ord$co, n=10, col="red", varlabels=gene.symbs)
+@
+\caption{\label{figure 3} Projection of genes (filled circles) in Correspondence analysis of estrogen dataset.  The genes at the ends of each of the axes are labelled with HUGO gene symbols.  }
+\end{center}
+\end{figure}
+
+To get a list of variables at the end of an axes, use \Rfunction{topgenes}. For example, to get a list of the 5 genes at the negative and postive end of axes 1. 
+
+<<topgenes, results=hide>>=
+topgenes(estrogen.coa$ord$co, axis = 1, n=5)   
+@
+
+To only the a list of the genes (default 10 genes) at the negative end of the first axes
+<<topgenes2>>=
+topgenes(estrogen.coa$ord$co, labels=gene.symbs, end="neg") 
+@
+
+Two lists can be compares using \Rfunction{comparelists}.
+
+\clearpage
+
+To visualise the arrays (or genes) in 3D either use \Rfunction{do3d} or \Rfunction{html3d}. \Rfunction{do3d} is a wrapper for \Rfunction{scatterplot3d}, 
+but is modified so that groups can be coloured.  \Rfunction{html3d} produces a "pdb" output which can be visualised using rasmol or chime. Rasmol provides
+a free and very useful interface for colour, rotating, zooming 3D graphs. 
+
+<<do3d, results=hide>>=
+do3d(estrogen.coa$ord$li, classvec=estrogen$TIME, cex.symbols=3)
+html3D(estrogen.coa$ord$li, estrogen$TIME, writehtml=TRUE)
+@
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics{html3D.eps}
+\caption{\label{figure 4} Output from html3D, which can be rotated and visualised on web browsers that can support chime (IE or Netscape on MS Windows or Mac). }
+\end{center}
+\end{figure}
+
+
+
+
+
+%----------------------------------------------------------------
+\subsection{Classification and Class Prediction using Between Group Analysis}
+%--------------------------------------------------------------------------------
+Between Group Analysis (BGA) is a supervised classification method \citep{DoledecChessel1987}. The basis of BGA is to ordinate the groups rather than the individual samples. 
+In tests on two microarray gene expression datasets, BGA performed comparably to supervised classification methods, including support vector machines and artifical neural networks \citep{Culhane2002}.   To train a dataset, use \Rfunction{bga}, the projection of test data can be assessed using \Rfunction{suppl}. One leave out cross validation can be performed using \Rfunction{bga.jackknife}. See the BGA vignette for more details on this method.
+<<bga>>=
+estrogen.bga<-bga(estrogen, type="coa", estrogen$TIME)
+@
+
+\begin{figure}[htbp]
+\begin{center}
+
+<<BGAplot, fig=TRUE>>=
+plot(estrogen.bga, genelabels=gene.symbs) # Got the HGU95av2 gene symbols earlier
+@
+\caption{\label{figure 5} Between group analysis of Estrogen dataset. A. Between.graph
+of the microarray samples, showing their separation on the discriminating BGA axes, B. graph1D of microarray samples, coloured by their class, C. graph of positions of genes on the same axis.  Genes at the ends of the axis are most discriminating for that group}
+\end{center}
+\end{figure}
+
+
+
+%-----------------------------
+\subsection{Meta-analysis of microarray gene expression }
+%-----------------------------
+Coinertia analysis \Rfunction{cia} \citep{DoledecChessel1994} has been successfully applied to the cross-platform 
+comparison (meta-analysis) of microarray gene expression datasets \citep{Culhane2003}. CIA is a multivariate method 
+that identifies trends or co-relationships in multiple datasets which contain the same samples. That is either the rows 
+or the columns of a matrix must be "matchable".  CIA can be applied to datasets where 
+the number of variables (genes) far exceeds the number of samples (arrays) such is the case with microarray analyses.
+ \Rfunction{cia} calls \Rfunction{coinertia} in the \Rpackage{ade4} package. See the CIA vignette for more details on this method. 
+
+
+<<CIA>>=
+# Example data are "G1_Ross_1375.txt" and "G5_Affy_1517.txt"
+data(NCI60)
+coin <- cia(NCI60$Ross, NCI60$Affy)
+names(coin)
+coin$coinertia$RV
+@
+
+The RV coefficient \$RV which is \Sexpr{signif(coin$coinertia$RV,3)} in this instance, is a measure of global similarity between the datasets.  
+The greater (scale 0-1) the better.
+
+
+\begin{figure}[htbp]
+\begin{center}
+<<CIAplot, fig=TRUE>>=
+plot(coin, fac=NCI60$classes[,2], clab=0, cpoint=3)
+@
+\caption{\label{figure 6} Coinertia analysis of NCI 60 cell line Spotted and Affymetrix gene expression dataset. The same 60 cell lines were analysed by two different
+labs on a spotted cDNA array (Ross) and an affymetrix array (Affy).  The Ross dataset contains 1375 genes, and the affy dataset contains 1517. There is
+little overlap betwen the genes represented on these platforms.  CIA allows visualisation of genes with similar expression patterns across platforms. A) shows 
+a plot of the 60 microarray samples projected onto the one space.  The 60 circles represent dataset 1 (Ross) and the 60 arrows represent dataset 2 (affy). 
+Each circle and arrow are joined by a line, the length of which is proportional to the divergence between that samples in the two datasets. 
+The samples are coloured by cell type. B)The gene projections from datasets 1 (Ross), C) the gene projections from 
+dataset 2 (Affy).  Genes and samples projected in the same direction from the origin show genes that are expressed in those samples. See vingette for more help on interpreting these plots.}
+\end{center}
+\end{figure}
+\clearpage
+
+%------------------------------------------------------------
+\section{Functions in made4}
+%------------------------------------------------------------ 
+
+\noindent \textsc{Data Input}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+array2ade4 & Converts matrix, data.frame, exprSet, marrayRaw microarray 
+gene expression data input data into a data frame suitable for analysis in 
+ADE4. The  rows and columns are expected to contain the variables (genes) 
+and cases (array samples)  \\
+overview & Draw boxplot, histogram and hierarchical tree of gene 
+expression data. This is useful only for a \textit{brief first glance} at data.\\
+\end{tabular}
+\end{table}
+
+\noindent \textsc{Example datasets provides with made4}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+khan & Microarray gene expression dataset from Khan et al., 2001 \\
+NCI60 & Microarray gene expression profiles of the NCI 60 cell lines \\
+\end{tabular}
+\end{table}
+
+
+\noindent \textsc{Classification and class prediction using Between Group Analysis}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+bga & Between group analysis \\
+bga.jackknife & Jackknife between group analysis \\
+randomiser & Randomly reassign training and test samples \\
+bga.suppl & Between group analysis with supplementary data projection \\
+suppl & Projection of supplementary data onto axes from a between group analysis \\
+plot.bga & Plot results of between group analysis \\
+between.graph & Plot 1D graph of results from between group analysis \\
+\end{tabular}
+\end{table}
+
+\noindent \textsc{Meta analysis of two or more datasets using Coinertia Analysis} 
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+cia & Coinertia analysis: Explore the covariance between two datasets \\
+plot.cia & Plot results of coinertia analysis \\
+\end{tabular}
+\end{table}
+
+\noindent \textsc{Graphical Visualisation of results: 1D Visualisation}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+graph1D & Plot 1D graph of axis from multivariate analysis \\
+between.graph & Plot 1D graph of results from between group analysis \\
+commonMap & Highlight common points between two 1D plots \\
+heatplot & Draws heatmap with dendrograms (of eigenvalues) \\
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\noindent \textsc{Graphical Visualisation of results: 2D Visualisation}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+plotgenes & Graph xy plot of variable (gene) projections from PCA or COA. Only label variables at ends of axes \\
+s.var &	Graph xy plot of variables (genes or arrays).  Derived from ADE4 graphics module s.label.  \\
+s.groups  &	Graph xy plot of groups of variables (genes or arrays) and colour by group. Derived from ADE4 graphics module s.class \\
+s.match.col &	Graph xy plot of 2 sets of variables (normally genes) from CIA.  Derived from ADE4 graphics module s.match\\
+plot.bga & Plot results of between group analysis using plotgenes, s.groups and s.var \\
+plot.cia & Plot results of coinertia analysis showing s.match.col, and plotgenes \\
+\end{tabular}
+\end{table}
+
+
+\noindent \textsc{Graphical Visualisation of results: 3D Visualisation}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+do3d & Generate a 3D xyz graph using scatterplot3d \\
+rotate3d & Generate multiple 3D graphs using do3d in which each graph is rotated \\
+html3D & Produce web page with a 3D graph that can be viewed using Chime web browser plug-in, and/or a pdb file that can be viewed using Rasmol \\
+\end{tabular}
+\end{table}
+
+\noindent \textsc{Interpretation of results}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+topgenes & Returns a list of variables at the ends (positive, negative or both) of an axis \\
+sumstats & Summary statistics on xy co-ordinates, returns the slopes and distance from origin of each co-ordinate \\
+comparelists & Return the intersect, difference and union between 2 vectors \\
+print.comparelists & Prints the results of comparelists \\
+\end{tabular}
+\end{table}
+
+\begin{thebibliography}{10}
+
+\bibitem{Thioulouse1997}
+Thioulouse,J., Chessel,D., Dol\'edec,S., and Olivier,J.M
+\newblock ADE-4: a multivariate analysis and graphical display software. 
+\newblock \textit{Stat. Comput.}, \textbf{7}, 75-83. 1997.
+
+\bibitem{Culhane2002}
+Culhane, A.C., Perriere, G., Considine, E.C., Cotter, T.G., and Higgins, D.G. 
+\newblock Between-group analysis of microarray data. 
+\newblock \textit{Bioinformatics} \textbf{18}: 1600-1608. 2002. 
+
+\bibitem{DoledecChessel1987}
+Dol\'edec, S., and Chessel, D. 
+\newblock Rhythmes saisonniers et composantes stationelles en milieu aquatique I- Description d'un plan d'observations complet par projection de variables. 
+\newblock \textit{Acta Oecologica Oecologica Generalis}  \textbf{8}: 403-426.1987. 
+
+\bibitem{DoledecChessel1994}
+Dol\'edec, S., and Chessel, D.
+\newblock Co-inertia analysis: an alternative method for studying species-environment relationships. 
+\newblock \textit{Freshwater Biology}  \textbf{31}: 277-294. 1994.
+
+\bibitem{Eisen1998}
+Eisen, M.B., Spellman, P.T., Brown, P.O., and Botstein, D. 
+\newblock Cluster analysis and display of genome-wide expression patterns. 
+\newblock \textit{Proc Natl Acad Sci U S A}  \textbf{95}: 14863-14868. 1998. 
+
+\bibitem{Fellenberg2001}
+Fellenberg, K., Hauser, N.C., Brors, B., Neutzner, A., Hoheisel, J.D., and Vingron, M. 
+\newblock Correspondence analysis applied to microarray data. 
+\newblock \textit{Proc Natl Acad Sci U S A} \textbf{98}: 10781-10786. 2001. 
+
+\bibitem{Irizarry2003}
+Irizarry, R.  A., Bolstad, B. M.,Collin, F., Cope, L. M., Hobbs, B., Speed, T. P
+\newblock Summaries of Affymetrix GeneChip probe level data
+\newblock \textit{Nucleic Acids Res} \textbf{31}:4 15. 2003.
+
+\bibitem{Culhane2003}
+Culhane AC, et al., 
+\newblock Cross platform comparison and visualisation of gene expression data using co-inertia analysis. 
+\newblock \textit{BMC Bioinformatics}.\textbf{4}:59.  2003.
+
+
+\end{thebibliography}
+
+\end{document}

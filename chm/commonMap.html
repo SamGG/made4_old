@@ -1,0 +1,117 @@
+<html><head><title>Highlight common points between two 1D plots</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>commonMap(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   commonMap">
+<param name="keyword" value=" Highlight common points between two 1D plots">
+</object>
+
+
+<h2>Highlight common points between two 1D plots</h2>
+
+
+<h3>Description</h3>
+
+<p>
+CommonMap draws two 1D plots, and links the common points between the two.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+commonMap(x, y, hor=TRUE, cex=1.5, scaled=TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>x</code></td>
+<td>
+The coordinates of the first axis </td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+The coordinates of the second axis</td></tr>
+<tr valign="top"><td><code>hor</code></td>
+<td>
+Logical, whether a horizontal line should be drawn on plot. Default is TRUE.</td></tr>
+<tr valign="top"><td><code>cex</code></td>
+<td>
+Numeric. The amount by which plotting text
+and symbols should be scaled relative to the default </td></tr>
+<tr valign="top"><td><code>scaled</code></td>
+<td>
+Logical, whether the data in x and y are scaled. Scaling is useful for 
+visualising small or large data values. Set to FALSE if actually or true values should 
+be visualised. The default is TRUE.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other method </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Useful for mapping the genes in common from coinertia analysis 
+This graphs a 1D graph, x and y are the coordinates from two different analyses
+but the rows of each vectors correspond (ie common genes)
+</p>
+
+
+<h3>Value</h3>
+
+
+<h3>Note</h3>
+
+<p>
+This is useful for examining common points in axes from coinertia analysis, or comparing results 
+from two different analysis.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Ailis Fagan and Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+See also <code><a between.graph.html>between.graph</a></code>, 
+<code><a graph1D.html>graph1D</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+a&lt;-rnorm(20)
+b&lt;-rnorm(20)
+par(mfrow=c(2,2))
+commonMap(a,b)
+commonMap(a,b,hor=FALSE, col="red", pch=19)
+commonMap(a,b,col="blue", cex=2, pch=19)
+
+# If the vectors contain different variables, the rows should define the variables that correspond
+a[15:20]&lt;-NA
+b[10:15]&lt;-NA
+cbind(a,b)
+commonMap(a,b, col="dark green", pch=18)
+
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

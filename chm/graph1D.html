@@ -1,0 +1,131 @@
+<html><head><title>Plot 1D graph of axis from multivariate analysis</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>graph1D(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   graph1D">
+<param name="keyword" value=" Plot 1D graph of axis from multivariate analysis">
+</object>
+
+
+<h2>Plot 1D graph of axis from multivariate analysis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Draw 1D plot of an axis from multivariate analysis. Useful for visualising an individual axis from 
+analyses such as PCA <code><a onclick="findlink('ade4', 'dudi.pca.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.pca</a></code> or COA <code><a onclick="findlink('ade4', 'dudi.coa.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.coa</a></code>. 
+It accepts a factor so that groups of points can be coloured.
+It can also be used for graphing genes, and will only label n genes at the ends of the axis.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>graph1D(dfx,  fac=NULL,ax = 1, hor=FALSE, s.nam=row.names(dfx), n=NULL, 
+       scaled=TRUE, col="red", width=NULL, ...)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dfx</code></td>
+<td>
+<code><a onclick="findlink('base', 'vector.html')" style="text-decoration: underline; color: blue; cursor: hand">vector</a></code>, <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, which contains a column 
+with axis coordinates</td></tr>
+<tr valign="top"><td><code>ax</code></td>
+<td>
+Numeric, indicating column of <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code> to be plotted. 
+The default is 1.</td></tr>
+<tr valign="top"><td><code>fac</code></td>
+<td>
+Factor, indicating sub-groupings or classes in dfx or dfx[,ax]</td></tr>
+<tr valign="top"><td><code>hor</code></td>
+<td>
+Logical, indicating whether the graph should be drawn horizontal or vertically. 
+The default is vertically.</td></tr>
+<tr valign="top"><td><code>s.nam</code></td>
+<td>
+Vector. labels of dfx, The default is row.names(dfx)</td></tr>
+<tr valign="top"><td><code>n</code></td>
+<td>
+Numeric. Whether all rows should be plotted, n=10 would label only the 10 variables at the
+end of the axis.  By default all variables (row of dfx) are labelled</td></tr>
+<tr valign="top"><td><code>scaled</code></td>
+<td>
+</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+A character or vector indicating the colour(s) for points or groups of points. If points
+are to be coloured according to a factor, length(col) should equal length(levels(fac))</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+A vector of length 2, which is the width (of a vertical plot) or height (of a 
+horizontal plot). This can be increased if variable labels are unreadable. The default is
+c(-2,1)</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+<code>between.graph</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+a&lt;-rnorm(25)
+graph1D(a, s.nam=letters[1:25])
+graph1D(a, s.nam=letters[1:25], col="blue", pch=19,  n=3)
+data(khan)
+if (require(ade4, quiet = TRUE)) {
+khan.coa&lt;-dudi.coa(khan$train, scan=FALSE, nf=2)
+}
+graph1D(khan.coa$co, ax=1)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>made4</em> version 0.5 <a href="00Index.html">Index]</a></div>
+
+</body></html>

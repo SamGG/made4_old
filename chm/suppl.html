@@ -1,0 +1,132 @@
+<html><head><title>Projection of supplementary data onto axes from a between group analysis</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>suppl(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   suppl">
+<param name="keyword" value=" Projection of supplementary data onto axes from a between group analysis">
+</object>
+
+
+<h2>Projection of supplementary data onto axes from a between group analysis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Projection and class prediction of supplementary points onto 
+axes from a between group analysis, <code><a bga.html>bga</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+suppl(dudi.bga, supdata, supvec = NULL, assign=TRUE, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dudi.bga</code></td>
+<td>
+An object returned by <code><a bga.html>bga</a></code> </td></tr>
+<tr valign="top"><td><code>supdata</code></td>
+<td>
+Test or blind dataset. Accepted formats are a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, 
+<code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, <code><a onclick="findlink('Biobase', 'exprSet-class.html')" style="text-decoration: underline; color: blue; cursor: hand">exprSet</a></code> or 
+<code><a onclick="findlink('marrayClasses', 'marrayRaw-class.html')" style="text-decoration: underline; color: blue; cursor: hand">marrayRaw</a></code> </td></tr>
+<tr valign="top"><td><code>supvec</code></td>
+<td>
+A factor or vector which describes the classes in the
+training dataset</td></tr>
+<tr valign="top"><td><code>assign</code></td>
+<td>
+A logical indicating whether class assignment should be calculated
+using the method described by Culhane et al., 2002. The default value is TRUE</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+After performing a between group analysis on a training dataset using <code><a bga.html>bga</a></code>, 
+a test dataset can be then projected onto <code>bga</code> axes using <code><a suppl.html>suppl</a></code>.  
+</p>
+<p>
+<code>suppl</code> returns the projected coordinates and assignment of each test case (array).
+</p>
+<p>
+The test dataset must contain the same number of variables (genes) as the training dataset. 
+The input format of both the training dataset and test dataset are verified using
+<code>array2ade4</code>. Use <code><a plot.bga.html>plot.bga</a></code> to plot results from bga.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list containing:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>suppl</code></td>
+<td>
+An object returned by <code><a suppl.html>suppl</a></code></td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+See Also  <code><a bga.html>bga</a></code>,
+<code><a onclick="findlink('ade4', 'between.html')" style="text-decoration: underline; color: blue; cursor: hand">between</a></code>, <code><a plot.bga.html>plot.bga</a></code>, 
+<code><a bga.jackknife.html>bga.jackknife</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(khan)
+#khan.bga&lt;-bga(khan$train, khan$train.classes)
+if (require(ade4, quiet = TRUE)) {
+khan.bga&lt;-bga.suppl(khan$train, supdata=khan$test, classvec=khan$train.classes, 
+          supvec=khan$test.classes)
+
+khan.bga
+plot.bga(khan.bga, genelabels=khan$annotation$Symbol)
+khan.bga$suppl
+}
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package made4:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package made4:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="array2ade4">
+<param name="Local" value="array2ade4.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bet.coinertia">
+<param name="Local" value="bet.coinertia.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="between.graph">
+<param name="Local" value="between.graph.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bga">
+<param name="Local" value="bga.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bga.jackknife">
+<param name="Local" value="bga.jackknife.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="bga.suppl">
+<param name="Local" value="bga.suppl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="checkfac">
+<param name="Local" value="checkfac.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="chime3D">
+<param name="Local" value="chime3D.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="cia">
+<param name="Local" value="cia.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="commonMap">
+<param name="Local" value="commonMap.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="comparelists">
+<param name="Local" value="comparelists.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="do3d">
+<param name="Local" value="do3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="dudi.rwcoa">
+<param name="Local" value="dudi.rwcoa.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="forrwcoa">
+<param name="Local" value="forrwcoa.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="genes">
+<param name="Local" value="genes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="genes1d">
+<param name="Local" value="genes1d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="getcol">
+<param name="Local" value="getcol.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="getdata">
+<param name="Local" value="getdata.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="graph1D">
+<param name="Local" value="graph1D.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="heatplot">
+<param name="Local" value="heatplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="html3D">
+<param name="Local" value="html3D.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="khan">
+<param name="Local" value="khan.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="NCI60">
+<param name="Local" value="NCI60.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="ord">
+<param name="Local" value="ord.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="overview">
+<param name="Local" value="overview.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot.bga">
+<param name="Local" value="bga.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot.cia">
+<param name="Local" value="cia.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plot.ord">
+<param name="Local" value="ord.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="plotgenes">
+<param name="Local" value="plotgenes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="print.comparelists">
+<param name="Local" value="comparelists.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="randomiser">
+<param name="Local" value="randomiser.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="rotate3d">
+<param name="Local" value="do3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="s.groups">
+<param name="Local" value="s.var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="s.match.col">
+<param name="Local" value="s.var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="s.var">
+<param name="Local" value="s.var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="sumstats">
+<param name="Local" value="sumstats.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="suppl">
+<param name="Local" value="suppl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="topgenes">
+<param name="Local" value="topgenes.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package made4:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Between class coinertia analysis ">
+<param name="Local" value="bet.coinertia.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Between group analysis">
+<param name="Local" value="bga.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Between group analysis with supplementary data projection">
+<param name="Local" value="bga.suppl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Check dataset">
+<param name="Local" value="getdata.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Check factor">
+<param name="Local" value="checkfac.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Coinertia analysis: Explore the covariance between two datasets">
+<param name="Local" value="cia.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Converts microarray input data into a data frame suitable for analysis   in ADE4.">
+<param name="Local" value="array2ade4.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Draw boxplot, histogram and hierarchical tree of gene expression data ">
+<param name="Local" value="overview.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Draw xy plots of results of multivariate analysis ">
+<param name="Local" value="s.var.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Draws heatmap with dendrograms.">
+<param name="Local" value="heatplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Generate 3D graph(s) using scatterplot3d">
+<param name="Local" value="do3d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="genes1d: list top N variables on one axis. Lists the maximum and minimum  values in a column of a data.frame">
+<param name="Local" value="genes1d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Graph xy plot of variable (gene) projections from PCA or COA. Only label variables at ends of axes">
+<param name="Local" value="plotgenes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Highlight common points between two 1D plots ">
+<param name="Local" value="commonMap.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Jackknife between group analysis">
+<param name="Local" value="bga.jackknife.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Microarray gene expression dataset from Khan et al., 2001">
+<param name="Local" value="khan.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Microarray gene expression profiles of the NCI 60 cell lines">
+<param name="Local" value="NCI60.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Ordination">
+<param name="Local" value="ord.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot 1D graph of axis from multivariate analysis">
+<param name="Local" value="graph1D.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot 1D graph of results from between group analysis ">
+<param name="Local" value="between.graph.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Produce web graph of 3D graph that can be viewed using Chime web browser plug-in from a pdb file">
+<param name="Local" value="chime3D.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Produce web page with a 3D graph that can be viewed using Chime web browser plug-in, and/or a pdb file that can be viewed using Rasmol">
+<param name="Local" value="html3D.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Projection of supplementary data onto axes from a between group analysis">
+<param name="Local" value="suppl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Randomly reassign training and test samples ">
+<param name="Local" value="randomiser.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Return the intersect, difference and union between 2 vectors">
+<param name="Local" value="comparelists.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Returns an index of the top N variables at the   ends of the x and y axes">
+<param name="Local" value="genes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Row weighted Correspondence Analysis">
+<param name="Local" value="forrwcoa.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Specialised colour palette with set of 21 maximally contrasting colours">
+<param name="Local" value="getcol.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Summary statistics on xy co-ordinates, returns the slopes and distance from origin of each co-ordinate.">
+<param name="Local" value="sumstats.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Topgenes, returns a list of variables at the ends (positive, negative or both) of an axis">
+<param name="Local" value="topgenes.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

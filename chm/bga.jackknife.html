@@ -1,0 +1,124 @@
+<html><head><title>Jackknife between group analysis</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>bga.jackknife(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   bga.jackknife">
+<param name="keyword" value=" Jackknife between group analysis">
+</object>
+
+
+<h2>Jackknife between group analysis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Performs one-leave-out jackknife analysis of a between group analysis as
+described by Culhane et al., 20002
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+bga.jackknife(data, classvec, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>data</code></td>
+<td>
+Input dataset. A <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>  
+If the input is gene expression data in a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>. The 
+columns contain the cases (array samples) which will be jackknifed.</td></tr>
+<tr valign="top"><td><code>classvec</code></td>
+<td>
+A factor or vector which describes the classes in the
+training dataset</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods</td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Performs a one-leave-out cross validation of between group analysis <code><a bga.html>bga</a></code>. 
+Input is a training dataset.  This can take 5-10 minutes to compute on standard data gene expression matrix.
+</p>
+<p>
+In jackknife one leave out analysis, one case (column) is removed. The remaining dataset is subjected to 
+<code><a bga.html>bga</a></code>.  Then the class of the case that was removed is predicted using <code><a suppl.html>suppl</a></code>.
+This analysis is repeated until all samples have been removed and predicted.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list containing 
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>results</code></td>
+<td>
+The projected co-ordinates of each sample</td></tr>
+<tr valign="top"><td><code>summary</code></td>
+<td>
+A summary of number and percentage of correctly assigned samples</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Culhane et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+See Also  <code><a bga.html>bga</a></code>,
+<code><a bga.suppl.html>bga.suppl</a></code>,
+<code><a suppl.html>suppl</a></code>,<code><a bga.html>bga</a></code>,
+<code><a onclick="findlink('ade4', 'between.html')" style="text-decoration: underline; color: blue; cursor: hand">between</a></code>,
+<code><a plot.bga.html>plot.bga</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(khan)
+# NOTE using a very reduced dataset (first 5 genes) to speed up results
+# hence expect poor prediction accuracy
+dim(khan$train)
+print("using only small subset of data")
+if (require(ade4, quiet = TRUE)) {
+bga.jackknife(khan$train[1:5,], khan$train.classes) }
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>made4</em> version 0.5 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,164 @@
+<html><head><title>Between group analysis with supplementary data projection</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>bga.suppl(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   bga.suppl">
+<param name="keyword" value=" Between group analysis with supplementary data projection">
+</object>
+
+
+<h2>Between group analysis with supplementary data projection</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>bga.suppl</code> performs a <code>bga</code> between group analysis with projection
+of supplementary points using <code>suppl</code>
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+bga.suppl(dataset, supdata, classvec, supvec = NULL, suponly = FALSE,...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+Training dataset. A <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, 
+<code><a onclick="findlink('Biobase', 'exprSet-class.html')" style="text-decoration: underline; color: blue; cursor: hand">exprSet</a></code> or <code><a onclick="findlink('marrayClasses', 'marrayRaw-class.html')" style="text-decoration: underline; color: blue; cursor: hand">marrayRaw</a></code>.  
+If the input is gene expression data in a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>. The 
+rows and columns are expected to contain the variables (genes) and cases (array samples) 
+respectively.
+</td></tr>
+<tr valign="top"><td><code>supdata</code></td>
+<td>
+Test or blind dataset. A <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, 
+<code><a onclick="findlink('Biobase', 'exprSet-class.html')" style="text-decoration: underline; color: blue; cursor: hand">exprSet</a></code> or <code><a onclick="findlink('marrayClasses', 'marrayRaw-class.html')" style="text-decoration: underline; color: blue; cursor: hand">marrayRaw</a></code>.  
+If the input is gene expression data in a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>. The 
+rows and columns are expected to contain the variables (genes) and cases (array samples) 
+respectively.  The test dataset <code>supdata</code> and the training dataset <code>dataset</code> must contain 
+the same number of variables (genes).
+</td></tr>
+<tr valign="top"><td><code>classvec</code></td>
+<td>
+A <code>factor</code> or <code>vector</code> which describes the classes in the
+training data <code>dataset</code></td></tr>
+<tr valign="top"><td><code>supvec</code></td>
+<td>
+A <code>factor</code> or <code>vector</code> which describes the classes in the
+test dataset <code>supdata</code></td></tr>
+<tr valign="top"><td><code>suponly</code></td>
+<td>
+Logical indicating whether the returned output should contain 
+the test class assignment results only. The default value is FALSE, that 
+is the training coordinates, test coordinates and class assignments 
+will all be returned.</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>bga.suppl</code> calls <code>bga</code> to perform between group analysis (bga) on the training dataset, 
+then it calls <code>suppl</code> to project the test dataset onto the bga axes. 
+It returns the coordinates and class assignment of the cases (microarray samples) in the test dataset as 
+described by Culhane et al., 2002. 
+</p>
+<p>
+The test dataset must contain the same number of variables (genes) as the training dataset. 
+</p>
+<p>
+The input format of both the training dataset and test dataset are verified using <code>array2ade4</code>. 
+Use <code><a plot.bga.html>plot.bga</a></code> to plot results from bga.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+If <code>suponly</code> is FALSE (the default option)  <code>bga.suppl</code> returns a list of length 4 containing 
+the results of the <code>bga</code> of the training dataset and the results of the projection of the test dataset onto the bga axes-
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>ord</code></td>
+<td>
+Results of initial ordination. A list of class "dudi" (see <code><a onclick="findlink('ade4', 'dudi.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi</a></code>). </td></tr>
+<tr valign="top"><td><code>bet</code></td>
+<td>
+Results of between group analysis. A list of class "dudi"
+(see <code><a onclick="findlink('ade4', 'dudi.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi</a></code>),"between" (see <code><a onclick="findlink('ade4', 'between.html')" style="text-decoration: underline; color: blue; cursor: hand">between</a></code>),and 
+"dudi.bga"(see <code><a bga.html>bga</a></code>)</td></tr>
+<tr valign="top"><td><code>fac</code></td>
+<td>
+The input classvec, the factor or vector which described the classes in the input dataset</td></tr>
+<tr valign="top"><td><code>suppl</code></td>
+<td>
+An object returned by <code><a suppl.html>suppl</a></code></td></tr>
+</table>
+<p>
+
+<br>
+If <code>suponly</code> is TRUE only the results from <code>suppl</code> will be returned.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+See Also  <code><a bga.html>bga</a></code>,
+<code><a suppl.html>suppl</a></code>, <code><a onclick="findlink('ade4', 'between.html')" style="text-decoration: underline; color: blue; cursor: hand">between</a></code>,
+<code><a plot.bga.html>plot.bga</a></code>, <code><a bga.jackknife.html>bga.jackknife</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(khan)
+#khan.bga&lt;-bga(khan$train, khan$train.classes)
+if (require(ade4, quiet = TRUE)) {
+khan.bga&lt;-bga.suppl(khan$train, supdata=khan$test, 
+classvec=khan$train.classes, supvec=khan$test.classes)
+
+khan.bga
+plot.bga(khan.bga, genelabels=khan$annotation$Symbol)
+khan.bga$suppl
+}
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>made4</em> version 0.5 <a href="00Index.html">Index]</a></div>
+
+</body></html>

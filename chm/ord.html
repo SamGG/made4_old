@@ -1,0 +1,201 @@
+<html><head><title>Ordination</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>ord(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   ord">
+<param name="keyword" value="R:   plot.ord">
+<param name="keyword" value=" Ordination">
+</object>
+
+
+<h2>Ordination</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Run principal component analysis, correspondence analysis or non-symmetric correspondence analysis 
+on gene expression data
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+ord(dataset, type="coa", classvec=NULL, ...)
+plot.ord(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+Training dataset. A <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, 
+<code><a onclick="findlink('Biobase', 'exprSet-class.html')" style="text-decoration: underline; color: blue; cursor: hand">exprSet</a></code> or <code><a onclick="findlink('marrayClasses', 'marrayRaw-class.html')" style="text-decoration: underline; color: blue; cursor: hand">marrayRaw</a></code>.  
+If the input is gene expression data in a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>. The 
+rows and columns are expected to contain the variables (genes) and cases (array samples) 
+respectively.
+</td></tr>
+<tr valign="top"><td><code>classvec</code></td>
+<td>
+A <code>factor</code> or <code>vector</code> which describes the classes in the training dataset</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+Character, "coa", "pca" or "nsc" indicating which data
+transformation is required. The default value is type="coa"</td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+An object of class <code>ord</code>.  The output from <code>ord</code>. It contains the projection coordinates from <code>ord</code>, 
+the $co or $li coordinates to be plotted</td></tr>
+<tr valign="top"><td><code>arraycol, genecol</code></td>
+<td>
+Character, colour of points on plot. If arraycol is NULL, 
+arraycol will obtain a set of contrasting colours using <code>getcol</code>, for each classes 
+of cases (microarray samples) on the array (case) plot.  genecol is the colour of the 
+points for each variable (genes) on gene plot</td></tr>
+<tr valign="top"><td><code>nlab</code></td>
+<td>
+Numeric. An integer indicating the number of variables (genes) at the end of
+axes to be labelled, on the gene plot.</td></tr>
+<tr valign="top"><td><code>axes1</code></td>
+<td>
+Integer, the column number for the x-axis. The default is 1.</td></tr>
+<tr valign="top"><td><code>axes2</code></td>
+<td>
+Integer, the column number for the y-axis, The default is 2.</td></tr>
+<tr valign="top"><td><code>genelabels</code></td>
+<td>
+A vector of variables labels, if <code>genelabels</code>=NULL the row.names 
+of input matrix <code>dataset</code> will be used</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+<code>ord</code> calls either <code><a onclick="findlink('ade4', 'dudi.pca.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.pca</a></code>, <code><a onclick="findlink('ade4', 'dudi.coa.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.coa</a></code> or <code><a onclick="findlink('ade4', 'dudi.nsc.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.nsc</a></code>
+on the input dataset.  The input format of the dataset 
+is verified using <code><a array2ade4.html>array2ade4</a></code>. 
+</p>
+<p>
+If the user defines microarray sample groupings, these are colours on plots produced by <code>plot.ord</code>. 
+</p>
+<p>
+<B>Plotting and visualising bga results:</B>
+</p>
+<p>
+<EM>2D plots:</EM> 
+<code>s.var</code> and <code>s.groups</code> to draw an xy plot of cases ($ls). 
+<code>s.var</code> and <code>s.groups</code> are modifications of the ADE4 graphing functions 
+<code><a onclick="findlink('ade4', 's.label.html')" style="text-decoration: underline; color: blue; cursor: hand">s.label</a></code> and <code><a onclick="findlink('ade4', 's.class.html')" style="text-decoration: underline; color: blue; cursor: hand">s.class</a></code>.  
+<code><a plotgenes.html>plotgenes</a></code>, is used to draw an xy plot of the variables (genes). 
+</p>
+<p>
+<EM>3D plots:</EM>
+3D graphs can be generated using <code><a do3D.html>do3D</a></code> and <code><a html3D.html>html3D</a></code>. 
+<code><a html3D.html>html3D</a></code> produces a web page in which a 3D plot can be interactively rotated, zoomed,
+and in which classes or groups of cases can be easily highlighted. 
+</p>
+<p>
+<EM>1D plots, show one axis only:</EM>
+1D graphs can be plotted using  <code><a graph1D.html>graph1D</a></code>.  <code><a graph1D.html>graph1D</a></code> 
+can be used to plot either cases (microarrays) or variables (genes) and only requires
+a vector of coordinates ($li, $co)
+</p>
+<p>
+<B>Analysis of the distribution of variance among axes:</B>
+</p>
+<p>
+The number of axes or  principal components from a <code>ord</code> will equal <code>nrow</code> the number of rows, or the 
+<code>ncol</code>, number of columns of the dataset (whichever is less).
+</p>
+<p>
+The distribution of variance among axes is described in the eigenvalues ($eig) of the <code>ord</code> analysis. 
+These can be visualised using a scree plot, using <code><a onclick="findlink('ade4', 'scatter.html')" style="text-decoration: underline; color: blue; cursor: hand">scatterutil.eigen</a></code> as it done in <code>plot.ord</code>.  
+It is also useful to visualise the principal components from a using a <code>ord</code> or principal components analysis 
+<code><a onclick="findlink('ade4', 'dudi.pca.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.pca</a></code>, or correspondence analysis <code><a onclick="findlink('ade4', 'dudi.coa.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.coa</a></code> using a
+heatmap. In MADE4 the function <code><a heatplot.html>heatplot</a></code> will plot a heatmap with nicer default colours.
+</p>
+<p>
+<B>Extracting list of top variables (genes):</B>
+</p>
+<p>
+Use <code><a topgenes.html>topgenes</a></code>  to get list of variables or cases at the ends of axes.  It will return a list
+of the top n variables (by default n=5) at the positive, negative or both ends of an axes.  
+<code><a sumstats.html>sumstats</a></code> can be used to return the angle (slope) and distance from the origin of a list of
+coordinates.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A list with a class <code>ord</code> containing:
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>ord</code></td>
+<td>
+Results of initial ordination. A list of class "dudi" (see <code><a onclick="findlink('ade4', 'dudi.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi</a></code> )</td></tr>
+<tr valign="top"><td><code>fac</code></td>
+<td>
+The input classvec, the <code>factor</code> or <code>vector</code> which described the classes in the input dataset. Can be null.</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+See Also  <code><a onclick="findlink('ade4', 'dudi.pca.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.pca</a></code>, <code><a onclick="findlink('ade4', 'dudi.coa.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.coa</a></code> or <code><a onclick="findlink('ade4', 'dudi.nsc.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.nsc</a></code>, <code><a bga.html>bga</a></code>,
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+data(khan)
+
+if (require(ade4, quiet = TRUE)) {
+  khan.coa&lt;-ord(khan$train, classvec=khan$train.classes, type="coa")  
+  }
+
+khan.coa
+plot(khan.coa, genelabels=khan$annotation$Symbol)
+
+# Provide a view of the first 5 principal components (axes) of the correspondence analysis
+heatplot(khan.coa$ord$li[,1:5], dend=FALSE,lowcol="blue")
+
+
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>made4</em> version 0.52 <a href="00Index.html">Index]</a></div>
+
+</body></html>

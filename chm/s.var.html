@@ -1,0 +1,157 @@
+<html><head><title>Draw xy plots of results of multivariate analysis</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>s.var(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   s.var">
+<param name="keyword" value="R:   s.groups">
+<param name="keyword" value="R:   s.match.col">
+<param name="keyword" value=" Draw xy plots of results of multivariate analysis">
+</object>
+
+
+<h2>Draw xy plots of results of multivariate analysis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+A number of functions for graphically displaying results from between group, 
+coinertia, or other multivariate analysis of gene expression data. s.var, 
+s.groups and s.match.col are derived from ADE4 graphics modules, s.label, 
+s.class and s.match respectively.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+
+s.var(dfxy, xax = 1, yax = 2, label = row.names(dfxy), clabel = 1, pch = 20, 
+      cpoint = if (clabel == 0) 1 else 0, neig = NULL, cneig = 2, xlim = NULL, 
+      ylim = NULL, grid = TRUE, addaxes = TRUE, cgrid = 1, include.origin = TRUE, 
+      origin = c(0, 0), sub = "", csub = 1.25, possub = "bottomleft", pixmap = NULL, 
+      contour = NULL, area = NULL, add.plot = FALSE, colpoints = rep(1, nrow(dfxy)), 
+      boxes = TRUE, ...)
+s.groups(dfxy, fac, wt = rep(1, length(fac)), xax = 1, yax = 2, cstar = 1, 
+      cellipse = 1.5, axesell = TRUE, label = levels(fac), slabel = row.names(dfxy), 
+      clabel = 1, cpoint = 1, pch = 20, col = rep(1, length(levels(fac))), 
+      xlim = NULL, ylim = NULL, grid = TRUE, addaxes = TRUE, origin = c(0, 0), 
+      include.origin = TRUE, sub = "", csub = 1, possub = "bottomleft", 
+      cgrid = 1, pixmap = NULL, contour = NULL, area = NULL, add.plot = FALSE, ...)
+s.match.col(df1xy, df2xy, xax = 1, yax = 2, pch = 20, cpoint = 1, 
+    label = row.names(df1xy), clabel = 1, edge = TRUE, xlim = NULL, 
+    ylim = NULL, grid = TRUE, addaxes = TRUE, cgrid = 1, include.origin = TRUE, 
+    origin = c(0, 0), sub = "", csub = 1.25, possub = "bottomleft", 
+    pixmap = NULL, contour = NULL, area = NULL, add.plot = FALSE, col=rep(1, nrow(df1xy)), 
+    fac=NULL,  ...) 
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dfxy</code></td>
+<td>
+coordinates, normally the $ls, $co or $li coordinates 
+from PCA, COA or BGA with at least two columns, containing the x,y 
+coordinates to be plotted </td></tr>
+<tr valign="top"><td><code>df1xy, df2xy</code></td>
+<td>
+coordinates from <code>cia</code>, normally the $mX, $mY 
+coordinates with at least two columns, containing the x,y coordinates to 
+be plotted </td></tr>
+<tr valign="top"><td><code>colpoints</code></td>
+<td>
+Character, colour of arrays (cases),genes or points</td></tr>
+<tr valign="top"><td><code>xax</code></td>
+<td>
+the column number for the x-axis </td></tr>
+<tr valign="top"><td><code>yax</code></td>
+<td>
+the column number for the y-axis</td></tr>
+<tr valign="top"><td><code>fac</code></td>
+<td>
+<code>Factor</code>. A factor, classvec partitioning the rows of the data 
+frame in classes</td></tr>
+<tr valign="top"><td><code>boxes</code></td>
+<td>
+A logical, indicating whether a box should be drawn around
+each variable label. The default is TRUE</td></tr>
+<tr valign="top"><td><code>add.plot</code></td>
+<td>
+logical if TRUE plot draw in current graphics window</td></tr>
+<tr valign="top"><td><code>origin, sub, wt, cstar, cellipse, axesell, 
+col, edge</code></td>
+<td>
+Graphing  parameters. See <code>s.label</code> or <code>s.class</code> 
+for details</td></tr>
+<tr valign="top"><td><code>clabel,pch, cpoint, neig, cneig, xlim, ylim, grid, 
+addaxes, cgrid, include.origin, csub, possub, pixmap, contour, 
+area</code></td>
+<td>
+Graphing parameters, see <code>s.match</code> for details</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other method </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+These functions are modified versions of s.label, s.class and s.match graph 
+modules from ADE4. Please see  <code><a onclick="findlink('ade4', 's.label.html')" style="text-decoration: underline; color: blue; cursor: hand">s.label</a></code> or 
+<code><a onclick="findlink('ade4', 's.class.html')" style="text-decoration: underline; color: blue; cursor: hand">s.class</a></code> and  <code><a onclick="findlink('ade4', 's.match.html')" style="text-decoration: underline; color: blue; cursor: hand">s.match</a></code> 
+for father details.
+</p>
+<p>
+These functions <code>s.var</code>, <code>s.groups</code> and <code>s.match.col</code> are called by 
+<code><a plot.bga.html>plot.bga</a></code> and  <code><a plot.cia.html>plot.cia</a></code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+See also  <code><a onclick="findlink('ade4', 's.class.html')" style="text-decoration: underline; color: blue; cursor: hand">s.class</a></code>, 
+<code><a onclick="findlink('ade4', 's.label.html')" style="text-decoration: underline; color: blue; cursor: hand">s.label</a></code>,
+<code><a onclick="findlink('ade4', 's.match.html')" style="text-decoration: underline; color: blue; cursor: hand">s.match</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(khan)
+if (require(ade4, quiet = TRUE)) {
+khan.bga&lt;-bga(khan$train, khan$train.classes)
+attach(khan.bga)
+par(mfrow=c(2,2))
+s.var(bet$ls, col=as.numeric(khan$train.classes), clabel=0.8)
+s.groups(bet$ls, khan$train.classes, add.plot=TRUE, 
+col=c(1:length(levels(khan$train.classes))) )
+
+}</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center">[Package <em>made4</em> version 0.52 <a href="00Index.html">Index]</a></div>
+
+</body></html>

@@ -1,0 +1,111 @@
+<html><head><title>Row weighted Correspondence Analysis</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>forrwcoa(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   forrwcoa">
+<param name="keyword" value=" Row weighted Correspondence Analysis">
+</object>
+
+
+<h2>Row weighted Correspondence Analysis</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>dudi.rwcoa</code> Row weighted COA, calls <code>forrwcoa</code> to perform row
+weighted correspondence analysis.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+forrwcoa(df, rowweights = rep(1/nrow(df),nrow(df)))
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>df</code></td>
+<td>
+a <code>data.frame</code> containing positive or null values. It should not
+contain missing (NA) values. </td></tr>
+<tr valign="top"><td><code>rowweights</code></td>
+<td>
+a vector of row weights (by default, uniform row weights) </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods ) </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Performs row weighted COA. Calls <code>forrwcoa</code> to calculates weights.
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+Returns a list of class 'coa', 'rwcoa', and 'dudi' (see <code><a onclick="findlink('ade4', 'dudi.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi</a></code>)</p>
+
+<h3>Note</h3>
+
+<p>
+In the paper by Culhane et al., 2002, coinertia analysis
+was performed with two COAs, a standard <code><a onclick="findlink('ade4', 'dudi.coa.html')" style="text-decoration: underline; color: blue; cursor: hand">COA</a></code> and a row weighted COA <code>dudi.rwcoa</code>, on
+the two gene expression datasets. However it is now recommended to perform
+two non-symmetric COA, instead of two COA. This avoids having to force
+the row weights from one analysis on the second.  To perform
+non-symmetric correspondence coinertia analysis, use <code><a nsc.coinertia.html>nsc.coinertia</a></code>.
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane,  A.B. Dufour
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Culhane AC, et al., 2003 Cross platform comparison and visualisation of gene expression data using co-inertia analysis.  BMC Bioinformatics. 4:59
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+See Also as
+<code><a onclick="findlink('ade4', 'dudi.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi</a></code>,<code><a onclick="findlink('ade4', 'dudicoa.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.coa</a></code>,<code><a onclick="findlink('ade4', 'dudi.pca.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.pca</a></code>
+<code><a nsc.coinertia.html>nsc.coinertia</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

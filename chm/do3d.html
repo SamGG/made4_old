@@ -1,0 +1,175 @@
+<html><head><title>Generate 3D graph(s) using scatterplot3d</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>do3d(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   do3d">
+<param name="keyword" value="R:   rotate3d">
+<param name="keyword" value=" Generate 3D graph(s) using scatterplot3d">
+</object>
+
+
+<h2>Generate 3D graph(s) using scatterplot3d</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>do3d</code> is a wrapper for scatterplot3d. do3d will draw a single 3D xyz
+plot and will plot each group of points in a different colour, given a
+factor. 
+</p>
+<p>
+<code>rotate3d</code> calls <code>do3d</code> to draw multiple 3D plots in which each plot is 
+marginally rotated on the x-y axis.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+do3d(dataset, x = 1, y = 2, z = 3, angle = 40, classvec = NULL, classcol
+= NULL, col = NULL, cex.lab=0.3, pch=19, cex.symbols=1, ...)
+rotate3d(dataset, x = 1, y = 2, z = 3, beg = 180, end = 360, step = 12, 
+savefiles = FALSE, classvec = NULL, classcol = NULL, col = NULL, ...)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+XYZ coordinates to be plotted. A <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code> 
+with 3 or more columns. Usually results from multivariate analysis, such as the $co or $li coordinates
+from a  PCA <code><a onclick="findlink('ade4', 'dudi.pca.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.pca</a></code>, or COA 
+<code><a onclick="findlink('ade4', 'dudi.coa.html')" style="text-decoration: underline; color: blue; cursor: hand">dudi.coa</a></code> or the $ls, $co coordinates from
+<code><a bga.html>bga</a></code>. </td></tr>
+<tr valign="top"><td><code>x</code></td>
+<td>
+Numeric, the column number for the x-axis, the default is 1 (that is
+dataset[,1])</td></tr>
+<tr valign="top"><td><code>y</code></td>
+<td>
+Numeric, the column number for the y-axis, the default is 2 (that is dataset[,2])</td></tr>
+<tr valign="top"><td><code>z</code></td>
+<td>
+Numeric, the column number for the z-axis, the default is 3 (that is dataset[,3])</td></tr>
+<tr valign="top"><td><code>angle</code></td>
+<td>
+Numeric, the angle between x and y axis. Note the result depends
+on scaling. See  <code><a onclick="findlink('scatterplot3d', 'scatterplot3d.html')" style="text-decoration: underline; color: blue; cursor: hand">scatterplot3d</a></code>  </td></tr>
+<tr valign="top"><td><code>classvec</code></td>
+<td>
+A <code>factor</code> or <code>vector</code> which describes the classes in dataset </td></tr>
+<tr valign="top"><td><code>classcol</code></td>
+<td>
+A <code>factor</code> or <code>vector</code> which list the colours for each of the classes
+in the dataset. By default NULL. When NULL, <code>getcol</code> is used to
+obtain an optimum set of colours of the classes in classvec.</td></tr>
+<tr valign="top"><td><code>cex.lab</code></td>
+<td>
+Numeric. The magnification to be used for the axis annotation 
+relative to the current default text and symbol size. Default is 0.3</td></tr>
+<tr valign="top"><td><code>pch</code></td>
+<td>
+Integer specifying a symbol or single character to be used when 
+plotting points. The default is pch=  19</td></tr>
+<tr valign="top"><td><code>cex.symbols</code></td>
+<td>
+Numeric. The magnification to be used for the symbols 
+relative to the current default text size. Default is 1</td></tr>
+<tr valign="top"><td><code>col</code></td>
+<td>
+A character indicating a colour. To be used if all points
+are to be one colour. If classvec, classcol and col are all
+NULL. all points will be drawn in red by default.</td></tr>
+<tr valign="top"><td><code>beg</code></td>
+<td>
+Numeric. The starting angle between the x and y axis for
+rotate3d. Rotate3d will draw plots in which they are
+rotated from angle beg to angle end</td></tr>
+<tr valign="top"><td><code>end</code></td>
+<td>
+Numeric. The final angle between the x and y axis for
+<code>rotate3d</code>. Rotate3d will draw plots in which they are
+rotated from angle <code>beg</code> to angle <code>end</code> </td></tr>
+<tr valign="top"><td><code>step</code></td>
+<td>
+Numeric. Increment of the sequence between the starting
+angle beg and the final angle end. </td></tr>
+<tr valign="top"><td><code>savefiles</code></td>
+<td>
+Logical, indicating whether the plot should be
+saved as a pdf file. The default is FALSE </td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+
+
+
+<h3>Value</h3>
+
+<p>
+Produces plots of the xyz coordinates.</p>
+
+<h3>Note</h3>
+
+
+
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+
+
+
+<h3>See Also</h3>
+
+<p>
+See Also <code><a onclick="findlink('scatterplot3d', 'scatterplot3d.html')" style="text-decoration: underline; color: blue; cursor: hand">scatterplot3d</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(khan)
+if (require(ade4, quiet = TRUE)) {
+khan.coa&lt;-dudi.coa(khan$train, scannf=FALSE, nf=5)
+}
+par(mfrow=c(2,1))
+do3d(khan.coa$co, classvec=khan$train.classes)
+do3d(khan.coa$co, col="blue")
+rotate3d(khan.coa$co,classvec=khan$train.classes)
+khan.bga&lt;-bga(khan$train, khan$train.classes)
+plot.new()
+par(bg="black")
+do3d(khan.bga$bet$ls, classvec=khan$train.classes)
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

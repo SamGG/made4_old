@@ -1,0 +1,100 @@
+<html><head><title>Randomly reassign training and test samples</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>randomiser(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   randomiser">
+<param name="keyword" value=" Randomly reassign training and test samples">
+</object>
+
+
+<h2>Randomly reassign training and test samples</h2>
+
+
+<h3>Description</h3>
+
+<p>
+This function is used to check for bias between a training and test
+data. It return a new index, which randomly re-assigns samples in the training data to the test
+dataset and vice versa.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+randomiser(ntrain = 77, ntest = 19)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>ntrain</code></td>
+<td>
+Numeric. A integer indicating the number of cases in
+the training dataset </td></tr>
+<tr valign="top"><td><code>ntest</code></td>
+<td>
+Numeric. A integer indicating the number of cases in
+the test dataset </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Produces new indices that can be used for training/test datasets
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+It returns a list, containing 2 vectors
+</p>
+<table summary="R argblock">
+<tr valign="top"><td><code>train </code></td>
+<td>
+A vector of length ntrain, which can be used to index a
+new training dataset</td></tr>
+<tr valign="top"><td><code>test </code></td>
+<td>
+A vector of length ntest, which can be used to index a
+new test dataset</td></tr>
+</table>
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+randomiser(10,5)
+train&lt;-matrix(rnorm(400), ncol=20, nrow=20, dimnames=list(1:20,
+paste("train",letters[1:20], sep=".")))
+test&lt;-matrix(rnorm(200), ncol=10, nrow=20, dimnames=list(1:20,
+paste("test",LETTERS[1:10], sep=".")))
+all&lt;-cbind(train,test)
+
+colnames(train)
+colnames(test)
+newInd&lt;-randomiser(ntrain=20, ntest=10)
+
+newtrain&lt;-all[,newInd$train]
+newtest&lt;-all[,newInd$test]
+
+colnames(newtrain)
+colnames(newtest)
+
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

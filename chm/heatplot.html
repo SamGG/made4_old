@@ -1,0 +1,138 @@
+<html><head><title>Draws heatmap with dendrograms.</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>heatplot(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   heatplot">
+<param name="keyword" value=" Draws heatmap with dendrograms.">
+</object>
+
+
+<h2>Draws heatmap with dendrograms.</h2>
+
+
+<h3>Description</h3>
+
+<p>
+<code>heatplot</code> calls <code>heatmap</code> using a red-green colour scheme by default.  It also draws dendrograms of the cases and variables
+using correlation similarity metric and average linkage clustering as described by Eisen. <code>heatplot</code> is useful for a
+quick overview or exploratory analysis of data
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>heatplot(dataset, dend = TRUE, lowcol = "green", 
+                highcol = "red", Colv=NULL, Rowv=NULL, ...)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code>, <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>, 
+<code><a onclick="findlink('Biobase', 'exprSet-class.html')" style="text-decoration: underline; color: blue; cursor: hand">exprSet</a></code> or <code><a onclick="findlink('marrayClasses', 'marrayRaw-class.html')" style="text-decoration: underline; color: blue; cursor: hand">marrayRaw</a></code>.  
+If the input is gene expression data in a <code><a onclick="findlink('base', 'matrix.html')" style="text-decoration: underline; color: blue; cursor: hand">matrix</a></code> or <code><a onclick="findlink('base', 'data.frame.html')" style="text-decoration: underline; color: blue; cursor: hand">data.frame</a></code>. The 
+rows and columns are expected to contain the variables (genes) and cases (array samples) 
+respectively. </td></tr>
+<tr valign="top"><td><code>dend</code></td>
+<td>
+Logical, indicating whether dendrograms should be drawn. Default is TRUE. If FALSE both Colv and Rowv are set to NA.</td></tr>
+<tr valign="top"><td><code>Colv, Rowv</code></td>
+<td>
+Vector or object of class <code>dendrogram</code> used to reorder the columns, or rows.  If no ordering is 
+required, set Colv or Rowv = NA.  The default is NULL</td></tr>
+<tr valign="top"><td><code>lowcol, highcol</code></td>
+<td>
+Character indicating colours to be used for down and upregulated genes when drawing heatmap. Default
+is lowcol="green", and highcol="red".</td></tr>
+<tr valign="top"><td><code>...</code></td>
+<td>
+further arguments passed to or from other methods </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+The hierarchical plot is produced using average linkage cluster analysis with a
+correlation metric distance.  <code>heatplot</code> calls <code><a onclick="findlink('stats', 'heatmap.html')" style="text-decoration: underline; color: blue; cursor: hand">heatmap</a></code> and 
+<code><a onclick="findlink('stats', 'dendrogram.html')" style="text-decoration: underline; color: blue; cursor: hand">dendrogram</a></code>.
+</p>
+
+
+<h3>Value</h3>
+
+
+<h3>Note</h3>
+
+<p>
+Because Eisen et al., 1998 use green-red colours for the heatmap <code>heatplot</code> 
+uses these by default however a blue-red or yellow-blue are easily obtained by 
+changing lowcol and highcol
+</p>
+
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>References</h3>
+
+<p>
+Eisen MB, Spellman PT, Brown PO and Botstein D. (1998). Cluster Analysis and Display of 
+Genome-Wide Expression Patterns. Proc Natl Acad Sci USA 95, 14863-8.
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+See also as <code><a onclick="findlink('stats', 'hclust.html')" style="text-decoration: underline; color: blue; cursor: hand">hclust</a></code>, 
+<code><a onclick="findlink('stats', 'heatmap.html')" style="text-decoration: underline; color: blue; cursor: hand">heatmap</a></code> and <code><a onclick="findlink('stats', 'dendrogram.html')" style="text-decoration: underline; color: blue; cursor: hand">dendrogram</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+data(khan)
+
+heatplot(khan$train[1:30,], lowcol="blue", highcol="red")
+heatplot(khan$train[1:26,], lowcol="blue", highcol="red", 
+         labRow = c(64:1), labCol=LETTERS[1:26])
+
+if (require(ade4, quiet = TRUE)) {
+ # To speed up analysis, only a subset of the genes are analysed
+khan.sub&lt;-array2ade4(khan$train[1:1000,])  
+khan.coa&lt;-dudi.coa(khan.sub, scan=FALSE, nf=6)
+}
+
+# Provides a view of the components of the Correspondence analysis 
+heatplot(khan.coa$li, dend=FALSE)   
+
+# transposed so that it is easier to view. Can see that the difference between tissues 
+# and cell line samples are defined in the first axis.
+
+heatplot(t(khan.coa$li), dend=FALSE, lowcol="blue") 
+
+</pre>
+
+<script Language="JScript">
+function findlink(pkg, fn) {
+var Y, link;
+Y = location.href.lastIndexOf("\\") + 1;
+link = location.href.substring(0, Y);
+link = link + "../../" + pkg + "/chtml/" + pkg + ".chm::/" + fn;
+location.href = link;
+}
+</script>
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>

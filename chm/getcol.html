@@ -1,0 +1,99 @@
+<html><head><title>Specialised colour palette with set of 21 maximally contrasting colours</title>
+<link rel="stylesheet" type="text/css" href="Rchm.css">
+</head>
+<body>
+
+<table width="100%"><tr><td>getcol(made4)</td><td align="right">R Documentation</td></tr></table><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+<param name="keyword" value="R:   getcol">
+<param name="keyword" value=" Specialised colour palette with set of 21 maximally contrasting colours">
+</object>
+
+
+<h2>Specialised colour palette with set of 21 maximally contrasting colours</h2>
+
+
+<h3>Description</h3>
+
+<p>
+Special colour palette developed to maximise the contrast between
+colours. Colours were selected for visualising groups of points on xy or xyz plots 
+on a white background. Because of this, there are few pastel colours are in this palette. 
+<code>getcol</code> contains 2 palettes of 9 and 21 colours.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+getcol(nc = c(1:3), palette = "colours2", test = FALSE)
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>nc</code></td>
+<td>
+Numeric. Integer or vector in range 1 to 21. This selects colours from palette</td></tr>
+<tr valign="top"><td><code>palette</code></td>
+<td>
+A character to select either palette "colours1" or
+"colours2". <code>colours1</code> contains 9 colours, <code>colours2</code>
+contains 21 colours</td></tr>
+<tr valign="top"><td><code>test</code></td>
+<td>
+A logical, if TRUE a plot will be drawn to display the
+palettes colours1, colours2 and any selected colours. </td></tr>
+</table>
+
+<h3>Details</h3>
+
+<p>
+Colours1 contains the 9 colours,"red","blue"
+,"green","cyan","magenta","yellow", "grey","black","brown". Colours2
+contains 21 colours. These were selected so as to maximise the
+contrast between groups.
+</p>
+<p>
+For other colour palettes in R, see <code>colors</code>, <code>palette</code>, <code>rainbow</code>,  <code>heat.colors</code>,
+<code>terrain.colors</code>, <code>topo.colors</code> or <code>cm.colors</code>.
+</p>
+<p>
+Also see the library <code>RColorBrewer</code>
+</p>
+
+
+<h3>Value</h3>
+
+<p>
+A vector containing a list of colours.</p>
+
+<h3>Author(s)</h3>
+
+<p>
+Aedin Culhane
+</p>
+
+
+<h3>See Also</h3>
+
+<p>
+See also <code>colors</code>, <code>palette</code>, <code>rainbow</code>,  <code>heat.colors</code>,
+<code>terrain.colors</code>, <code>topo.colors</code> or <code>cm.colors</code>, <code>RColorBrewer</code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+getcol(3)
+getcol(c(1:7))
+getcol(10, test=TRUE)
+getcol(c(1:5, 7, 15, 16), palette="colours2",test=TRUE)
+</pre>
+
+
+
+<hr><div align="center"><a href="00Index.html">[Package Contents]</a></div>
+
+</body></html>
