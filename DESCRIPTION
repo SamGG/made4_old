@@ -8,6 +8,6 @@ Depends: ade4, scatterplot3d
 Suggests: affy, annaffy, factDesign
 Description:  Multivariate data analysis and graphical display of microarray data. 
               Functions include between group analysis and coinertia analysis. 
-              It contains functions that require ADE4 a.
+              It contains functions that require ADE4.
 License: GPL version 2 or newer
 URL: http://bioinf.ucd.ie/publications/software.html
