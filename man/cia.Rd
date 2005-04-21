@@ -134,7 +134,7 @@ cat(paste("The RV coefficient is a measure of global similarity between the data
 "The two datasets analysed are very similar. ",
 "The RV coefficient of this coinertia analysis is: ", coin$coinertia$RV,"\n", sep= ""))
 plot(coin)
-plot(coin, fac=NCI60$classes[,2], clab=0, cpoint=3)
+plot(coin, classvec=NCI60$classes[,2], clab=0, cpoint=3)
 
 
 }
