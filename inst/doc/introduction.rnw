@@ -243,7 +243,7 @@ plot(estrogen.coa, classvec=estrogen$TIME)
 
 
 
-Genes and array projections can also be plotted using \Rfunction{s.var} and \Rfunction{s.groups}.  The function \Rfunction{s.groups} required a class vector (fac), 
+Genes and array projections can also be plotted using \Rfunction{s.var} and \Rfunction{s.groups}.  The function \Rfunction{s.groups} required a class vector (classvec), 
 and allowed groups to be coloured in different colours. For example, to plot microarray samples (cases),
 
 <<svar, results=hide>>=
@@ -252,7 +252,7 @@ s.var(estrogen.coa$ord$li)
 
 To plot microarray samples, colour by group (estrogen presence) as specified by estrogen\$ES
 <<svar3, results=hide>>=
-s.groups(estrogen.coa$ord$li, fac=estrogen$ES)
+s.groups(estrogen.coa$ord$li, estrogen$ES)
 @
 
 
@@ -377,7 +377,7 @@ The greater (scale 0-1) the better.
 \begin{figure}[htbp]
 \begin{center}
 <<CIAplot, fig=TRUE>>=
-plot(coin, fac=NCI60$classes[,2], clab=0, cpoint=3)
+plot(coin, classvec=NCI60$classes[,2], clab=0, cpoint=3)
 @
 \caption{\label{figure 6} Coinertia analysis of NCI 60 cell line Spotted and Affymetrix gene expression dataset. The same 60 cell lines were analysed by two different
 labs on a spotted cDNA array (Ross) and an affymetrix array (Affy).  The Ross dataset contains 1375 genes, and the affy dataset contains 1517. There is

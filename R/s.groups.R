@@ -1,7 +1,7 @@
 "s.groups" <-
-function (dfxy, fac, wt = rep(1, length(fac)), xax = 1, yax = 2, 
-    cstar = 1, cellipse = 1.5, axesell = TRUE, label = levels(fac), slabel = row.names(dfxy),
-    clabel = 1, cpoint = 1, pch = 20, col = rep(1, length(levels(fac))), 
+function (dfxy, classvec, wt = rep(1, length(classvec)), xax = 1, yax = 2,
+    cstar = 1, cellipse = 1.5, axesell = TRUE, label = levels(classvec), slabel = row.names(dfxy),
+    clabel = 1, cpoint = 1, pch = 20, col = rep(1, length(levels(classvec))),
     xlim = NULL, ylim = NULL, grid = TRUE, addaxes = TRUE, origin = c(0, 0), 
     include.origin = TRUE, sub = "", csub = 1, possub = "bottomleft", 
     cgrid = 1, pixmap = NULL, contour = NULL, area = NULL, add.plot = FALSE, ...) {
@@ -24,9 +24,9 @@ function (dfxy, fac, wt = rep(1, length(fac)), xax = 1, yax = 2,
         stop("Non convenient selection for dfxy")
     if (any(is.na(dfxy))) 
         stop("NA non implemented")
-    if (!is.factor(fac)) 
-        stop("factor expected for fac")
-    dfdistri <- f1(fac) * wt
+    if (!is.factor(classvec))
+        stop("factor expected for classvec")
+    dfdistri <- f1(classvec) * wt
     coul = col
     w1 <- unlist(lapply(dfdistri, sum))
     dfdistri <- t(t(dfdistri)/w1)

@@ -6,13 +6,14 @@ Graph xy plot of variables but only label variables at ends of X and Y axes. Use
 coordinates (\$co) resulting from PCA or COA of microarray data.
 }
 \usage{
-plotgenes(dudivar, nlab = 10, axes1 = 1, axes2 = 2, 
-varlabels = row.names(dudivar), boxes = TRUE, 
+plotgenes(coord, nlab = 10, axes1 = 1, axes2 = 2, 
+varlabels = row.names(coord), boxes = TRUE, 
 colpoints = "black", ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{dudivar}{a \code{\link{data.frame}} or \code{\link{matrix}} with at least two
+  \item{coord}{a  \code{\link{data.frame}} or \code{\link{matrix}} or object from \code{ord}
+    \code{bga} or \code{cia} analysis with at least two
     columns, containing x, y coordinates to be plotted}
   \item{nlab}{Numeric. An integer indicating the number of variables at ends of axes to
   be labelled}

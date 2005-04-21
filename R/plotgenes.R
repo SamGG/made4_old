@@ -1,5 +1,5 @@
 "plotgenes" <-
-function(dudivar, nlab=10, axes1=1, axes2=2, varlabels=row.names(dudivar), boxes=TRUE, colpoints="black",  ...){
+function(coord, nlab=10, axes1=1, axes2=2, varlabels=row.names(coord), boxes=TRUE, colpoints="black",  ...){
 	# This function plots a graph, with output from genes (ie only labelling genes at ends of axes).
         # This function calls s.var, and parameters such as colpoints can be passed to it.
        
@@ -7,18 +7,29 @@ function(dudivar, nlab=10, axes1=1, axes2=2, varlabels=row.names(dudivar), boxes
         # If labels are obtained using annaffy or annotate, Symbol often contains "" values
         # In which case s.var will fall over. Thus replace empty values with a -
   
+      if (!inherits(coord, "data.frame")) {
+          if (inherits(coord, "bga")){coord = coord$bet$co }
+
+           if (inherits(coord, "between"))  coord = coord$co
+           if (inherits(coord, "ord")) {
+              coord = coord$ord$co
+              }
+           if  (inherits(coord, "dudi"))  coord = coord$co
+        }
+        
+  
   	if(!inherits(labels, "character")) varlabels<-as.vector(varlabels)
         varlabels[varlabels==""]<- "-"  # Replace any null labels with "-"
 
         # Call the function genes() to get the subset of labels required
-	specInd <- genes(dudivar,nlab, axes1, axes2)        
+	specInd <- genes(coord,nlab, axes1, axes2)
 	specLab <- varlabels[specInd]
-	specMat <- dudivar[specInd,]
+	specMat <- coord[specInd,]
 
         # Plot using s.var, the first call of s.var uses points, the second uses
         # scatterutil.eti to draw the labels
         
-	s.var(dudivar, axes1, axes2, clab=0, colpoints=rep(colpoints, nrow(dudivar)),...)
+	s.var(coord, axes1, axes2, clab=0, colpoints=rep(colpoints, nrow(coord)),...)
 	s.var(specMat, axes1, axes2, label=specLab,  boxes=boxes, cpoint=0, add.plot=TRUE, ...)
 	}
 

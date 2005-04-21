@@ -4,7 +4,7 @@ function (df1xy, df2xy, xax = 1, yax = 2, pch = 20, cpoint = 1,
     ylim = NULL, grid = TRUE, addaxes = TRUE, cgrid = 1, include.origin = TRUE, 
     origin = c(0, 0), sub = "", csub = 1.25, possub = "bottomleft", 
     pixmap = NULL, contour = NULL, area = NULL, add.plot = FALSE, col=rep(1, nrow(df1xy)),  
-    fac=NULL,  ...) 
+    classvec=NULL,  ...)
 {  # line width can be changed par(lwd=2)
    # edited to it accepts colours
    # edited so it include a factor (for colouring purposes)
@@ -48,11 +48,11 @@ function (df1xy, df2xy, xax = 1, yax = 2, pch = 20, cpoint = 1,
   
     
 
-    if (!is.null(fac)) { 
-         fac<-as.factor(fac)
+    if (!is.null(classvec)) {
+         classvec<-as.factor(classvec)
          arraycol=col
-         if (!length(arraycol)== length(levels(fac)) ) arraycol=getcol(1:length(levels(fac)))       
-         col<-as.vector(factor(fac, labels=arraycol))
+         if (!length(arraycol)== length(levels(classvec)) ) arraycol=getcol(1:length(levels(classvec)))
+         col<-as.vector(factor(classvec, labels=arraycol))
         }
   
     if(is.factor(col))col=as.vector(col)

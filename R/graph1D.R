@@ -1,11 +1,11 @@
 "graph1D" <- 
-function (dfx,  fac=NULL, ax = 1, hor=FALSE, s.nam=row.names(dfx), n=NULL, scaled=TRUE, col="red", width=NULL, ...) {
+function (dfx,  classvec=NULL, ax = 1, hor=FALSE, s.nam=row.names(dfx), n=NULL, scaled=TRUE, col="red", width=NULL, ...) {
 
     s.nam<-as.vector(s.nam)
 
     if(!is.null(n)) {
       spec.ind<-genes1d(dfx, n=n)
-      #print(spec.ind)
+      print(spec.ind)
 	}
 
     btt<- function(x){
@@ -22,14 +22,14 @@ function (dfx,  fac=NULL, ax = 1, hor=FALSE, s.nam=row.names(dfx), n=NULL, scale
 
     if (length(col)==1) col=rep(col, length(dfx))
 
-    if (!is.null(fac)) {
+    if (!is.null(classvec)) {
         cols=col           
-	if (!length(cols) == length(levels(fac))) {
-          #print("Using default colours in getcol() as number of colours < the number of levels in fac")
-          cols = getcol(1:length(levels(fac)))
+	if (!length(cols) == length(levels(classvec))) {
+          #print("Using default colours in getcol() as number of colours < the number of levels in classvec")
+          cols = getcol(1:length(levels(classvec)))
           }
 
-	col = factor(fac, labels = cols)
+	col = factor(classvec, labels = cols)
 
 	}
 

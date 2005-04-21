@@ -46,7 +46,7 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
        if (dudi.bga$bet$nf==1) {
       	 	par(mfrow=c(1,3))			        # Display 2x2 graphs
        		between.graph(dudi.bga,  ax=1, hor=FALSE, ...)
-       		graph1D(dudi.bga$bet$ls, ax=1, fac=dudi.bga$fac,col=arraycol, ...)    # Draw plot of arrays
+       		graph1D(dudi.bga$bet$ls, ax=1, classvec=dudi.bga$fac,col=arraycol, ...)    # Draw plot of arrays
        		graph1D(dudi.bga$bet$co, ax=1, s.nam=genelabels, n=nlab, ...)   # Draw plot of genes label top genes  
       		
         }
@@ -56,7 +56,7 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
        if (dudi.bga$bet$nf>1) {
        		par(mfrow=c(2,2))			        # Display 2x2 graphs
        		s.var(dudi.bga$bet$ls,  xax = axes1, yax = axes2, col = as.vector(factor(dudi.bga$fac, labels=arraycol)), ...)
-      		s.groups(dudi.bga$bet$ls, fac=dudi.bga$fac, col=arraycol, xax = axes1, yax = axes2, ...)    # Draw plot of arrays
+      		s.groups(dudi.bga$bet$ls, classvec=dudi.bga$fac, col=arraycol, xax = axes1, yax = axes2, ...)    # Draw plot of arrays
       		plotgenes(dudi.bga$bet$co, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2,...)   # Draw plot of genes label top genes
       		s.groups(dudi.bga$bet$ls, dudi.bga$fac,cellipse=0,col=arraycol,
                	 add.plot=TRUE, xax = axes1, yax = axes2,...)  # To gene plot, add arrays

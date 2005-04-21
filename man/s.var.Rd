@@ -18,18 +18,17 @@ s.var(dfxy, xax = 1, yax = 2, label = row.names(dfxy), clabel = 1, pch = 20,
       origin = c(0, 0), sub = "", csub = 1.25, possub = "bottomleft", pixmap = NULL, 
       contour = NULL, area = NULL, add.plot = FALSE, colpoints = rep(1, nrow(dfxy)), 
       boxes = TRUE, ...)
-s.groups(dfxy, fac, wt = rep(1, length(fac)), xax = 1, yax = 2, cstar = 1, 
-      cellipse = 1.5, axesell = TRUE, label = levels(fac), slabel = row.names(dfxy), 
-      clabel = 1, cpoint = 1, pch = 20, col = rep(1, length(levels(fac))), 
+s.groups(dfxy, classvec, wt = rep(1, length(classvec)), xax = 1, yax = 2, cstar = 1,
+      cellipse = 1.5, axesell = TRUE, label = levels(classvec), slabel = row.names(dfxy),
+      clabel = 1, cpoint = 1, pch = 20, col = rep(1, length(levels(classvec))),
       xlim = NULL, ylim = NULL, grid = TRUE, addaxes = TRUE, origin = c(0, 0), 
       include.origin = TRUE, sub = "", csub = 1, possub = "bottomleft", 
       cgrid = 1, pixmap = NULL, contour = NULL, area = NULL, add.plot = FALSE, ...)
 s.match.col(df1xy, df2xy, xax = 1, yax = 2, pch = 20, cpoint = 1, 
-    label = row.names(df1xy), clabel = 1, edge = TRUE, xlim = NULL, 
-    ylim = NULL, grid = TRUE, addaxes = TRUE, cgrid = 1, include.origin = TRUE, 
-    origin = c(0, 0), sub = "", csub = 1.25, possub = "bottomleft", 
-    pixmap = NULL, contour = NULL, area = NULL, add.plot = FALSE, col=rep(1, nrow(df1xy)), 
-    fac=NULL,  ...) 
+      label = row.names(df1xy), clabel = 1, edge = TRUE, xlim = NULL, ylim = NULL, 
+      grid = TRUE, addaxes = TRUE, cgrid = 1, include.origin = TRUE, origin = c(0, 0), 
+      sub = "", csub = 1.25, possub = "bottomleft", pixmap = NULL, contour = NULL, 
+      area = NULL, add.plot = FALSE, col = rep(1, nrow(df1xy)), classvec=NULL,...)
 }
 
 \arguments{
@@ -42,7 +41,7 @@ s.match.col(df1xy, df2xy, xax = 1, yax = 2, pch = 20, cpoint = 1,
   \item{colpoints}{Character, colour of arrays (cases),genes or points}
   \item{xax}{ the column number for the x-axis }
   \item{yax}{ the column number for the y-axis}
-  \item{fac}{\code{Factor}. A factor, classvec partitioning the rows of the data 
+  \item{classvec}{\code{Factor}. A factor, classvec partitioning the rows of the data
     frame in classes}
    \item{boxes}{A logical, indicating whether a box should be drawn around
   each variable label. The default is TRUE}
