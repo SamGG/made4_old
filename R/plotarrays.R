@@ -41,15 +41,15 @@ plotarrays<-function(coord, axes1 = 1, axes2 = 2, arraylabels = NULL, classvec=N
         sep = " ")))
 
      if (!is.null(classvec)&&is.null(colpts)) {
-          s.groups(coord, classvec=classvec, col=arraycol,  ... )
+          s.groups(coord, classvec=classvec, col=arraycol,  xax = axes1, yax = axes2,  ... )
         }
 
      if (!is.null(colpts)){
-          s.var(coord, colpoints = colpts, label=arraylabels, ...)
+          s.var(coord, colpoints = colpts, label=arraylabels,  xax = axes1, yax = axes2, ...)
           }
           
      if (is.null(classvec)) {
-        s.var(coord,  ...)
+        s.var(coord,   xax = axes1, yax = axes2, ...)
       }
 
     }
