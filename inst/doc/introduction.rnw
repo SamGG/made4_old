@@ -319,7 +319,7 @@ html3D(estrogen.coa$ord$li, estrogen$TIME, writehtml=TRUE)
 
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics{html3D.eps}
+\includegraphics{html3D}
 \caption{\label{figure 4} Output from html3D, which can be rotated and visualised on web browsers that can support chime (IE or Netscape on MS Windows or Mac). }
 \end{center}
 \end{figure}
