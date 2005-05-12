@@ -81,9 +81,10 @@ khan.bga<-bga(khan$train, khan$train.classes)
 out.3D <-html3D(khan.bga$bet$ls, khan.bga$fac, writepdb=TRUE, 
 filenamebase ="Khan" , writehtml=TRUE)
 
+\dontrun{
 browseURL(paste("file://", file.path(paste(getwd(),"/khan.html", 
 sep="")), sep=""))
-
+}
 }
 \keyword{hplot}% at least one, from doc/KEYWORDS
 
