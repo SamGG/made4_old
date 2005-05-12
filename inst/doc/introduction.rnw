@@ -13,7 +13,6 @@
 \usepackage{times}
 \usepackage{hyperref}
 \usepackage[authoryear,round]{natbib}
-\usepackage{Sweave}
 
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
