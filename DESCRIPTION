@@ -1,13 +1,14 @@
 Package: made4
-Version: 1.0.0
+Version: 1.1.0
 Date: 2005/05/11
 Title: Multivariate analysis of microarray data using ADE4
 Author: Aedin Culhane
 Maintainer: Aedin Culhane <Aedin.Culhane@ucd.ie>
 Depends: ade4, scatterplot3d
 Suggests: affy, annaffy, factDesign
-Description:  Multivariate data analysis and graphical display of microarray data. 
-              Functions include between group analysis and coinertia analysis. 
-              It contains functions that require ADE4.
+Description: Multivariate data analysis and graphical display of
+        microarray data. Functions include between group analysis and
+        coinertia analysis. It contains functions that require ADE4.
 License: GPL version 2 or newer
 URL: http://bioinf.ucd.ie/software/
+
