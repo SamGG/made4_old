@@ -7,7 +7,7 @@
 supports the chime plug-in. 
 }
 \usage{
-chime3D(pdbfilename, classvec = NULL, title = NULL, filename = "output.html", point.size=40, ...)
+chime3D(pdbfilename, classvec = NULL, title = NULL, filename = "output.html", point.size=40,cols=NULL,  ...)
 }
 
 \arguments{
@@ -18,6 +18,7 @@ chime3D(pdbfilename, classvec = NULL, title = NULL, filename = "output.html", po
   \item{filename}{Character. The filename of the html to be saved. The default is 
    "output.html".}
   \item{point.size}{Numeric, size of the points in plot. Default is 40}
+ \item{cols}{Vector, of colours to be used.  The length of the vector must equal the length levels(classvec), that is the number of classes or groups of samples. The default is NULL, colours will be choosen using getcol.} 
   \item{\dots}{ further arguments passed to or from other methods }
 }
 \details{
