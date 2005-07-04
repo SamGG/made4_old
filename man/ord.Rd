@@ -6,7 +6,7 @@
 on gene expression data} 
 
 \usage{
-ord(dataset, type="coa", classvec=NULL, ...)
+ord(dataset, type="coa", classvec=NULL,ord.nf=NULL, ...)
 plot.ord(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...)
 }
 
@@ -20,6 +20,7 @@ plot.ord(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
   \item{classvec}{A \code{factor} or \code{vector} which describes the classes in the training dataset}
   \item{type}{Character, "coa", "pca" or "nsc" indicating which data
     transformation is required. The default value is type="coa"}
+  \item{ord.nf}{Numeric. Indicating the number of eigenvector to be saved, by default, if NULL, all eigenvectors will be saved.   }
   \item{x}{An object of class \code{ord}.  The output from \code{ord}. It contains the projection coordinates from \code{ord}, 
     the \$co or \$li coordinates to be plotted}
    \item{arraycol, genecol}{Character, colour of points on plot. If arraycol is NULL, 

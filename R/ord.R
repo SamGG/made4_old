@@ -1,5 +1,5 @@
 "ord" <-
-function(dataset, type="coa", classvec=NULL, ...){
+function(dataset, type="coa", classvec=NULL, ord.nf=NULL, ...){
         # This function runs ordination (PCA, or COA) on gene expression data
   
         # array2ade4(dataset, if coa or nsc needs to be positive)
@@ -11,7 +11,8 @@ function(dataset, type="coa", classvec=NULL, ...){
 		stop("Problems transposing data")
         
         # determine no of eigenvalues for ordination and run ordination
-        ord.nf<-ifelse(nrow(data.tr)<ncol(data.tr), nrow(data.tr)-1, ncol(data.tr)-1)
+        if (is.null(ord.nf)) ord.nf<-ifelse(nrow(data.tr)<ncol(data.tr), nrow(data.tr)-1, ncol(data.tr)-1)
+   
         data.tr.ord<-switch(type,
                 "coa" = dudi.coa(data.tr,scannf=FALSE, nf=ord.nf),
                 "pca" = dudi.pca(data.tr,scannf=FALSE, nf=ord.nf),

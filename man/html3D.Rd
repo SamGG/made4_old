@@ -10,7 +10,7 @@ supports the chime web browser plug-in.
 }
 \usage{
 html3D(df, classvec = NULL, writepdb = FALSE, filenamebase = "output", 
-       writehtml = FALSE, title = NULL, scaled=TRUE,xyz.axes=c(1:3) ...)
+       writehtml = FALSE, title = NULL, scaled=TRUE,xyz.axes=c(1:3), ...)
 }
 
 
