@@ -1,5 +1,7 @@
-getcol <- function (nc = c(1:3), palette = NULL, test = FALSE) 
-{
+getcol <- function (nc = c(1:3), palette = NULL, test = FALSE) {
+       # Aedin's colour palette... My fav colours for plotting
+       # If run with test=T,get plot of all colours available
+
     if (!is.numeric(nc)) 
         stop("enter the range of colors eg c(1,3,4) or c(1:4)")
     if (length(nc) == 1) {
