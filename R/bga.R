@@ -1,27 +1,14 @@
 "bga" <-
 function(dataset, classvec, type="coa",...){
         # This function runs BGA only.
-  
-        # array2ade4(dataset, if coa or nsc needs to be positive)
-        posdudi=c("coa", "nsc")
-        testpos<- ifelse(type %in% posdudi, TRUE, FALSE)           
-        data.tr<-array2ade4(dataset, pos=testpos,...)
-
-	if (!is.data.frame(data.tr))
-		stop("Problems transposing data")
-        
-        # determine no of eigenvalues for ordination and run ordination
-        ord.nf<-ifelse(nrow(data.tr)<ncol(data.tr), nrow(data.tr)-1, ncol(data.tr)-1)
-        data.tr.ord<-switch(type,
-                "coa" = dudi.coa(data.tr,scannf=FALSE, nf=ord.nf),
-                "pca" = dudi.pca(data.tr,scannf=FALSE, nf=ord.nf),
-                "nsc" = dudi.nsc(data.tr,scannf=FALSE, nf=ord.nf),
-                stop(paste("The type of transformation", type, "was not recognised. Permitted are: coa, pca, nsc", sep=" ")) 
-                )
 
         # checkfac (classvec)
         classvec<-checkfac(classvec)             
 	nclasses=length(levels(classvec))
+
+        # Run the ordination part
+        data.ord <- ord(dataset, type=type, classvec=classvec)
+        data.tr.ord <-t.dudi(data.ord$ord)
 
         # Run Between Group analysis, and return class dudi.bga
 	data.tr.bet<-between(data.tr.ord,classvec, scannf=FALSE, nf=nclasses-1)
