@@ -5,7 +5,7 @@ function(dataset, type="coa", classvec=NULL, ord.nf=NULL, ...){
         # array2ade4(dataset, if coa or nsc needs to be positive)
         posdudi=c("coa", "nsc")
         testpos<- ifelse(type %in% posdudi, TRUE, FALSE)           
-        data.tr<-array2ade4(dataset, pos=testpos,...)
+        data.tr<-array2ade4(dataset, pos=testpos, trans=FALSE, ...)
 
 	if (!is.data.frame(data.tr))
 		stop("Problems transposing data")
@@ -40,7 +40,7 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 
        if (!is.null(classvec)) fac= checkfac(classvec)
 
-       if (is.null(genelabels)) genelabels=rownames(dudi.ord$co)
+       if (is.null(genelabels)) genelabels=rownames(dudi.ord$li)
 
 
        par(mfrow=c(2,2))  # Display 2x2 graphs
@@ -50,7 +50,7 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
        if (!is.null(fac) && !length(arraycol)==length(levels(fac)))  arraycol=getcol(1:length(levels(fac)))
 
         if (is.null(arraycol) | length(arraycol)==1) {
-		cols.array=rep(arraycol, nrow(dudi.ord$li))  # Colours for s.var  for only 1 colour
+		cols.array=rep(arraycol, nrow(dudi.ord$co))  # Colours for s.var  for only 1 colour
 		biplot="type1"
 	}
        
@@ -65,22 +65,22 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 		
 
  	# Draw arrays
-	s.var(dudi.ord$li,  xax = axes1, yax = axes2, col = cols.array , ...) 
+	s.var(dudi.ord$co,  xax = axes1, yax = axes2, col = cols.array , ...) 
 
 	# Draw genes 
-        plotgenes(dudi.ord$co, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2,...)   # Draw plot of genes label top genes
+        plotgenes(dudi.ord$li, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2,...)   # Draw plot of genes label top genes
 
 	
        	# do biplot
 	if (inherits(dudi.ord, "coa")) {
-    		plotgenes(dudi.ord$co, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2, ...)   # Draw plot of genes label top genes	
+    		plotgenes(dudi.ord$li, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2, ...)   # Draw plot of genes label top genes	
 				
 		if (biplot=="type2") {
-       			s.groups(dudi.ord$li, fac, cellipse=0,col=arraycol,add.plot=TRUE,  xax = axes1, yax = axes2,  ...)  # To gene plot, add arrays
+       			s.groups(dudi.ord$co, fac, cellipse=0,col=arraycol,add.plot=TRUE,  xax = axes1, yax = axes2,  ...)  # To gene plot, add arrays
 			}
 
 		if (biplot=="type1") {
-			s.var(dudi.ord$li, col=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, xax = axes1, yax = axes2,...)  # To gene plot, add arrays
+			s.var(dudi.ord$co, col=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, xax = axes1, yax = axes2,...)  # To gene plot, add arrays
 			}
 		}
       	

@@ -11,13 +11,15 @@ function(arraydata) {
                                      stop("Arraydata was found to be a data.frame, but contains non-numeric columns.")
                                    intensities
                                  },
-                   exprSet    = { data.frame(exprs(arraydata))
+                   exprSet    = { if (require(affy, quiet = TRUE)) data.frame(exprs(arraydata))
                                 },
-                   marrayRaw  = { nrslides = as.integer(ncol(arraydata@maRf))
+                   marrayRaw  = { if (require(affy, quiet = TRUE)) {
+				  nrslides = as.integer(ncol(arraydata@maRf))
                                   nrspots  = as.integer(nrow(arraydata@maRf))
                                   tmp = matrix(NA, nrow=nrspots, ncol=2*nrslides)
                                   tmp[, (1:nrslides)*2-1 ] = arraydata@maGf - intensities@maGb
                                   tmp[, (1:nrslides)*2   ] = arraydata@maRf - intensities@maRb
+								    }
                                   as.data.frame(tmp)
                                 },
                    stop(paste("Arraydata has class ", class(arraydata), ". Permitted are: matrix, data.frame, exprSet, marrayRaw", sep=""))
