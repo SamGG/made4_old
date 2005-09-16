@@ -23,9 +23,9 @@ plotarrays<-function(coord, axes1 = 1, axes2 = 2, arraylabels = NULL, classvec=N
                         classvec= coord$fac
                         arraycol = getcol(1:length(levels(classvec)))}
                }
-              coord = coord$ord$li
+              coord = coord$ord$co
               }
-           if  (inherits(coord, "dudi"))  coord = coord$li
+           if  (inherits(coord, "dudi"))  coord = coord$co
         }
 
     #print(classvec)

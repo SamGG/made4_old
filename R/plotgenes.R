@@ -8,13 +8,13 @@ function(coord, nlab=10, axes1=1, axes2=2, varlabels=row.names(coord), boxes=TRU
         # In which case s.var will fall over. Thus replace empty values with a -
   
       if (!inherits(coord, "data.frame")) {
-          if (inherits(coord, "bga")){coord = coord$bet$co }
+          if (inherits(coord, "bga")){coord = coord$bet$li }
 
-           if (inherits(coord, "between"))  coord = coord$co
+           if (inherits(coord, "between"))  coord = coord$li
            if (inherits(coord, "ord")) {
-              coord = coord$ord$co
+              coord = coord$ord$li
               }
-           if  (inherits(coord, "dudi"))  coord = coord$co
+           if  (inherits(coord, "dudi"))  coord = coord$li
         }
         
   

@@ -2,6 +2,21 @@
 function(x, n=10, axis=1, labels=row.names(x), ends="both",...){
 	# Read a label or annotation file, and takes index from genes1d
 
+         if (!inherits(x, "data.frame")) {
+            if (inherits(x, "bga")) x = x$bet$co 
+
+            if (inherits(x, "between"))  x = x$co
+            if (inherits(x, "ord")) x = x$ord$co
+           
+            if  (inherits(x, "dudi"))  x = x$co   
+            
+        }
+        
+  
+        if(!inherits(labels, "character")) labels<-as.vector(labels)
+        labels[labels==""]<- "-"  # Replace any null labels with "-"
+
+
 	i<-switch(ends, "both"=1, "neg"=2, "pos"=3)
 	if(!is.null(dim(labels))) top<-labels[genes1d(x,n=n,axis=axis, listgenes=TRUE)[[i]],]
 	if(is.null(dim(labels)))  top<-labels[genes1d(x,n=n,axis=axis, listgenes=TRUE)[[i]]]

@@ -38,12 +38,7 @@ non-symmetric correspondence coinertia analysis, use \code{\link[made4:nsc.coine
    \code{\link[ade4:dudi]{dudi}},\code{\link[ade4:dudicoa]{dudi.coa}},\code{\link[ade4:dudi.pca]{dudi.pca}}
  \code{\link[made4:nsc.coinertia]{nsc.coinertia}} }
 \examples{
-if (require(ade4, quiet = TRUE)) {
-data(atlas)
-coa1=dudi.coa(atlas$birds,scannf=FALSE)
-coa2=dudi.coa(forrwcoa(atlas$birds),scannf=FALSE)
-coa3=dudi.rwcoa(atlas$birds, rowweights=coa1$lw, scannf=FALSE)
-}
+
 }
 \keyword{internal}
 

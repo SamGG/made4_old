@@ -1,5 +1,5 @@
 "array2ade4" <-
-function(dataset, pos=FALSE,  trans=TRUE){
+function(dataset, pos=FALSE,  trans=FALSE){
 
         if (!is.data.frame(dataset)) dataset<-getdata(dataset)  # Allows matrix, data.frame, exprSet, marrayRaw to be read as data.frame
         
@@ -18,7 +18,10 @@ function(dataset, pos=FALSE,  trans=TRUE){
         if(trans) {
                # Transpose matrix  (as BGA, CIA expects the samples to be in the rows)
                # dudi.nsc should not be transposed, use t.dudi instead to ensure row weight are equal
-                  
+               # There is a horrible bug is dudi.pca/coa etc, if a dataset with vars>>cases is given
+               # It can end abruptly crashing the session. This is a bug in sweep
+               # There will now use t.dudi rather than transpose the data
+ 
                dataset<-t(dataset)		
                dataset<-data.frame(dataset)
                if (!is.data.frame(dataset)) stop("Problems checking dataset")

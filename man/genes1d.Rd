@@ -38,13 +38,13 @@ Returns a vector or list of vectors.
 \examples{
 data(khan)
 if (require(ade4, quiet = TRUE)) {
-khan.coa<-dudi.coa(khan$train[1:100,1:10], scannf=FALSE, nf=2)
+khan.coa<-ord(khan$train)
 }
-ind<-topgenes(khan.coa$li, ends="pos")
-ind.ID<-topgenes(khan.coa$li, ends="pos", labels=khan$gene.labels.imagesID)
-ind.symbol<-topgenes(khan.coa$li, ends="pos", labels=khan$annotation$Symbol)
+ind<-topgenes(khan.coa, ends="pos")
+ind.ID<-topgenes(khan.coa, ends="pos", labels=khan$gene.labels.imagesID)
+ind.symbol<-topgenes(khan.coa, ends="pos", labels=khan$annotation$Symbol)
 Top10.pos<- cbind("Gene Symbol"=ind.symbol, 
-"Clone ID"=ind.ID, "Coordinates"=khan.coa$li[ind,], row.names=c(1:length(ind)))
+"Clone ID"=ind.ID, "Coordinates"=khan.coa$ord$co[ind,], row.names=c(1:length(ind)))
 Top10.pos
 }
 \keyword{internal}

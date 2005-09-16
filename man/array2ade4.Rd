@@ -8,7 +8,7 @@
   function.
 }
 \usage{
-array2ade4(dataset, pos = FALSE, trans = TRUE)
+array2ade4(dataset, pos = FALSE, trans = FALSE)
 }
 \arguments{
   \item{dataset}{A \code{\link{matrix}}, \code{\link{data.frame}}, 
@@ -19,10 +19,7 @@ array2ade4(dataset, pos = FALSE, trans = TRUE)
      }
   \item{pos}{Logical indicating whether to add an integer to \code{dataset}, to generate positive \code{data.frame}.  Required  for 
     \code{dudi.coa} or \code{dudi.nsc}}
-  \item{trans}{Logical indicating whether \code{dataset} should be transposed. Both \code{\link[ade4:between]{between}} 
-    group analysis, and \code{\link[ade4:coinertia]{coinertia}} analysis expect that the cases (array samples) 
-    are contained in the rows and that the variables (genes) are in the columns. Thus the \code{data.frame} must 
-    be transposed prior to analysis}
+  \item{trans}{Logical indicating whether \code{dataset} should be transposed. Default is FALSE}
 }
 \details{
 \code{\link[made4:bga]{bga}} and other functions in made4 call this function and it is

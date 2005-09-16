@@ -53,7 +53,7 @@ function(dudi.bga, supdata,supvec=NULL, assign=TRUE, ...){
           posdudi=c("coa", "nsc")
           testpos<- (inherits(dudi.bga, posdudi))
           
-          data.tr<-array2ade4(supdata, pos=testpos,...)
+          data.tr<-array2ade4(supdata, pos=testpos, trans=TRUE, ...)
           if (!is.data.frame(data.tr)) stop("Problems transposing data")
 
           #   Suprow should call suprow.coa or suprow.pca depending on class(dudi.ord)
