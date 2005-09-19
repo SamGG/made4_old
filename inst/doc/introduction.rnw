@@ -190,7 +190,7 @@ k.coa$ord
 There are many functions in \Rpackage{ade4} and \Rpackage{made4} for visualising results from ordination analysis. The simplest way 
 to view the results produced by \Rfunction{ord} is to use \Rfunction{plot}.  \Rexpression{plot(k.ord)} will draw a plot of the eigenvalues, along with plots of the variables (genes) and a plot of the cases (microarray samples).  In this example Microarray samples are colour-coded using the \Rexpression{classvec} \Rexpression{khan\$train.classes} which is saved as \Rexpression{k.class}.  
 
-<<see.classes>>
+<<see.classes>>=
 k.class
 @
 
@@ -225,7 +225,7 @@ plotarrays(k.coa, arraylabels=k.class)
 
 Alternative you can run these analysis and give a class vector to \Rfunction(ord) and it will automatically colour samples by this class vector
 
-<<plotarays2>>
+<<plotarays2>>=
 k.coa2<-ord(k.data, classvec=k.class)
 plot(k.coa2)
 @
@@ -321,7 +321,7 @@ of the microarray samples, showing their separation on the discriminating BGA ax
 
 Sometimes its useful to visualise 1 axes of an analysis. To do this use \Rfunction{graph1D} or \Rfunction{between.graph}.  The latter function is specifically for visualising results from a bga as it shows the separation of classes achieved.
 
-<<between.graph>>
+<<between.graph>>=
 between.graph(k.bga, ax=1)  # Show the separation on the first axes(ax)
 @
 
