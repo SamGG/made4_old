@@ -315,7 +315,7 @@ k.bga<-bga(k.data, type="coa", classvec=k.class)
 plot(k.bga, genelabels=gene.symbs) # Use the gene symbols earlier
 @
 \caption{\label{figure 5} Between group analysis of Khan dataset. A. Between.graph
-of the microarray samples, showing their separation on the discriminating BGA axes, B. Scatterplot of the first 2 axes of microarray samples, coloured by their class, C. graph of positions of genes on the same axis.  Genes at the ends of the axis are most discriminating for that group}
+	of the microarray samples, showing their separation on the discriminating BGA axes, B. Scatterplot of the first 2 axes of microarray samples, coloured by their class, C. graph of positions of genes on the same axis.  Genes at the ends of the axis are most discriminating for that group}
 \end{center}
 \end{figure}
 

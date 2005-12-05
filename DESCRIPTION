@@ -3,7 +3,7 @@ Version: 1.5.0
 Date: 2005/09/16
 Title: Multivariate analysis of microarray data using ADE4
 Author: Aedin Culhane
-Maintainer: Aedin Culhane <Aedin.Culhane@ucd.ie>
+Maintainer: Aedin Culhane <Aedin@jimmy.harvard.edu>
 Depends: ade4, scatterplot3d
 Suggests: affy 
 Description: Multivariate data analysis and graphical display of
