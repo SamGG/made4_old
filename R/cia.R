@@ -24,8 +24,8 @@ function(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE, ...){
           df1<-array2ade4(df1, pos=TRUE)
           df2<-array2ade4(df2, pos=TRUE)
         
-          coa1 = dudi.coa(df1, scannf=FALS, nf=cia.nf)
-	  coa2 = dudi.rwcoa(df2, rw=coa1$lw, scannf=FALSE, nf=cia.nf)
+          coa1 = dudi.coa(df1, scannf=FALSE, nf=cia.nf)
+	  coa2 = dudi.rwcoa(df2, rowweights=coa1$lw, scannf=FALSE, nf=cia.nf)
           coin<-coinertia(coa1, coa2, scan=cia.scan, nf=cia.nf, ...)
         }
         
