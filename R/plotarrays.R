@@ -49,7 +49,7 @@ plotarrays<-function(coord, axes1 = 1, axes2 = 2, arraylabels = NULL, classvec=N
           }
           
      if (is.null(classvec)) {
-        s.var(coord,   xax = axes1, yax = axes2, ...)
+        s.var(coord,   xax = axes1, yax = axes2, label=arraylabels, ...)
       }
 
     }
