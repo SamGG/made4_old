@@ -6,7 +6,7 @@ function(df1, df2, fac1, fac2, cia.nf=2, type="nsc", ...){
         fac2<-checkfac(fac2)
         if(!length(levels(fac1)==length(levels(fac2)))) stop("The same number of classes is required for between class coinertia analysis")
            
-        nf=length(levels(fac1)-1)
+        nf=length(levels(fac1))-1
        
                
         forsw<-function(dudi.bet.cia, ...){
