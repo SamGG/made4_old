@@ -48,11 +48,6 @@ dim(geneData)
 dim(array2ade4(geneData))
 class(array2ade4(geneData))
 
-eset <- new("exprSet", exprs=geneData)
-eset
-class(eset)
-class(array2ade4(eset))
-dim(array2ade4(eset))
 }
 \keyword{manip}% at least one, from doc/KEYWORDS
 
