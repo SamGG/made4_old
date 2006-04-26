@@ -40,6 +40,8 @@ plotarrays<-function(coord, axes1 = 1, axes2 = 2, arraylabels = NULL, classvec=N
         graph, "was not recognised. Permitted are: auto, s.var, s.groups, s.match.col",
         sep = " ")))
 
+     if (is.null(arraylabels)) arraylabels= row.names(coord)
+
      if (!is.null(classvec)&&is.null(colpts)) {
           s.groups(coord, classvec=classvec, col=arraycol,  xax = axes1, yax = axes2,  ... )
         }
