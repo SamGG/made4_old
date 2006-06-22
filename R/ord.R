@@ -1,11 +1,11 @@
 "ord" <-
-function(dataset, type="coa", classvec=NULL, ord.nf=NULL, ...){
+function(dataset, type="coa", classvec=NULL, ord.nf=NULL, trans=FALSE, ...){
         # This function runs ordination (PCA, or COA) on gene expression data
   
         # array2ade4(dataset, if coa or nsc needs to be positive)
         posdudi=c("coa", "nsc")
         testpos<- ifelse(type %in% posdudi, TRUE, FALSE)           
-        data.tr<-array2ade4(dataset, pos=testpos, trans=FALSE, ...)
+        data.tr<-array2ade4(dataset, pos=testpos, trans=trans, ...)
 
 	if (!is.data.frame(data.tr))
 		stop("Problems transposing data")
@@ -20,7 +20,7 @@ function(dataset, type="coa", classvec=NULL, ord.nf=NULL, ...){
                 stop(paste("The type of transformation", type, "was not recognised. Permitted are: coa, pca, nsc", sep=" ")) 
                 )
 
-        # Run Between Group analysis, and return class dudi.bga
+        # Run Ordination analysis, and return class dudi.bga
         res<-list(ord=data.tr.ord, fac=classvec)
         class(res) <- c(type, "ord")
 	return(res)
@@ -28,7 +28,7 @@ function(dataset, type="coa", classvec=NULL, ord.nf=NULL, ...){
 
 
 "plot.ord" <-
-function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...){
+function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...){
        # Produce a graph of arrays, genes, biplot and eigenvalues for graphing between results
    
 
@@ -65,22 +65,22 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 		
 
  	# Draw arrays
-	s.var(dudi.ord$co,  xax = axes1, yax = axes2, col = cols.array , ...) 
+	s.var(dudi.ord$co,  xax = axis1, yax = axis2, col = cols.array , ...) 
 
 	# Draw genes 
-        plotgenes(dudi.ord$li, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2,...)   # Draw plot of genes label top genes
+        plotgenes(dudi.ord$li, genelabels=genelabels,nlab=nlab, colpoints=genecol, axis1=axis1,  axis2=axis2,...)   # Draw plot of genes label top genes
 
 	
        	# do biplot
 	if (inherits(dudi.ord, "coa")) {
-    		plotgenes(dudi.ord$li, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2, ...)   # Draw plot of genes label top genes	
+    		plotgenes(dudi.ord$li, genelabels=genelabels,nlab=nlab, colpoints=genecol, axis1=axis1,  axis2=axis2, ...)   # Draw plot of genes label top genes	
 				
 		if (biplot=="type2") {
-       			s.groups(dudi.ord$co, fac, cellipse=0,col=arraycol,add.plot=TRUE,  xax = axes1, yax = axes2,  ...)  # To gene plot, add arrays
+       			s.groups(dudi.ord$co, fac, cellipse=0,col=arraycol,add.plot=TRUE,  xax = axis1, yax = axis2,  ...)  # To gene plot, add arrays
 			}
 
 		if (biplot=="type1") {
-			s.var(dudi.ord$co, col=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, xax = axes1, yax = axes2,...)  # To gene plot, add arrays
+			s.var(dudi.ord$co, col=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, xax = axis1, yax = axis2,...)  # To gene plot, add arrays
 			}
 		}
       	

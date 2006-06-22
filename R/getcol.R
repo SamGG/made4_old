@@ -10,8 +10,8 @@ getcol <- function (nc = c(1:3), palette = NULL, test = FALSE) {
     }
    if (length(nc) > 500) stop(paste("You requested", length(nc), "colours. 
         This seems a lot of colours. Please select fewer class colours"))
-    colours1 = c("red", "blue", "green", "yellow", "magenta", 
-        "cyan", "black", "grey", "brown", "orange", "violet", "purple")
+    colours1 = c("red", "blue", "green", "brown", "magenta", "orange",
+        "cyan", "black", "grey",  "violet", "purple", "yellow")
     colours2 = c("#E41A1C", "#0000FF", "#00FF00", "#FFA500", 
         "#E7298A", "#000080", "#00FFFF", "#008000", "#999999", 
         "#800080", "#008080", "#000000", "#FF4500", "#FFFF00", 

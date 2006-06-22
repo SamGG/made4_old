@@ -56,15 +56,23 @@ function(dudi.bga, supdata,supvec=NULL, assign=TRUE, ...){
           data.tr<-array2ade4(supdata, pos=testpos, trans=TRUE, ...)
           if (!is.data.frame(data.tr)) stop("Problems transposing data")
 
+         if (ncol(data.tr) != ncol(dudi.bga$ord$ord$tab)) 
+            stop("non convenient col numbers")
+
           #   Suprow should call suprow.coa or suprow.pca depending on class(dudi.ord)
-          suptrans<-suprow(dudi.bga$ord, data.tr)
-          supResults<-rowproj(dudi.bga$bet, suptrans$tabsup)
+          #suptrans<-suprow(dudi.bga$ord, data.tr)
+          #supResults<-rowproj(dudi.bga$bet, suptrans$tabsup)
+
+	  # edited June 2006.
+          suptrans <- suprow(dudi.bga$ord$ord, data.tr)$tabsup  
+          supResults = suprow.default(dudi.bga$bet, suptrans)
 
           return(supResults$lisup)
 	}	
 
 
         rowproj<-function (x, Xsup, ...) {
+         # Not Used anymore June 2006.
           # This projects points onto a dudi, without any transformation. 
           # This is required for projection of points on a between analysis
           # First use suprow to tranform the table (chi-square for coa, or centred/normalised 
@@ -209,3 +217,29 @@ function(dudi.bga, supdata,supvec=NULL, assign=TRUE, ...){
         
 	return(out)
 	}
+
+
+plot.suppl<-function(sup, dudi.bga, axis1=1, axis2=2, supvec=sup$true.class, supvec.pred= sup$predicted, ...){ 
+         par(mfrow=c(2,2))
+         plotarrays(dudi.bga, sub="BGA of training data",  axis1=axis1, axis2=axis2, cellipse=0,...)
+         colsup=NULL
+
+          # plot of both
+          plotarrays(dudi.bga, cellipse=0, axis1=axis1, axis2=axis2, ...)
+          plotarrays(sup, boxes=FALSE, sub="Plot of training and supplementary data",  axis1=axis1, axis2=axis2, add.plot=TRUE)
+
+
+         if (!is.null(supvec.pred)) {
+	   colsup= as.character(factor(supvec.pred, labels=getcol(length(levels(supvec.pred)))))
+           s.var(sup, col=colsup, sub="Supplementary data only (Colors:Predicted)", xax=axis1, yax=axis2, boxes=FALSE,...)       
+	   plotarrays(sup, classvec=supvec.pred, cellipse=0, cstar=0, cpoint=0, axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
+          }        
+
+         if (!is.null(supvec)) {
+           colsup= as.character(factor(supvec, labels=getcol(length(levels(supvec)))))
+           s.var(sup,  col=colsup, sub="Supplementary data only (colors:true classes)", xax=axis1, yax=axis2, boxes=FALSE)
+           plotarrays(sup, classvec=supvec, cellipse=0, cstar=0, cpoint=0, axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
+          }
+      
+         }
+           

@@ -6,8 +6,8 @@ Graph xy plot of variables but only label variables at ends of X and Y axes. Use
 coordinates (\$co) resulting from PCA or COA of microarray data.
 }
 \usage{
-plotgenes(coord, nlab = 10, axes1 = 1, axes2 = 2, 
-varlabels = row.names(coord), boxes = TRUE, 
+plotgenes(coord, nlab = 10, axis1 = 1, axis2 = 2, 
+genelabels = row.names(coord), boxes = TRUE, 
 colpoints = "black", ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -17,11 +17,11 @@ colpoints = "black", ...)
     columns, containing x, y coordinates to be plotted}
   \item{nlab}{Numeric. An integer indicating the number of variables at ends of axes to
   be labelled}
-  \item{axes1}{An integer, the column number for the x-axis. Default is 1, 
-  so axes 1 is dudivar[,1]}
-  \item{axes2}{An integer, the column number for the y-axis. Default is 2, 
-   so axes 2 is dudivar[,2]}
-  \item{varlabels}{A vector of variables labels. Default is row.names(dudivar)}
+  \item{axis1}{An integer, the column number for the x-axis. Default is 1, 
+  so axis 1 is dudivar[,1]}
+  \item{axis2}{An integer, the column number for the y-axis. Default is 2, 
+   so axis 2 is dudivar[,2]}
+  \item{genelabels}{A vector of gene (variable) labels. Default is row.names(coord)}
   \item{boxes}{A logical, indicating whether a box should be plotted surrounding
    each variable label. The default is TRUE.}
   \item{colpoints}{The colour of the points on the plot. The
@@ -58,8 +58,8 @@ attach(khan.bga)
 par(mfrow=c(2,2))
 s.var(bet$ls, col=as.numeric(khan$train.classes), clabel=0.8)
 plotgenes(bet$co, colpoints="red")
-plotgenes(bet$co, colpoints="red", varlabels=khan$annotation$Symbol)
-plotgenes(bet$co, colpoints="gray", varlabels=khan$annotation$Symbol,
+plotgenes(bet$co, colpoints="red", genelabels=khan$annotation$Symbol)
+plotgenes(bet$co, colpoints="gray", genelabels=khan$annotation$Symbol,
 boxes=FALSE)
 s.groups(bet$ls, khan$train.classes, add.plot=TRUE,
 col=c(1:length(levels(khan$train.classes))) )

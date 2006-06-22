@@ -40,7 +40,7 @@ function(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE, ...){
 
 
 "plot.cia" <-
-function(x, nlab=10,axes1=1, axes2=2,genecol="gray25",genelabels1=rownames(ciares$co), genelabels2=rownames(ciares$li), ... ){
+function(x, nlab=10,axis1=1, axis2=2,genecol="gray25",genelabels1=rownames(ciares$co), genelabels2=rownames(ciares$li), ... ){
         # Graph from coinertia analysis, using draw to plot variables (nlab.. no of labelled genes)
         coin<-x
         #print(coin$call)
@@ -56,11 +56,11 @@ function(x, nlab=10,axes1=1, axes2=2,genecol="gray25",genelabels1=rownames(ciare
         return(invisible()) }
               
 	layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE)) 	# Display 3 graphs, 1 on top, 2 below
-	s.match.col(ciares$mX, ciares$mY, xax = axes1, yax = axes2,
+	s.match.col(ciares$mX, ciares$mY, xax = axis1, yax = axis2,
                 label=row.names(ciares$mX), sub=paste("CIA of df1", coin$call[2],"and df2", coin$call[3], sep=" "), ...) # Draw plot matching two normed scatters
-	plotgenes(ciares$co, varlabels=genelabels1,nlab=nlab,colpoints=genecol, axes1=axes1,
-             axes2=axes2, sub=paste("variables df1", coin$call[2], sep= " "))		 # Draw plot of genes label, top 5 genes
-	plotgenes(ciares$li,varlabels=genelabels2,nlab=nlab,colpoints=genecol, axes1=axes1,
-             axes2=axes2, sub=paste("variables df2", coin$call[3], sep= " "))		 # Draw plot of genes label, top 5 genes
+	plotgenes(ciares$co, genelabels=genelabels1,nlab=nlab,colpoints=genecol, axis1=axis1,
+             axis2=axis2, sub=paste("variables df1", coin$call[2], sep= " "))		 # Draw plot of genes label, top 5 genes
+	plotgenes(ciares$li,genelabels=genelabels2,nlab=nlab,colpoints=genecol, axis1=axis1,
+             axis2=axis2, sub=paste("variables df2", coin$call[3], sep= " "))		 # Draw plot of genes label, top 5 genes
              	}
 

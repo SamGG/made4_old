@@ -5,10 +5,10 @@ function(x, n=10, axis=1, labels=row.names(x), ends="both",...){
          if (!inherits(x, "data.frame")) {
             if (inherits(x, "bga")) x = x$bet$co 
 
-            if (inherits(x, "between"))  x = x$co
-            if (inherits(x, "ord")) x = x$ord$co
+            if (inherits(x, "between"))  x = x$li
+            if (inherits(x, "ord")) x = x$ord$li
            
-            if  (inherits(x, "dudi"))  x = x$co   
+            if  (inherits(x, "dudi"))  x = x$li
             
         }
         

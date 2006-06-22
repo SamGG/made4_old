@@ -6,8 +6,8 @@
 on gene expression data} 
 
 \usage{
-ord(dataset, type="coa", classvec=NULL,ord.nf=NULL, ...)
-plot.ord(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...)
+ord(dataset, type="coa", classvec=NULL,ord.nf=NULL, trans=FALSE, ...)
+plot.ord(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...)
 }
 
 \arguments{
@@ -21,6 +21,8 @@ plot.ord(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
   \item{type}{Character, "coa", "pca" or "nsc" indicating which data
     transformation is required. The default value is type="coa"}
   \item{ord.nf}{Numeric. Indicating the number of eigenvector to be saved, by default, if NULL, all eigenvectors will be saved.   }
+  \item{trans}{Logical indicating whether 'dataset' should be transposed before ordination. Used by BGA
+          Default is FALSE}
   \item{x}{An object of class \code{ord}.  The output from \code{ord}. It contains the projection coordinates from \code{ord}, 
     the \$co or \$li coordinates to be plotted}
    \item{arraycol, genecol}{Character, colour of points on plot. If arraycol is NULL, 
@@ -29,8 +31,8 @@ plot.ord(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
     points for each variable (genes) on gene plot}
   \item{nlab}{Numeric. An integer indicating the number of variables (genes) at the end of
     axes to be labelled, on the gene plot.}
-  \item{axes1}{Integer, the column number for the x-axis. The default is 1.}
-  \item{axes2}{Integer, the column number for the y-axis, The default is 2.}
+  \item{axis1}{Integer, the column number for the x-axis. The default is 1.}
+  \item{axis2}{Integer, the column number for the y-axis, The default is 2.}
   \item{genelabels}{A vector of variables labels, if \code{genelabels}=NULL the row.names 
    of input matrix \code{dataset} will be used}
   \item{\dots}{further arguments passed to or from other methods }
@@ -114,7 +116,7 @@ khan.coa
 plot(khan.coa, genelabels=khan$annotation$Symbol)
 
 # Provide a view of the first 5 principal components (axes) of the correspondence analysis
-heatplot(khan.coa$ord$li[,1:5], dend=FALSE,lowcol="blue")
+heatplot(khan.coa$ord$co[,1:5], dend=FALSE,lowcol="blue")
 
 
 

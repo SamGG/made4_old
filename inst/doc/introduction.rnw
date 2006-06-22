@@ -251,14 +251,14 @@ In this example we provide annotation from the Source database in khan\$annotati
 <<plotgenescmd, results=hide>>=
 
 gene.symbs<- khan$annotation$Symbol 
-plotgenes(k.coa, n=10, col="red", varlabels=gene.symbs)
+plotgenes(k.coa, n=10, col="red", genelabels=gene.symbs)
 @
 
 
 \begin{figure}[htbp]
 \begin{center}
 <<plotgenes2, fig=TRUE>>=
-plotgenes(k.coa, n=10, col="red", varlabels=gene.symbs)
+plotgenes(k.coa, n=10, col="red", genelabels=gene.symbs)
 @
 \caption{\label{figure 3} Projection of genes (filled circles) in Correspondence analysis of Khan dataset.  The genes at the ends of each of the axes are labelled with HUGO gene symbols.  }
 \end{center}

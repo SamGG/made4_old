@@ -1,6 +1,6 @@
 "plotgenes" <-
-function(coord, nlab=10, axes1=1, axes2=2, varlabels=row.names(coord), boxes=TRUE, colpoints="black",  ...){
-	# This function plots a graph, with output from genes (ie only labelling genes at ends of axes).
+function(coord, nlab=10, axis1=1, axis2=2, genelabels=row.names(coord), boxes=TRUE, colpoints="black",  ...){
+	# This function plots a graph, with output from genes (ie only labelling genes at ends of axis).
         # This function calls s.var, and parameters such as colpoints can be passed to it.
        
 
@@ -8,7 +8,7 @@ function(coord, nlab=10, axes1=1, axes2=2, varlabels=row.names(coord), boxes=TRU
         # In which case s.var will fall over. Thus replace empty values with a -
   
       if (!inherits(coord, "data.frame")) {
-          if (inherits(coord, "bga")){coord = coord$bet$li }
+          if (inherits(coord, "bga")){coord = coord$bet$co }
 
            if (inherits(coord, "between"))  coord = coord$li
            if (inherits(coord, "ord")) {
@@ -18,36 +18,36 @@ function(coord, nlab=10, axes1=1, axes2=2, varlabels=row.names(coord), boxes=TRU
         }
         
   
-  	if(!inherits(labels, "character")) varlabels<-as.vector(varlabels)
-        varlabels[varlabels==""]<- "-"  # Replace any null labels with "-"
+  	if(!inherits(labels, "character")) genelabels<-as.vector(genelabels)
+        genelabels[genelabels==""]<- "-"  # Replace any null labels with "-"
 
         # Call the function genes() to get the subset of labels required
-	specInd <- genes(coord,nlab, axes1, axes2)
-	specLab <- varlabels[specInd]
+	specInd <- genes(coord,nlab, axis1, axis2)
+	specLab <- genelabels[specInd]
 	specMat <- coord[specInd,]
 
         # Plot using s.var, the first call of s.var uses points, the second uses
         # scatterutil.eti to draw the labels
         
-	s.var(coord, xax = axes1, yax = axes2, clab=0, colpoints=rep(colpoints, nrow(coord)),...)
-	s.var(specMat, xax = axes1, yax = axes2, label=specLab,  boxes=boxes, cpoint=0, add.plot=TRUE, ...)
+	s.var(coord, xax = axis1, yax = axis2, clab=0, colpoints=rep(colpoints, nrow(coord)),...)
+	s.var(specMat, xax = axis1, yax = axis2, label=specLab,  boxes=boxes, cpoint=0, add.plot=TRUE, ...)
 	}
 
 
 
 "genes" <-
-function(dudivar,n=5, axes1=1, axes2=2){
+function(dudivar,n=5, axis1=1, axis2=2){
 	# This is just a quick function to make 2D graphs of variables prettier, by only
-	# labelling specific genes, ie those at the extreme ends of axes
+	# labelling specific genes, ie those at the extreme ends of axis
 	# dudivar is variable, $li file from a dudi (COA, PCA etc)
 	# n is the number of genes to be labelled, for example top 5, 10 etc 
-	# axes1 and axes2 are the axes to be drawn, for example principal component 1 and 2
+	# axis1 and axis2 are the axis to be drawn, for example principal component 1 and 2
         # This function is not run on its own but is called by plotgenes()
 
-	#cat(axes1,axes2)
+	#cat(axis1,axis2)
 	len=nrow(dudivar)
-	f1<-rank(dudivar[,axes1])
-	f2<-rank(dudivar[,axes2])
+	f1<-rank(dudivar[,axis1])
+	f2<-rank(dudivar[,axis2])
 	fInd <- 1:len
 	fMat <- cbind(fInd, f1, f2)
 

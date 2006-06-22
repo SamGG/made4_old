@@ -7,7 +7,7 @@ Culhane et al., 2002.}
 
 \usage{
 bga(dataset, classvec, type = "coa", ...)
-plot.bga(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, 
+plot.bga(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, 
          genelabels= NULL, ...)
 }
 
@@ -30,8 +30,8 @@ plot.bga(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10,
     points for each variable (genes) on gene plot}
   \item{nlab}{Numeric. An integer indicating the number of variables (genes) at the end of
     axes to be labelled, on the gene plot.}
-  \item{axes1}{Integer, the column number for the x-axis. The default is 1.}
-  \item{axes2}{Integer, the column number for the y-axis, The default is 2.}
+  \item{axis1}{Integer, the column number for the x-axis. The default is 1.}
+  \item{axis2}{Integer, the column number for the y-axis, The default is 2.}
   \item{genelabels}{A vector of variables labels, if \code{genelabels}=NULL the row.names 
    of input matrix \code{dataset} will be used}
   \item{\dots}{further arguments passed to or from other methods }

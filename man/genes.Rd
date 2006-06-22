@@ -7,14 +7,14 @@
  values in 2 columns of a matrix or data.frame.
 }
 \usage{
-genes(dudivar,n=5, axes1=1, axes2=2)
+genes(dudivar,n=5, axis1=1, axis2=2)
 }
 
 \arguments{
   \item{dudivar}{a \code{data frame} or \code{matrix} with at least two
     columns, containing the x,y coordinates.}
-  \item{axes1}{the column number for the x-axis~ }
-  \item{axes2}{ the column number for the y-axis~ }
+  \item{axis1}{the column number for the x-axis~ }
+  \item{axis2}{ the column number for the y-axis~ }
   \item{n} {n is the number of genes to be extracted}
 }
 \details{

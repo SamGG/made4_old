@@ -6,20 +6,34 @@ function(dataset, classvec, type="coa",...){
         classvec<-checkfac(classvec)             
 	nclasses=length(levels(classvec))
 
+        # transpose the dataset
+        #data.tr = as.data.frame(t(dataset))
         # Run the ordination part
-        data.ord <- ord(dataset, type=type, classvec=classvec)
-        data.tr.ord <-t.dudi(data.ord$ord)
+        data.ord <- ord(dataset, type=type, classvec=classvec, trans=TRUE)
+        ord.class= class(data.ord$ord)
+
+       ## Because between uses as.matrix, it will add X in front of any rownames 
+       ## starting with a numeral. Therefore tidy up, 
+        genenam= sub("^X", "", colnames(data.ord$ord$tab[sapply(rownames(dataset), function(x)   regexpr("^\\d",x, perl=TRUE)==1)]))
+        colnames(data.ord$ord$tab) = rownames(data.ord$ord$co)= rownames(data.ord$ord$c1) = genenam
+
+
+        # For plotting and other functions its easier if I return dudi.ord transposed
+        #data.tr.ord <-t.dudi(data.ord$ord)
+        #class(data.tr.ord) = c(c(ord.class), "ord")
 
         # Run Between Group analysis, and return class dudi.bga
-	data.tr.bet<-between(data.tr.ord,classvec, scannf=FALSE, nf=nclasses-1)
-        res<-list(ord=data.tr.ord, bet=data.tr.bet, fac=classvec)
+	data.bet<-between(data.ord$ord,classvec, scannf=FALSE, nf=nclasses-1)
+
+
+        res<-list(ord=data.ord, bet=data.bet, fac=classvec)
         class(res) <- c(type, "bga")
 	return(res)
 	}
 
 
 "plot.bga" <-
-function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL,...){
+function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL,...){
        # Produce a graph of arrays, genes, biplot and eigenvalues for graphing between results
    
        dudi.bga<-x
@@ -33,8 +47,11 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
        if (dudi.bga$bet$nf==1) {
       	 	par(mfrow=c(1,3))			        # Display 2x2 graphs
        		between.graph(dudi.bga,  ax=1, hor=FALSE, ...)
-       		graph1D(dudi.bga$bet$ls, ax=1, classvec=dudi.bga$fac,col=arraycol, ...)    # Draw plot of arrays
-       		graph1D(dudi.bga$bet$co, ax=1, s.nam=genelabels, n=nlab, ...)   # Draw plot of genes label top genes  
+                title("biplot of arrays and genes")
+       		graph1D(dudi.bga$bet$ls, ax=1, classvec=dudi.bga$fac,col=arraycol, ...)    # Draw plot of genes
+                title("arrays")
+       		graph1D(dudi.bga$bet$co, ax=1, s.nam=genelabels, n=nlab, ...)   # Draw plot of genes label top arrays
+                title("genes")  
       		
         }
 
@@ -42,11 +59,11 @@ function(x, axes1=1, axes2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 
        if (dudi.bga$bet$nf>1) {
        		par(mfrow=c(2,2))			        # Display 2x2 graphs
-       		s.var(dudi.bga$bet$ls,  xax = axes1, yax = axes2, col = as.vector(factor(dudi.bga$fac, labels=arraycol)), ...)
-      		s.groups(dudi.bga$bet$ls, classvec=dudi.bga$fac, col=arraycol, xax = axes1, yax = axes2, ...)    # Draw plot of arrays
-      		plotgenes(dudi.bga$bet$co, varlabels=genelabels,nlab=nlab, colpoints=genecol, axes1=axes1,  axes2=axes2,...)   # Draw plot of genes label top genes
+       		s.var(dudi.bga$bet$ls,  xax = axis1, yax = axis2, col = as.vector(factor(dudi.bga$fac, labels=arraycol)), ...)
+      		plotarrays(dudi.bga, axis1, axis2, ...)    # Draw plot of arrays
+      		plotgenes(dudi.bga$bet$co, nlab=nlab,axis1=axis1,  axis2=axis2, genelabels=genelabels, colpoints=genecol, ...)   # Draw plot of genes label top genes
       		s.groups(dudi.bga$bet$ls, dudi.bga$fac,cellipse=0,col=arraycol,
-               	 add.plot=TRUE, xax = axes1, yax = axes2,...)  # To gene plot, add arrays
+               	 add.plot=TRUE, xax = axis1, yax = axis2,...)  # To gene plot, add arrays
        		scatterutil.eigen(dudi.bga$bet$eig) 	        # Draw plot of eigenvalues
 	}
 	

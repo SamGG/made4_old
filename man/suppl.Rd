@@ -2,6 +2,7 @@
 
 \name{suppl}
 \alias{suppl}
+\alias{plot.suppl}
 \title{Projection of supplementary data onto axes from a between group analysis}
 \description{
 Projection and class prediction of supplementary points onto 
@@ -10,6 +11,8 @@ axes from a between group analysis, \code{\link[made4:bga]{bga}}.
 
 \usage{
 suppl(dudi.bga, supdata, supvec = NULL, assign=TRUE, ...)
+plot.suppl(sup, dudi.bga, axis1=1, axis2=2, supvec=sup$true.class, supvec.pred= sup$predicted, ...)
+
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,8 +22,13 @@ suppl(dudi.bga, supdata, supvec = NULL, assign=TRUE, ...)
    \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}} }
   \item{supvec}{A factor or vector which describes the classes in the
   training dataset}
+   \item{supvec.pred}{A factor or vector which describes the classes which were predicted
+   by \code{\link[made4:suppl]{suppl}}}
   \item{assign}{A logical indicating whether class assignment should be calculated
    using the method described by Culhane et al., 2002. The default value is TRUE}
+  \item{sup}{An object returned by \code{\link[made4:suppl]{suppl}}}
+  \item{axis1}{Integer, the column number for the x-axis. The default is 1.}
+  \item{axis2}{Integer, the column number for the y-axis. The default is 2.}
   \item{\dots}{further arguments passed to or from other methods }
 
 }
@@ -55,6 +63,7 @@ khan.bga<-bga.suppl(khan$train, supdata=khan$test, classvec=khan$train.classes,
 khan.bga
 plot.bga(khan.bga, genelabels=khan$annotation$Symbol)
 khan.bga$suppl
+plot.suppl(khan.bga$suppl, khan.bga)
 }
 }
 \keyword{manip}% at least one, from doc/KEYWORDS

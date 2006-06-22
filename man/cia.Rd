@@ -7,7 +7,7 @@
 of two or more datasets.}
 \usage{
 cia(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE,...)
-plot.cia(x, nlab = 10, axes1 = 1, axes2 = 2, genecol = "gray25", 
+plot.cia(x, nlab = 10, axis1 = 1, axis2 = 2, genecol = "gray25", 
          genelabels1 = rownames(ciares$co), genelabels2 = rownames(ciares$li), ...)
 
 }
@@ -36,8 +36,8 @@ plot.cia(x, nlab = 10, axes1 = 1, axes2 = 2, genecol = "gray25",
   \item{x}{An object of class \code{cia}, containing the CIA projected coordinates to be plotted. 
     }
   \item{nlab}{Numeric. An integer indicating the number of variables (genes) to be labelled on plots}
-  \item{axes1}{Integer, the column number for the x-axis. The default is 1}
-  \item{axes2}{Integer, the column number for the y-axis. The default is 2.}
+  \item{axis1}{Integer, the column number for the x-axis. The default is 1}
+  \item{axis2}{Integer, the column number for the y-axis. The default is 2.}
   \item{genecol}{Character, the colour of genes (variables). The default is "gray25".}
   \item{genelabels1, genelabels2}{A vector of variables labels, by default the row.names of each input matrix
    df1, and df2 are used}

@@ -1,13 +1,13 @@
-plotarrays<-function(coord, axes1 = 1, axes2 = 2, arraylabels = NULL, classvec=NULL,  graph = "auto", ...){
+plotarrays<-function(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,  graph = "auto", ...){
 
     if (!is.null(classvec)) {
            classvec = checkfac(classvec)
            arraycol = getcol(1:length(levels(classvec)))
         }
     if (inherits(coord, "cia")) {
-      s.match.col(coord$coinertia$mX, coord$coinertia$mY, xax = axes1, yax = axes2, classvec=classvec)
+      s.match.col(coord$coinertia$mX, coord$coinertia$mY, xax = axis1, yax = axis2, classvec=classvec, label=arraylabels, ...)
       }
-    if (inherits(coord, "coinertia")) s.match.col(coord$mX, coord$mY, xax = axes1, yax = axes2, classvec=classvec)
+    if (inherits(coord, "coinertia")) s.match.col(coord$mX, coord$mY, xax = axis1, yax = axis2, classvec=classvec, label=arraylabels, ...)
 
     if (!inherits(coord, "cia")) {
         if (!inherits(coord, "data.frame")) {
@@ -43,15 +43,15 @@ plotarrays<-function(coord, axes1 = 1, axes2 = 2, arraylabels = NULL, classvec=N
      if (is.null(arraylabels)) arraylabels= row.names(coord)
 
      if (!is.null(classvec)&&is.null(colpts)) {
-          s.groups(coord, classvec=classvec, col=arraycol,  xax = axes1, yax = axes2,  ... )
+          s.groups(coord, classvec=classvec, col=arraycol,  xax = axis1, yax = axis2,  ... )
         }
 
      if (!is.null(colpts)){
-          s.var(coord, colpoints = colpts, label=arraylabels,  xax = axes1, yax = axes2, ...)
+          s.var(coord, colpoints = colpts, label=arraylabels,  xax = axis1, yax = axis2, ...)
           }
           
      if (is.null(classvec)) {
-        s.var(coord,   xax = axes1, yax = axes2, label=arraylabels, ...)
+        s.var(coord,   xax = axis1, yax = axis2, label=arraylabels, ...)
       }
 
     }

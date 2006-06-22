@@ -6,7 +6,7 @@ Graph xy plot of variables using s.var, s.groups or s.match.col. Useful for visu
 coordinates (\$li) resulting from ord, bga or cia of microarray data.
 }
 \usage{
-plotarrays(coord, axes1 = 1, axes2 = 2, arraylabels = NULL, classvec=NULL,
+plotarrays(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,
 graph = "auto", ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -14,9 +14,9 @@ graph = "auto", ...)
   \item{coord}{a \code{\link{data.frame}} or \code{\link{matrix}} or object from \code{ord}
     \code{bga} or \code{cia} analysis with at least two
     columns, containing x, y coordinates to be plotted}
-  \item{axes1}{An integer, the column number for the x-axis. Default is 1,
+  \item{axis1}{An integer, the column number for the x-axis. Default is 1,
   so axes 1 is dudivar[,1]}
-  \item{axes2}{An integer, the column number for the y-axis. Default is 2, 
+  \item{axis2}{An integer, the column number for the y-axis. Default is 2, 
    so axes 2 is dudivar[,2]}
   \item{arraylabels}{A vector of variables labels. Default is row.names(coord)}
   \item{classvec}{ A \code{factor} or \code{vector} which describes the classes in
