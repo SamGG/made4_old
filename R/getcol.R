@@ -27,7 +27,7 @@ getcol <- function (nc = c(1:3), palette = NULL, test = FALSE) {
         if (length(nc) > length(colours1)) palette = colours2
         }
 
-    if (length(nc) > length(palette)) {
+    if (length(unique(nc)) > length(palette)) {
         print("More than 21 colours selected, some colours maybe replicated")  
         n = length(nc)
           big.palette = palette

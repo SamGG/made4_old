@@ -63,7 +63,10 @@ khan.bga<-bga.suppl(khan$train, supdata=khan$test, classvec=khan$train.classes,
 khan.bga
 plot.bga(khan.bga, genelabels=khan$annotation$Symbol)
 khan.bga$suppl
-plot.suppl(khan.bga$suppl, khan.bga)
+
+plot.suppl(khan.bga$suppl, khan.bga) 
+plot.suppl(khan.bga$suppl, khan.bga, supvec=NULL, supvec.pred=NULL)
+plot.suppl(khan.bga$suppl, khan.bga, axis1=2, axis2=3,supvec=NULL, supvec.pred=NULL)
 }
 }
 \keyword{manip}% at least one, from doc/KEYWORDS

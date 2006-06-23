@@ -155,13 +155,25 @@ Often its useful to label the samples using a class vector or covariate of inter
 \begin{figure}[htbp]
 \begin{center}
 <<overviewKhan, fig=TRUE>>=
-overview(k.data, label=k.class)
+overview(k.data, labels=k.class)
 @
 \caption{Overview of Khan data. A) dendrogram showing results of average linkage clustering, B) boxplot and C) histrogram.}
 \label{figure 1} 
 \end{center}
 \end{figure}
 
+Often one will known classes in the data (eg Normal v Treatment, or different tumor types). We can insert a class colourbar under the dendrogram, and colour the boxplot.
+\clearpage
+
+\begin{figure}[htbp]
+\begin{center}
+<<overviewKhan2, fig=TRUE>>=
+overview(k.data, classvec=k.class, labels=k.class)
+@
+\caption{Overview of Khan data. A) dendrogram showing results of average linkage clustering, B) boxplot and C) histrogram. In this case we have added a vector of class (classvec) to color the overview by class membership}
+\label{figure 1} 
+\end{center}
+\end{figure}
 
 
 %------------------------------------------------------------
