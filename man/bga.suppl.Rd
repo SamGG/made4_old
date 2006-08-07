@@ -7,7 +7,7 @@ of supplementary points using \code{suppl}
 } 
 
 \usage{
-bga.suppl(dataset, supdata, classvec, supvec = NULL, suponly = FALSE,...)
+bga.suppl(dataset, supdata, classvec, supvec = NULL, suponly = FALSE, type="coa", ...)
 }
 
 \arguments{
@@ -32,6 +32,9 @@ bga.suppl(dataset, supdata, classvec, supvec = NULL, suponly = FALSE,...)
     the test class assignment results only. The default value is FALSE, that 
     is the training coordinates, test coordinates and class assignments 
     will all be returned.}
+ \item{type}{Character, "coa", "pca" or "nsc" indicating which data
+    transformation is required. The default value is type="coa"}
+
   \item{\dots}{further arguments passed to or from other methods }}
 
 \details{\code{bga.suppl} calls \code{bga} to perform between group analysis (bga) on the training dataset, 

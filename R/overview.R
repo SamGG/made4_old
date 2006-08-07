@@ -4,7 +4,7 @@ function(dataset, labels=NULL, title="", classvec=NULL, ...){
         cols=NULL
         layout(matrix(c(1,1, 2,3), 2, 2, byrow = TRUE))
         if (is.null(labels)) labels=colnames(dataset)
-        labels=as.character(labels)
+        if (!is.null(labels)) labels=as.character(labels)
         if (!is.null(classvec))  {
            cols= getcol(as.numeric(classvec))
            #print(cols)
@@ -38,7 +38,7 @@ function(dataset, labels=NULL, title="", classvec=NULL, ...){
 
         if(inherits(dataset, "AffyBatch")) {
            # Affybatch class dealt with differently, as it has its own boxplot and hist 
-           hc= clust(distEisen(exprs(dataset)), method="ave")
+           hc= hclust(distEisen(exprs(dataset)), method="ave")
           plot(hc, hang=-1, labels=labels)  # cor dist and average linkage
               if (!missing(classvec)) colhc(hc, classvec)
           boxplot(dataset, main=paste("boxplot", title, sep=" "),  names=labels, par(las=2), col=cols)

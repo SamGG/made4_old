@@ -1,6 +1,6 @@
 Package: made4
-Version: 1.7.1
-Date: 2006/06/20
+Version: 1.7.2
+Date: 2006/08/07
 Title: Multivariate analysis of microarray data using ADE4
 Author: Aedin Culhane
 Maintainer: Aedin Culhane <Aedin@jimmy.harvard.edu>
@@ -11,7 +11,7 @@ Description: Multivariate data analysis and graphical display of
         coinertia analysis. It contains functions that require ADE4.
 Reference: Culhane AC, Thioulouse J, Perriere G, Higgins DG. (2005) MADE4: an R package for multivariate analysis of gene expression data.Bioinformatics. 21(11):2789-90. 
 biocViews: Statistics, Clustering, Classification, MultipleComparisons
-License: GPL version 2 or newer
+License: Artistic licence
 URL: http://www.hsph.harvard.edu/researchers/aculhane.html
 
 

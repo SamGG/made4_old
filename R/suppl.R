@@ -219,8 +219,9 @@ function(dudi.bga, supdata,supvec=NULL, assign=TRUE, ...){
 	}
 
 
-plot.suppl<-function(sup, dudi.bga, axis1=1, axis2=2, supvec=sup$true.class, supvec.pred= sup$predicted, ...){ 
+plot.suppl<-function(x, dudi.bga, axis1=1, axis2=2, supvec=sup$true.class, supvec.pred= sup$predicted, ...){ 
          par(mfrow=c(2,2))
+         sup=x
          plotarrays(dudi.bga, sub="BGA of training data",  axis1=axis1, axis2=axis2, cellipse=0,...)
          colsup=NULL
 
