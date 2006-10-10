@@ -1,5 +1,5 @@
 "overview"<-
-function(dataset, labels=NULL, title="", classvec=NULL, ...){
+function(dataset, labels=NULL, title="", classvec=NULL, hc=TRUE, boxplot=TRUE, hist=TRUE){
 
         cols=NULL
         layout(matrix(c(1,1, 2,3), 2, 2, byrow = TRUE))
@@ -23,32 +23,19 @@ function(dataset, labels=NULL, title="", classvec=NULL, ...){
           nc= length(as.character(classvec))
           colInd = hc$order
           image(cbind(1:nc),  col = cols[colInd], axes = FALSE)
-           par(mar = margins)
+          par(mar = margins)
           }
 
-        if(!inherits(dataset, "AffyBatch")) {
-          dataset<-array2ade4(dataset, trans=FALSE)                
-          hc=hclust(distEisen(dataset), method="ave")
-          plot(hc, hang=-1, labels=labels)  # cor dist and average linkage
-
-          if (!missing(classvec)) colhc(hc, classvec)
-          boxplot(dataset, main=paste("boxplot", title, sep=" "), names=labels,par(las=2), col=cols)
-          hist(as.matrix(dataset),xlab="", main=paste("Histogram", title, sep=" "))
+         
+         if (hc) { hc=hclust(distEisen(array2ade4(dataset)), method="ave")
+                   plot(hc, hang=-1, labels=labels)  # cor dist and average linkage 
+                   if (!missing(classvec)) colhc(hc, classvec) 
+                   }
+          if (boxplot) boxplot(dataset, main=paste("boxplot", title, sep=" "), names=labels,par(las=2), col=cols)
+          if (hist) hist(dataset,xlab="", main=paste("Histogram", title, sep=" "))
+ 
         }
 
-        if(inherits(dataset, "AffyBatch")) {
-           # Affybatch class dealt with differently, as it has its own boxplot and hist 
-           hc= hclust(distEisen(exprs(dataset)), method="ave")
-          plot(hc, hang=-1, labels=labels)  # cor dist and average linkage
-              if (!missing(classvec)) colhc(hc, classvec)
-          boxplot(dataset, main=paste("boxplot", title, sep=" "),  names=labels, par(las=2), col=cols)
-          hist(dataset)
-        }
-
-     
-
-
-        }
 
 
 

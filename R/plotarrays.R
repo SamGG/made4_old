@@ -4,11 +4,16 @@ plotarrays<-function(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=N
            classvec = checkfac(classvec)
            arraycol = getcol(1:length(levels(classvec)))
         }
+
+
     if (inherits(coord, "cia")) {
+      if (is.null(arraylabels)) arraylabels= row.names(coord$coinertia$mX)
       s.match.col(coord$coinertia$mX, coord$coinertia$mY, xax = axis1, yax = axis2, classvec=classvec, label=arraylabels, ...)
       }
-    if (inherits(coord, "coinertia")) s.match.col(coord$mX, coord$mY, xax = axis1, yax = axis2, classvec=classvec, label=arraylabels, ...)
-
+    if (inherits(coord, "coinertia")) { 
+         if (is.null(arraylabels)) arraylabels= row.names(coord$mX)
+         s.match.col(coord$mX, coord$mY, xax = axis1, yax = axis2, classvec=classvec, label=arraylabels, ...)
+         }
     if (!inherits(coord, "cia")) {
         if (!inherits(coord, "data.frame")) {
           if (inherits(coord, "bga")){
