@@ -12,16 +12,6 @@ function(dataset, classvec, type="coa",...){
         data.ord <- ord(dataset, type=type, classvec=classvec, trans=TRUE)
         ord.class= class(data.ord$ord)
 
-       ## Because between uses as.matrix, it will add X in front of any rownames 
-       ## starting with a numeral. Therefore tidy up, 
-        genenam= sub("^X", "", colnames(data.ord$ord$tab[sapply(rownames(dataset), function(x)   regexpr("^\\d",x, perl=TRUE)==1)]))
-        colnames(data.ord$ord$tab) = rownames(data.ord$ord$co)= rownames(data.ord$ord$c1) = genenam
-
-
-        # For plotting and other functions its easier if I return dudi.ord transposed
-        #data.tr.ord <-t.dudi(data.ord$ord)
-        #class(data.tr.ord) = c(c(ord.class), "ord")
-
         # Run Between Group analysis, and return class dudi.bga
 	data.bet<-between(data.ord$ord,classvec, scannf=FALSE, nf=nclasses-1)
 

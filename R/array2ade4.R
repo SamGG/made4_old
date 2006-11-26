@@ -21,9 +21,19 @@ function(dataset, pos=FALSE,  trans=FALSE){
                # There is a horrible bug is dudi.pca/coa etc, if a dataset with vars>>cases is given
                # It can end abruptly crashing the session. This is a bug in sweep
                # There will now use t.dudi rather than transpose the data
- 
+              
+               # using t convert data.frame to matrix and messes up affymetrix probe ID names
+               # It changes all of the "-" to "." in probeids like AFFX-CreX-5_at
+               # So save names and change the names of the transposed matrix
+
+               colnam= colnames(dataset)
+               rownam = rownames(dataset)               
                dataset<-t(dataset)		
-               dataset<-data.frame(dataset)
+               dimnames(dataset) = list(colnam, rownam) 
+               
+               # convert matrix to data.frame for ade4
+               dataset <- as.data.frame(dataset)
+               
                if (!is.data.frame(dataset)) stop("Problems checking dataset")
         }
         
