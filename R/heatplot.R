@@ -1,5 +1,5 @@
 "heatplot"<-
-function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Rowv=NULL, col.default=TRUE, ...) 
+function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Rowv=NULL, cols.default=TRUE, ...) 
 {
     data <- array2ade4(dataset)
     data<-as.matrix(data)
@@ -19,28 +19,27 @@ function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Ro
         return(col)
     }
 
-    col.gentleman<-function() {
+    cols.gentleman<-function() {
       # Colors defined by Huber, Li & Gentleman, Chapter 10, Bioinformatics & Computational
       # Biology Solutions using R & Bioconductor (2006)
       library(RColorBrewer)
       hmcol<-colorRampPalette(brewer.pal(10, "RdBu"))(256)
       return(hmcol)
     }
-    if (col.default) cols= col.gentleman()  else cols= cols()
+    if (cols.default) plotcols= cols.gentleman()  else plotcols= cols()
  
     if (!dend) {
         if (is.null(Colv)) Colv <- NA
         if (is.null(Rowv)) Rowv <- NA
     }
 
-    col = cols()
     if (dend) {
         if (is.null(Colv)) Colv <- as.dendrogram(hclust(distEisen(data), method = "ave"))
         if (is.null(Rowv)) Rowv <- as.dendrogram(hclust(distEisen(t(data)), method = "ave"))
     }
 
 
-    heatmap(data, Colv = Colv, Rowv = Rowv, col = cols,...)
+    heatmap(data, Colv = Colv, Rowv = Rowv, col = plotcols,...)
 }
 
 

@@ -27,12 +27,30 @@ function(dataset, labels=NULL, title="", classvec=NULL, hc=TRUE, boxplot=TRUE, h
           }
 
          
-         if (hc) { hc=hclust(distEisen(array2ade4(dataset)), method="ave")
-                   plot(hc, hang=-1, labels=labels)  # cor dist and average linkage 
+         if (hc) {
+           	  if (!inherits(dataset, "AffyBatch")) {dataset <- array2ade4(dataset, trans = FALSE)}
+
+		  if (inherits(dataset, "AffyBatch")) {dataset  =exprs(dataset)}
+
+		  hc=hclust(distEisen(dataset), method="ave")
+                   plot(hc, hang=-1, labels=labels, main=paste("Histogram", title, sep=" "))  # cor dist and average linkage 
                    if (!missing(classvec)) colhc(hc, classvec) 
                    }
-          if (boxplot) boxplot(dataset, main=paste("boxplot", title, sep=" "), names=labels,par(las=2), col=cols)
-          if (hist) hist(dataset,xlab="", main=paste("Histogram", title, sep=" "))
+
+          if (boxplot) {
+	  	  if (!inherits(dataset, "AffyBatch")) {dataset <- array2ade4(dataset, trans = FALSE)}
+
+		  boxplot(dataset, main=paste("boxplot", title, sep=" "), names=labels,par(las=2), col=cols)
+		}
+
+          if (hist) {
+		  if (!inherits(dataset, "AffyBatch")) {
+			dataset <- array2ade4(dataset, trans = FALSE)
+		  	dataset = as.matrix(dataset)
+			}
+
+		  hist(dataset,xlab="", main=paste("Histogram", title, sep=" "))
+		}
  
         }
 

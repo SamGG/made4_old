@@ -11,8 +11,11 @@ function(arraydata) {
                                      stop("Arraydata was found to be a data.frame, but contains non-numeric columns.")
                                    intensities
                                  },
-                   exprSet    = { if (require(affy, quiet = TRUE)) data.frame(exprs(arraydata))
+                  ExpressionSet = { if (require(affy, quiet = TRUE)) data.frame(exprs(arraydata))
                                 },
+		   exprSet = { if (require(affy, quiet = TRUE))   data.frame(exprs(arraydata))
+                                },
+
                   marrayRaw = {
                                if (require(affy, quiet = TRUE)) {
                                   nrslides = as.integer(ncol(arraydata@maRf))

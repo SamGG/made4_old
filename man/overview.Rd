@@ -5,8 +5,7 @@
 Very simple wrapper function that draws a boxplot, histogram and hierarchical tree of expression 
 data }
 
-\usage{overview(dataset, labels=NULL, title="", classvec=NULL, ...)}
-
+\usage{overview(dataset, labels=NULL, title="", classvec=NULL, hc=TRUE, boxplot=TRUE, hist=TRUE)}
 \arguments{
    \item{dataset}{ a \code{\link{matrix}}, \code{\link{data.frame}}, 
     \code{\link[Biobase:exprSet-class]{exprSet}} or \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
@@ -17,6 +16,9 @@ data }
    \item{title}{Character, label to be placed on plots. Default is NULL}
   \item{classvec}{ A \code{factor} or \code{vector} which describes the classes in columns of the
   \code{dataset}.  Default is NULL. If included columns will be coloured by class.}
+  \item{hc}{Logical. Draw dendrogram of hierarchical cluster analysis of cases}
+  \item{boxplot}{Logical. Draw boxplot}
+  \item{hist}{Logical. Draw histogram}
    \item{\dots}{further arguments passed to or from other methods }
   }
 \details{The hierarchical plot is produced using average linkage cluster analysis with Eisen's 
@@ -31,6 +33,7 @@ correlation metric.}
   data(khan)
 
   logkhan<-log2(khan$train)
+  print(class(logkhan))
   overview(logkhan, title="Subset of Khan Training data")
   overview(logkhan, classvec=khan$train.classes, labels=khan$train.classes)
 }
