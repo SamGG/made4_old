@@ -126,13 +126,9 @@ is a subset of the published dataset. It contains gene expression levels for 306
 This experiment studied gene expression in patient with four types of SRBCT. These were neuroblastoma (NB), rhabdomyosarcoma (RMS), Burkitt lymphoma, a  subset of non-Hodgkin lymphoma (BL), and the Ewing family of tumours (EWS). Gene expression profiles from both tumour biopsy and cell line  samples were obtained and are contained in this dataset. In this study data were divided into a training set of 64 samples, and a blind test dataset.  These 2 dataset are called khan\$train and khan\$test.  Have a look at the data.  For this example we will just example the training dataset. 
 
 <<khandata>>=
-
-names(khan)  
-
+names(khan)
 k.data<-khan$train
 k.class<-khan$train.classes
-
-
 @
 
 %------------------------------------------------------------

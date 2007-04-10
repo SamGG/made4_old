@@ -1,13 +1,15 @@
 "heatplot"<-
-function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Rowv=NULL, ...) 
+function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Rowv=NULL, col.default=TRUE, ...) 
 {
     data <- array2ade4(dataset)
     data<-as.matrix(data)
-    distEisen <- function(x, use = "all.obs") {
+    distEisen <- function(x, use = "pairwise.complete.obs") {
         co.x <- cor(x, use = use)
-        ac.x <- acos(co.x)
-        return(as.dist(ac.x))
+        dist.co.x <- 1 - co.x
+         #ac.x <- acos(co.x)
+        return(as.dist(dist.co.x)) 
     }
+
     cols <- function(low = lowcol, high = highcol, ncolors = 123) {
         low <- col2rgb(low)/255
         if (is.character(high)) 
@@ -17,7 +19,15 @@ function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Ro
         return(col)
     }
 
-  
+    col.gentleman<-function() {
+      # Colors defined by Huber, Li & Gentleman, Chapter 10, Bioinformatics & Computational
+      # Biology Solutions using R & Bioconductor (2006)
+      library(RColorBrewer)
+      hmcol<-colorRampPalette(brewer.pal(10, "RdBu"))(256)
+      return(hmcol)
+    }
+    if (col.default) cols= col.gentleman()  else cols= cols()
+ 
     if (!dend) {
         if (is.null(Colv)) Colv <- NA
         if (is.null(Rowv)) Rowv <- NA
@@ -30,7 +40,14 @@ function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Ro
     }
 
 
-    heatmap(data, Colv = Colv, Rowv = Rowv, col = col,...)
+    heatmap(data, Colv = Colv, Rowv = Rowv, col = cols,...)
 }
 
 
+
+  
+
+ 
+
+
+ 
