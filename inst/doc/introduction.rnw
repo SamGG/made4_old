@@ -72,13 +72,12 @@ functions that utilise and extend multivariate statistical and graphical functio
 \subsection{Installation}
 %------------------------------------------------------------ 
 
-\Rpackage{made4} requires that \Rpackage{ade4} is installed. \Rpackage{made4} also calls \Rpackage{scatterplot3d}.  These should be installed automatically when you install \Rpackage{made4}. To install \Rpackage{made4}
+\Rpackage{made4} requires that \Rpackage{ade4} is installed. \Rpackage{made4} also calls \Rpackage{scatterplot3d}.  These should be installed automatically when you install \Rpackage{made4}. To install \Rpackage{made4}, source biocLite from bioconductor
 
 \begin{verbatim}
-install.packages("made4",repos = "http://www.bioconductor.org")
+source("http://www.bioconductor.org/biocLite.R")
+biocLite("made4")
 \end{verbatim}
-
- 
 
 %------------------------------------------------------------
 \subsection{Further help}
@@ -86,7 +85,7 @@ install.packages("made4",repos = "http://www.bioconductor.org")
 More information about \Rpackage{made4} is available at \url{http://bioinf.ucd.ie/people/aedin/R}. This document provides an overview of \Rpackage{made4} 
 functions. These are described in more detail in the RNews newletter, December 2006.
 
-Culhane AC & Thioulouse J. (2006) A multivariate approach to integrating datasets using made4 and ade4.  \textit{R News}, \textbf{6(5):} 54-58. 
+Culhane AC and Thioulouse J. (2006) A multivariate approach to integrating datasets using made4 and ade4.\textit{R News}, \textbf{6(5)} 54-58.
 \url{http://cran.r-project.org/doc/Rnews/Rnews_2006-5.pdf}
 
 Extensive tutorials, examples and documentation on multivariate statistical methods are available from the ade4 website 
@@ -108,8 +107,6 @@ We are delighted if you use this package. Please do email us if you find a bug o
 Culhane AC, Thioulouse J, Perriere G, Higgins DG.(2005) MADE4: an R package for multivariate analysis of gene expression data. \textit{Bioinformatics} \textbf{21(11):}2789-90. 
 
 
-
- 
 %------------------------------------------------------------
 \section{Quickstart}
 %------------------------------------------------------------ 
@@ -190,7 +187,7 @@ Output from \Rfunction{ord} is a list of length 2, containing the ordination res
 
 <<output.coa>>=
 names(k.coa)
-k.coa$ord
+summary(k.coa$ord)
 @
 
 
