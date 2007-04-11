@@ -21,7 +21,7 @@
   required, set Colv or Rowv = NA.  The default is NULL}
 \item{lowcol, highcol}{Character indicating colours to be used for down and upregulated genes when drawing heatmap. Default
   is lowcol="green", and highcol="red".}
-\items{cols.default}{Logical. Default is TRUE. Use blue-brown color scheme}
+\item{cols.default}{Logical. Default is TRUE. Use blue-brown color scheme}
 \item{\dots}{further arguments passed to or from other methods }
 }
 \details{

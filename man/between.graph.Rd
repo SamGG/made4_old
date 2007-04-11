@@ -54,9 +54,8 @@ khan.bga<-bga(khan$train, khan$train.classes)
 }
 
 between.graph(khan.bga)
-between.graph(khan.bga, ax=2, lwd=3, hor=FALSE, cex=0.5, col=c("green", 
-"blue", "red", "yellow"))
-
+between.graph(khan.bga, ax=2, lwd=3, cex=0.5, col=c("green","blue", "red", "yellow"))
+between.graph(khan.bga, ax=2,  hor=FALSE, col=c("green","blue", "red", "yellow"))
 }
 \keyword{multivariate }
 \keyword{hplot}
