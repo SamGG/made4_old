@@ -28,7 +28,7 @@ function(dataset, type="coa", classvec=NULL, ord.nf=NULL, trans=FALSE, ...){
 
 
 "plot.ord" <-
-function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...){
+function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, arraylabels=NULL,classvec=NULL, ...){
        # Produce a graph of arrays, genes, biplot and eigenvalues for graphing between results
    
 
@@ -41,6 +41,7 @@ function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
        if (!is.null(classvec)) fac= checkfac(classvec)
 
        if (is.null(genelabels)) genelabels=rownames(dudi.ord$li)
+       if (is.null(arraylabels)) arraylabels= rownames(dudi.ord$co)
 
 
        par(mfrow=c(2,2))  # Display 2x2 graphs
@@ -65,7 +66,7 @@ function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 		
 
  	# Draw arrays
-	s.var(dudi.ord$co,  xax = axis1, yax = axis2, col = cols.array , ...) 
+	s.var(dudi.ord$co,  xax = axis1, yax = axis2, col = cols.array ,label=arraylabels, ...) 
 
 	# Draw genes 
         plotgenes(dudi.ord$li, genelabels=genelabels,nlab=nlab, colpoints=genecol, axis1=axis1,  axis2=axis2,...)   # Draw plot of genes label top genes
@@ -80,7 +81,7 @@ function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 			}
 
 		if (biplot=="type1") {
-			s.var(dudi.ord$co, col=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, xax = axis1, yax = axis2,...)  # To gene plot, add arrays
+			s.var(dudi.ord$co, col=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, label=arraylabels, xax = axis1, yax = axis2,...)  # To gene plot, add arrays
 			}
 		}
       	

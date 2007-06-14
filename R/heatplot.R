@@ -24,7 +24,7 @@ function (dataset, dend = TRUE, lowcol = "green", highcol = "red", Colv=NULL, Ro
       # Biology Solutions using R & Bioconductor (2006)
       library(RColorBrewer)
       hmcol<-colorRampPalette(brewer.pal(10, "RdBu"))(256)
-      return(hmcol)
+      return(rev(hmcol))
     }
     if (cols.default) plotcols= cols.gentleman()  else plotcols= cols()
  
