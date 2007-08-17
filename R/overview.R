@@ -6,6 +6,7 @@ function(dataset, labels=NULL, title="", classvec=NULL, hc=TRUE, boxplot=TRUE, h
         if (is.null(labels)) labels=colnames(dataset)
         if (!is.null(labels)) labels=as.character(labels)
         if (!is.null(classvec))  {
+           classvec= as.factor(classvec)
            cols= getcol(as.numeric(classvec))
            #print(cols)
            layout(matrix(c(1,1,2,2, 3,4), 3, 2, byrow = TRUE), heights=c(1.5,0.1,2))
