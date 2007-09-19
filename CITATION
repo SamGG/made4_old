@@ -1,0 +1,17 @@
+citHeader("To cite made4 in publications use:")
+
+citEntry(entry="article",
+  title  ="MADE4:an R package for multivariate analysis of gene expression data",
+  author = "Culhane AC, Thioulouse J, Perrière G, Higgins DG",
+  journal = "Bioinformatics",
+  year = "2005",
+  volume = "21(11)",
+  pages = "2789-90.",
+  textVersion = paste("Culhane AC, Thioulouse J, Perrière G, Higgins DG",
+    "MADE4:an R package for multivariate analysis of gene expression data",
+    "Bioinformatics 21(11): 2789-90. (2005)."))
+
+citFooter("We have invested our time and effort in creating made4,",
+          "we'd be grateful if you could please cite it when using it for data analysis.")
+
+
