@@ -222,24 +222,24 @@ function(dudi.bga, supdata,supvec=NULL, assign=TRUE, ...){
 plot.suppl<-function(x, dudi.bga, axis1=1, axis2=2, supvec=sup$true.class, supvec.pred= sup$predicted, ...){ 
          par(mfrow=c(2,2))
          sup=x
-         plotarrays(dudi.bga, sub="BGA of training data",  axis1=axis1, axis2=axis2, cellipse=0,...)
+         plotarrays(dudi.bga, sub="BGA of training data",  axis1=axis1, axis2=axis2, graph="simple",...)
          colsup=NULL
 
           # plot of both
-          plotarrays(dudi.bga, cellipse=0, axis1=axis1, axis2=axis2, ...)
+          plotarrays(dudi.bga, axis1=axis1, axis2=axis2,graph="simple",...)
           plotarrays(sup, boxes=FALSE, sub="Plot of training and supplementary data",  axis1=axis1, axis2=axis2, add.plot=TRUE)
 
 
          if (!is.null(supvec.pred)) {
 	   colsup= as.character(factor(supvec.pred, labels=getcol(length(levels(supvec.pred)))))
            s.var(sup, col=colsup, sub="Supplementary data only (Colors:Predicted)", xax=axis1, yax=axis2, boxes=FALSE,...)       
-	   plotarrays(sup, classvec=supvec.pred, cellipse=0, cstar=0, cpoint=0, axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
+	   plotarrays(sup, classvec=supvec.pred, graph="labels", axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
           }        
 
          if (!is.null(supvec)) {
            colsup= as.character(factor(supvec, labels=getcol(length(levels(supvec)))))
            s.var(sup,  col=colsup, sub="Supplementary data only (colors:true classes)", xax=axis1, yax=axis2, boxes=FALSE)
-           plotarrays(sup, classvec=supvec, cellipse=0, cstar=0, cpoint=0, axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
+           plotarrays(sup, classvec=supvec, graph="labels", axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
           }
       
          }

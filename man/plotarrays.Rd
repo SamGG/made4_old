@@ -6,8 +6,7 @@ Graph xy plot of variables using s.var, s.groups or s.match.col. Useful for visu
 coordinates (\$li) resulting from ord, bga or cia of microarray data.
 }
 \usage{
-plotarrays(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,
-graph = "auto", ...)
+plotarrays(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,  graph = c("groups", "simple", "labels", "groups2", "coinertia","coinertia2"), labelsize=1, star=1, ellipse=1, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,9 +20,12 @@ graph = "auto", ...)
   \item{arraylabels}{A vector of variables labels. Default is row.names(coord)}
   \item{classvec}{ A \code{factor} or \code{vector} which describes the classes in
   \code{coord}.  Default is NULL. If included variables will be coloured by class.}
- \item{graph}{A character of type "auto", "s.var", "s.groups", or "s.match.col" which
-  specifies the type of plot type or "graph" to be drawn. By default is "auto", that is graph
-  will be selected depending on the class of cooord}
+ \item{graph}{A character of type  "groups", "simple", "labels", "groups2", "coinertia" or "coinertia2" which
+  specifies the type of plot type or "graph" to be drawn. By default the  graph
+  will be selected depending on the class of cooord, and whether a classvector is specified}
+ \item{labelsize} {Size of sample labels, by default=1}
+  \item{star}{If drawing groups, whether to join samples to centroid creating a "star"}
+  \item{ellipse}{If drawing groups, whether to draw an ellipse or ring around the samples}
   \item{\dots}{ further arguments passed to or from other method }
 }
 \details{
@@ -56,7 +58,10 @@ khan.bga<-bga(khan$train, khan$train.classes)
 attach(khan.bga)
 par(mfrow=c(2,1))
 plotarrays(khan.bga)
-plotarrays(khan.bga, graph="s.var")
+plotarrays(khan.bga, graph="simple")
+plotarrays(khan.bga, graph="labels")
+plotarrays(khan.bga, graph="groups")
+plotarrays(khan.bga, graph="groups2")
 }
 \keyword{multivariate }% at least one, from doc/KEYWORDS
 \keyword{hplot}% __ONLY ONE__ keyword per line

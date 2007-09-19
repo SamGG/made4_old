@@ -142,7 +142,7 @@ khan.bga
 plot(khan.bga, genelabels=khan$annotation$Symbol)
 
 # Provide a view of the principal components (axes) of the bga  
-heatplot(khan.bga$bet$ls, dend=FALSE,lowcol="blue")   
+heatplot(khan.bga$bet$ls, dend="none")   
 
 
 

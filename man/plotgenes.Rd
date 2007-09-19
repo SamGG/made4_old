@@ -52,17 +52,14 @@ of \code{\link[ade4:s.label]{s.label}}.}
 \examples{
 data(khan)
 if (require(ade4, quiet = TRUE)) {
-khan.bga<-bga(khan$train, khan$train.classes) 
+khan.ord<-ord(khan$train, classvec=khan$train.classes) 
 }
-attach(khan.bga)
 par(mfrow=c(2,2))
-s.var(bet$ls, col=as.numeric(khan$train.classes), clabel=0.8)
-plotgenes(bet$co, colpoints="red")
-plotgenes(bet$co, colpoints="red", genelabels=khan$annotation$Symbol)
-plotgenes(bet$co, colpoints="gray", genelabels=khan$annotation$Symbol,
-boxes=FALSE)
-s.groups(bet$ls, khan$train.classes, add.plot=TRUE,
-col=c(1:length(levels(khan$train.classes))) )
+#s.var(khan.ord$co, col=as.numeric(khan$train.classes), clabel=0.8)
+plotgenes(khan.ord, colpoints="red")
+plotgenes(khan.ord, colpoints="red", genelabels=khan$annotation$Symbol)
+plotgenes(khan.ord, colpoints="gray", genelabels=khan$annotation$Symbol,boxes=FALSE)
+
 
 }
 \keyword{multivariate }% at least one, from doc/KEYWORDS
