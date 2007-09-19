@@ -7,7 +7,7 @@ on gene expression data}
 
 \usage{
 ord(dataset, type="coa", classvec=NULL,ord.nf=NULL, trans=FALSE, ...)
-plot.ord(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, classvec=NULL, ...)
+plot.ord(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabels= NULL, arraylabels=NULL,classvec=NULL, ...)
 }
 
 \arguments{
@@ -34,6 +34,8 @@ plot.ord(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
   \item{axis1}{Integer, the column number for the x-axis. The default is 1.}
   \item{axis2}{Integer, the column number for the y-axis, The default is 2.}
   \item{genelabels}{A vector of variables labels, if \code{genelabels}=NULL the row.names 
+   of input matrix \code{dataset} will be used}
+  \item{arraylabels}{A vector of variables labels, if \code{arraylabels}=NULL the col.names 
    of input matrix \code{dataset} will be used}
   \item{\dots}{further arguments passed to or from other methods }
 }

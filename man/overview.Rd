@@ -5,7 +5,7 @@
 Very simple wrapper function that draws a boxplot, histogram and hierarchical tree of expression 
 data }
 
-\usage{overview(dataset, labels=NULL, title="", classvec=NULL, hc=TRUE, boxplot=TRUE, hist=TRUE)}
+\usage{overview(dataset, labels = NULL, title = "", classvec = NULL, hc = TRUE, boxplot = TRUE, hist = TRUE, returnTree=FALSE) }
 \arguments{
    \item{dataset}{ a \code{\link{matrix}}, \code{\link{data.frame}}, 
     \code{\link[Biobase:exprSet-class]{exprSet}} or \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
@@ -15,10 +15,11 @@ data }
    \item{labels}{Vector, labels to be placed on samples in plots. Default is rownames(dataset)}
    \item{title}{Character, label to be placed on plots. Default is NULL}
   \item{classvec}{ A \code{factor} or \code{vector} which describes the classes in columns of the
-  \code{dataset}.  Default is NULL. If included columns will be coloured by class.}
-  \item{hc}{Logical. Draw dendrogram of hierarchical cluster analysis of cases}
-  \item{boxplot}{Logical. Draw boxplot}
-  \item{hist}{Logical. Draw histogram}
+  \code{dataset}.  Default is NULL. If included columns (array samples) on the dendrogram will be coloured by class.}
+  \item{hc}{Logical. Draw dendrogram of hierarchical cluster analysis of cases. Default is TRUE}
+  \item{boxplot}{Logical. Draw boxplot. Default is TRUE}
+  \item{hist}{Logical. Draw histogram. Default is TRUE}
+  \item{returnTree}{ Logical. Return the hieracrhical cluster analysis results. Default is FALSE}
    \item{\dots}{further arguments passed to or from other methods }
   }
 \details{The hierarchical plot is produced using average linkage cluster analysis with Eisen's 
