@@ -19,8 +19,7 @@ Function which performs a hierarchical cluster analysis of data, drawing a dendr
   \item{returnTree}{ Logical. Return the hieracrhical cluster analysis results. Default is FALSE}
   \item{\dots}{further arguments passed to or from other methods }
   }
-\details{The hierarchical plot is produced using average linkage cluster analysis with Eisen's 
-correlation metric.}
+\details{The hierarchical plot is produced using average linkage cluster analysis with 1- Pearsons correlation metric.}
 \value{}
 \references{  }
 \author{ Aedin Culhane }

@@ -22,8 +22,7 @@ data }
   \item{returnTree}{ Logical. Return the hieracrhical cluster analysis results. Default is FALSE}
    \item{\dots}{further arguments passed to or from other methods }
   }
-\details{The hierarchical plot is produced using average linkage cluster analysis with Eisen's 
-correlation metric.}
+\details{The hierarchical plot is produced using average linkage cluster analysis with Pearsons correlation metric as described by Eisen et al.,1999.}
 \value{}
 \references{  }
 \author{ Aedin Culhane }
