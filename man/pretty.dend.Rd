@@ -37,7 +37,8 @@ correlation metric.}
   print(khanAnnot[1:3,])
 
 # Add 2 color bar, one for cancer subtype, another for cell type under dendrogram
-  pretty.dend(logkhan, classvec=khanAnnot, covars = c(1,2), labels=khan$train.classes)
+  pretty.dend(logkhan, classvec=khanAnnot, covars = c(1,2), labels=khan$train.classes, title="Dendrogram with color bars on 2 co-variates")
+
 }
 \keyword{hplot }% at least one, from doc/KEYWORDS
 \keyword{manip }% __ONLY ONE__ keyword per line

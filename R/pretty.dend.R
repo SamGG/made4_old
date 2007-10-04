@@ -44,7 +44,7 @@ pretty.dend<-function (dataset, labels = NULL, title = "", classvec = NULL,covar
     if (!inherits(dataset, "AffyBatch")) {
         dataset <- array2ade4(dataset, trans = FALSE)
         hc = hclust(distEisen(dataset), method = "ave")
-        plot(hc, hang = -1, labels = labels, xlab="", sub="")
+        plot(hc, hang = -1, labels = labels, xlab="", sub="", main=title)
         if (!missing(classvec)) {
             if (! is.data.frame(classvec)) colhc(hc, classvec)
             if (is.data.frame(classvec)) {

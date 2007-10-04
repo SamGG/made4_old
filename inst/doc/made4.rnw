@@ -66,13 +66,21 @@ on.exit( {options(oldopt)} )
 The package \Rpackage{made4} facilitates multivariate analysis of microarray gene expression data.  The package provides a set of 
 functions that utilise and extend multivariate statistical and graphical functions available in \Rpackage{ade4}, \citep{Thioulouse1997}.  
 \Rpackage{made4} accepts gene expression data is a wide variety of input formats, including Bioconductor formats, 
-\Rclass{AffyBatch}, \Rclass{exprSet}, \Rclass{marrayRaw}, and \Robject{data.frame} or \Robject{matrix}.  
+\Rclass{AffyBatch}, \Rclass{ExpressionSet}, \Rclass{marrayRaw}, and \Robject{data.frame} or \Robject{matrix}.  
 
 %------------------------------------------------------------
-\subsection{Installation}
+\section{New in Current Release (version 1.12)}
+%------------------------------------------------------------
+
+In \Rpackage{made4} release version 1.12, the functions \Rfunction{plotarrays}, \Rfunction{plotgenes} and \Rfunction{heatplot} have been improved.  Each will accept a classvector and will automatically color samples by group.
+
+There is a new function \Rfunction{pretty.dend} which is provides a nice visualization of results from a hierarchical cluster analysis, with a color-bar beneath the dendrogram representing different sample covariates.  
+
+%------------------------------------------------------------
+\section{Installation}
 %------------------------------------------------------------ 
 
-\Rpackage{made4} requires that \Rpackage{ade4} is installed. \Rpackage{made4} also calls \Rpackage{scatterplot3d}.  These should be installed automatically when you install \Rpackage{made4}. To install \Rpackage{made4}, source biocLite from bioconductor
+\Rpackage{made4} requires the package \Rpackage{ade4}. \Rpackage{made4} also calls \Rpackage{scatterplot3d}.  These should be installed automatically when you install \Rpackage{made4}. To install \Rpackage{made4}, start R, and source biocLite from bioconductor
 
 \begin{verbatim}
 source("http://www.bioconductor.org/biocLite.R")
@@ -82,15 +90,16 @@ biocLite("made4")
 %------------------------------------------------------------
 \subsection{Further help}
 %------------------------------------------------------------ 
-More information about \Rpackage{made4} is available at \url{http://bioinf.ucd.ie/people/aedin/R}. This document provides an overview of \Rpackage{made4} 
-functions. These are described in more detail in the RNews newletter, December 2006.
+This document provides an overview of \Rpackage{made4} functions.Further examples are described in detail in the RNews newletter, December 2006:
 
 Culhane AC and Thioulouse J. (2006) A multivariate approach to integrating datasets using made4 and ade4.\textit{R News}, \textbf{6(5)} 54-58.
 \url{http://cran.r-project.org/doc/Rnews/Rnews_2006-5.pdf}
 
 Extensive tutorials, examples and documentation on multivariate statistical methods are available from the ade4 website 
 \url{http://pbil.univ-lyon1.fr/ADE-4} and \Rpackage{ade4} user support  
-is available through the ADE4 mailing list. The \Rpackage{ade4} homepage is \url{http://pbil.univ-lyon1.fr/ADE-4}.
+is available through the ADE4 mailing list. The \Rpackage{ade4} homepage is \url{http://pbil.univ-lyon1.fr/ADE-4}.  (although it helps to speak French)
+
+We also have a tutorial on ordination using \Rpackage{made4} available online at \url{http://compbio.dfci.harvard.edu/courses/bioconductor/}.
 
 This tutorial assumes a basic knowledge of R, but we have found that Emmanuel Paradis's \textbf{R for Beginners} is a 
 very good guide to those unfamiliar with R. This is available at \url{http://cran.r-project.org/doc/contrib/rdebuts_en.pdf}.
@@ -110,9 +119,11 @@ Culhane AC, Thioulouse J, Perriere G, Higgins DG.(2005) MADE4: an R package for 
 %------------------------------------------------------------
 \section{Quickstart}
 %------------------------------------------------------------ 
-We will very briefly demonstrate some of the functions in \Rpackage{made4}. To do this 
-we will use a small dataset that is available in \Rpackage{made4}. This dataset \Rfunction{Khan} contains gene expression profiles of four types of small round blue cell tumours of childhood (SRBCT) published by Khan et al. (2001). This
-is a subset of the published dataset. It contains gene expression levels for 306 genes for 64 patient samples.  Load the necessary R packages and dataset. 
+In this vignette, we will demonstrate some of the functions in \Rpackage{made4}. To do this 
+we will use a small dataset that is available in \Rpackage{made4}. This dataset \Rfunction{Khan} contains gene expression profiles of four types of small round blue cell tumours of childhood (SRBCT) published by Khan et al. (2001). 
+
+Note the data in \Rfunction{khan} contains gene expression levels for ONLY 306 genes for 64 patient samples.  This
+is a subset of the published dataset. Load the necessary R packages and dataset. 
 
 <<loadlibs, results=hide>>=
  library(made4)
@@ -123,7 +134,7 @@ is a subset of the published dataset. It contains gene expression levels for 306
  data(khan)
 @
 
-This experiment studied gene expression in patient with four types of SRBCT. These were neuroblastoma (NB), rhabdomyosarcoma (RMS), Burkitt lymphoma, a  subset of non-Hodgkin lymphoma (BL), and the Ewing family of tumours (EWS). Gene expression profiles from both tumour biopsy and cell line  samples were obtained and are contained in this dataset. In this study data were divided into a training set of 64 samples, and a blind test dataset.  These 2 dataset are called khan\$train and khan\$test.  Have a look at the data.  For this example we will just example the training dataset. 
+This experiment studied gene expression in patient with four types of SRBCT. These were neuroblastoma (NB), rhabdomyosarcoma (RMS), Burkitt lymphoma, a  subset of non-Hodgkin lymphoma (BL), and the Ewing family of tumours (EWS). Gene expression profiles from both tumour biopsy and cell line  samples were obtained and are contained in this dataset. In this study data were divided into a training set of 64 samples, and a blind test dataset.  These 2 dataset are called khan\$train and khan\$test.  Have a look at the data.  For this example we will just examine the training dataset. 
 
 <<khandata>>=
 names(khan)
@@ -132,12 +143,12 @@ k.class<-khan$train.classes
 @
 
 %------------------------------------------------------------
-\subsection{Overview}
+\section{Exploratory Data Analysis, Overview, Cluster Analysis}
 %------------------------------------------------------------ 
 
 The \Rpackage{made4} function \Rfunction{overview()} provides a quick way to get an overview or feel for data.  \Rfunction{overview()} 
 will draw a boxplot, histogram and dendrogram of a hierarchical analysis.  Hierarchical clustering is produced using average 
-linkage clustering with a Pearson correlation measure of similarity  \citep{Eisen1998}
+linkage clustering of the distance measures 1-Pearson correlation similarity  \citep{Eisen1998}
  This gives a quick first glance at the data. 
 
 <<overview.extra, results=hide>>=
@@ -170,10 +181,41 @@ overview(k.data, classvec=k.class, labels=k.class)
 \label{figure 1} 
 \end{center}
 \end{figure}
-
+\clearpage
 
 %------------------------------------------------------------
-\subsection{Correspondence Analysis}
+\subsection{Pretty Dendrogram}
+%------------------------------------------------------------
+
+
+A new function was introduced in \Rpackage{made4} version 1.12 called \Rfunction{pretty.dend}. This places color bars beneath a dendrogram from a hierarchical cluster analysis.
+
+Create a data.frame containing factors or character vector which defines different co-variates about the samples (or genes).  For example create a factor of khan samples type (cell lines,tissue).
+
+<<Annot>>=
+cellType = sapply((strsplit(colnames(khan$train), "\\.")), function(x) substr(x[[2]],1,1))
+khanAnnot= cbind(class=as.character(khan$train.classes),cellType=cellType)
+print(khanAnnot[1:2,])
+@
+
+\begin{figure}[h!]
+\begin{center}
+<<prettydend, fig=TRUE>>=
+pretty.dend(k.data, classvec=khanAnnot, covars = c(1,2), labels=khan$train.classes, title="Dendrogram using pretty.dend")
+@
+\caption{Dendrogram of hierarchical cluster analysis of Khan data plotted using function pretty.dend. The cluster analysis joins pairs of arrays based on their 1- Pearson correlation distance using average linkage clustering. Covariates associated with the arrays are shown in color bar beneath the dendrogram}
+\label{figure 1b}
+\end{center}
+\end{figure}
+
+
+Also see the section on \Rfunction{heatplot}. It can be used to visualize the results of a hierarchical cluster analysis.
+
+
+\clearpage
+
+%------------------------------------------------------------
+\section{Ordination and Correspondence Analysis}
 %------------------------------------------------------------ 
 
 The function \Rfunction{ord} simplifies the running of ordination methods such as principal component, correspondence or non-symmetric correspondence analysis. It provides a wrapper which can call each of these methods in \Rpackage{ade4}. To run a correspondence analysis \citep{Fellenberg2001} on this dataset. 
@@ -187,22 +229,23 @@ Output from \Rfunction{ord} is a list of length 2, containing the ordination res
 
 <<output.coa>>=
 names(k.coa)
-summary(k.coa$ord)
+k.coa$ord
 @
 
 
 %------------------------------------------------------------
-\subsection{Visualising Results}
+\section{Visualising ordination results}
 %------------------------------------------------------------ 
 
 There are many functions in \Rpackage{ade4} and \Rpackage{made4} for visualising results from ordination analysis. The simplest way 
-to view the results produced by \Rfunction{ord} is to use \Rfunction{plot}.  \Rexpression{plot(k.ord)} will draw a plot of the eigenvalues, along with plots of the variables (genes) and a plot of the cases (microarray samples).  In this example Microarray samples are colour-coded using the \Rexpression{classvec} \Rexpression{khan\$train.classes} which is saved as \Rexpression{k.class}.  
+to view the results produced by \Rfunction{ord} is to use \Rfunction{plot}.  \Rexpression{plot(k.ord)} will draw a plot of the eigenvalues, along with plots of the variables (genes) and a plot of the cases (microarray samples).  In this example microarray samples are colour-coded using a factor or character vector, \Rexpression{classvec} \Rexpression{khan\$train.classes} which is saved as \Rexpression{k.class}.  
 
 <<see.classes>>=
-k.class
+k.class[1:4]
+table(k.class)
 @
 
-\clearpage
+
 
 \begin{figure}[ht!]
 \begin{center}
@@ -216,49 +259,72 @@ the distance from the origin the stronger the association}
 \end{center}
 \end{figure}
 
+\clearpage
 
+%------------------------------------------------------------
+\subsection{Plots: plotarrays, plotgenes}
+%-----------------------------------------------------------
+Genes and array projections can also be plotted using \Rfunction{plotgenes} and \Rfunction{plotarrays}. 
 
-
-Genes and array projections can also be plotted using \Rfunction{plotgenes} and \Rfunction{plotarrays}.  The function \Rfunction{s.groups} required a class vector (classvec), 
-and allowed groups to be coloured in different colours. For example, to plot microarray samples (cases),
-
-<<plotarrays, results=hide>>=
+<<plotarrays1, results=hide>>=
 plotgenes(k.coa)  
+plotarrays(k.coa)
 @
 
-To plot microarray samples, colour by group (tumour type) as specified by khan\$train.classes 
-<<plotarrays, results=hide>>=
-plotarrays(k.coa, arraylabels=k.class)
+If you give the  function \Rfunction{plotarrays} a class vector (classvec), it colors the arrays groups, defaulting to a "groups" plot.  To plot microarray samples,and  colour by group (tumour type) as specified by khan\$train.classes 
+
+<<plotarrays2, results=hide>>=
+plotarrays(k.coa, classvec=k.class)
 @
 
-Alternative you can run these analysis and give a class vector to \Rfunction(ord) and it will automatically colour samples by this class vector
+There are many graphs that \Rfunction(plotarrays) can plot, these include "groups", "simple", "labels". 
 
-<<plotarays2>>=
-k.coa2<-ord(k.data, classvec=k.class)
-plot(k.coa2)
+The default plot is "labels" if no classvec is given, but "groups" if a classvec is provided. 
+
+"simple" plots a simple plot of the points without labels.
+
+The different principal components of an ordination can be specified using axis1 and axis2.
+
+\begin{figure}[ht!]
+\begin{center}
+<<plotarraysGraphs, fig=TRUE>>=
+par(mfrow=c(3,2))
+plotarrays(k.coa)
+plotarrays(k.coa, graph="labels")
+plotarrays(k.coa, classvec=k.class)
+plotarrays(k.coa, graph="groups", classvec=k.class, axis2=3)
+plotarrays(k.coa, graph="simple", classvec=k.class, axis2=3)
+plotarrays(k.coa, graph="labels", classvec=k.class, axis1=2, axis2=3)
 @
+\caption{\label{figure 2b} Visualization of arrays from a correspondence analysis of Khan dataset}
+\end{center}
+\end{figure}
 
-Plot gene projections without labels (clab=0). Typically there are a large number of genes, thus it is not feasible to label all of these.
-The function plotgenes is more useful to use if you wish to add labels when there are lots of variables (genes)
+\clearpage
 
 
-The gene projections can be also visualised with \Rfunction{plotgenes}. The number of genes that are labelled 
-at the end of the axis can be defined. The default is 10.
+
+The gene projections can be also visualised with \Rfunction{plotgenes}. The number of genes that are labelled at the end of the axis can be defined. The
+ default is 10.
+
+To plot gene projections without any labels set n=0.
+
+Typically there are a large number of genes, thus it is not feasible to label all of these.
 
 <<plotgenes, results=hide>>=
 plotgenes(k.coa, n=5, col="red")
 @
 
+By default the variables (genes) are labelled with the rownames of the matrix.
+Typically these are spot IDs or Affymetrix accession numbers which are not very easy to interpret.  But these can be easily labeled by your own labels.
+ For example its often useful to labels using HUGO gene symbols.  We find the Bioconductor \Rpackage{annotate} and \Rpackage{annaffy} annotation package
+s are very useful for this. Alternatively we also use \Rpackage{biomaRt} or \Rpackage{Resourcerer} or the Stanford Source database.
 
-
-By default the variables (genes) are labelled with the rownames of the matrix. 
-Typically these are spot IDs or Affymetrix accession numbers which are not very easy to interpret.  But these can be easily labeled by your own labels.  For example its often useful to labels using HUGO gene symbols.  We find the Bioconductor \Rpackage{annotate} and \Rpackage{annaffy} annotation packages are very useful for this. Alternatively we also use \Rpackage{biomaRt} or \Rpackage{Resourcerer} or the Stanford Source database.   
-
-In this example we provide annotation from the Source database in khan\$annotation.  The gene symbol are in the column khan\$annotation\$Symbol 
+In this example we provide annotation from the Source database in khan\$annotation.  The gene symbol are in the column khan\$annotation\$Symbol
 
 <<plotgenescmd, results=hide>>=
 
-gene.symbs<- khan$annotation$Symbol 
+gene.symbs<- khan$annotation$Symbol
 plotgenes(k.coa, n=10, col="red", genelabels=gene.symbs)
 @
 
@@ -271,6 +337,39 @@ plotgenes(k.coa, n=10, col="red", genelabels=gene.symbs)
 \caption{\label{figure 3} Projection of genes (filled circles) in Correspondence analysis of Khan dataset.  The genes at the ends of each of the axes are labelled with HUGO gene symbols.  }
 \end{center}
 \end{figure}
+
+
+%------------------------------------------------------------
+\subsection{Creating a heatmap using the function heatplot}
+%-----------------------------------------------------------
+
+Sometime its useful to get a feel for the group separation on each of the principal components. The function \Rfunction(heatplot) is useful for this.  The sample weight are k.coa\$ord\$co  (co, columns) and the gene weight are k.coa\$ord\$li (li, lines or rows)
+
+
+\begin{figure}[ht!]
+\begin{center}
+<<heatplot, fig=TRUE>>=
+heatplot(k.coa$ord$co[,1:10], dend="none", classvec=k.class, scale="none")
+@
+\caption{\label{figure 2c} Visualization of weights or loadings on each of the first 10 components in gene space (projection of samples)  of a correspondence analysis of Khan dataset}
+\end{center}
+\end{figure}
+
+From this plot it can be seen, that the first component separates the RMS from othe samples. The RMS samples (brown on color bar) have positive weight on the first component whereas the remaining samples have negative loadings. On the second component, the BL samples (blue color bar), the NB (green color bar) and some of the RMS (brown on color bar) are distinguished from the EWS samples (red on color bar). The 3rd component separated the NB and other samples. The 2D and 3D plots to confirm this.  It is clear that all 4 cancer types are clearly distinguished using correspondence analysis.
+
+\clearpage
+
+%------------------------------------------------------------
+\subsection{Plots: further information. Extracting top genes}
+%-----------------------------------------------------------
+
+COA or ordination can also be run where a class vector is given to \Rfunction(ord). In this case subsequent plots will be automatically colored using this class vector
+
+<<plotcoa2>>=
+k.coa2<-ord(k.data, classvec=k.class)
+plot(k.coa2)
+@
+
 
 To get a list of variables at the end of an axes, use \Rfunction{topgenes}. For example, to get a list of the 5 genes at the negative and postive end of axes 1. 
 
@@ -285,7 +384,9 @@ topgenes(k.coa, labels=gene.symbs, end="neg")
 
 Two lists can be compares using \Rfunction{comparelists}.
 
-\clearpage
+%------------------------------------------------------------
+\subsection{Plots 3D visualisation and html output}
+%-----------------------------------------------------------
 
 To visualise the arrays (or genes) in 3D either use \Rfunction{do3d} or \Rfunction{html3d}. \Rfunction{do3d} is a wrapper for \Rfunction{scatterplot3d}, 
 but is modified so that groups can be coloured.  \Rfunction{html3d} produces a "pdb" output which can be visualised using rasmol or chime. Rasmol provides
@@ -296,7 +397,7 @@ do3d(k.coa$ord$co, classvec=k.class, cex.symbols=3)
 html3D(k.coa$ord$co, k.class, writehtml=TRUE)
 @
 
-\begin{figure}[htbp]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics{html3D}
 \caption{\label{figure 4} Output from html3D, which can be rotated and visualised on web browsers that can support chime (IE or Netscape on MS Windows or Mac). }
@@ -305,10 +406,10 @@ html3D(k.coa$ord$co, k.class, writehtml=TRUE)
 
 
 
-
+\clearpage
 
 %----------------------------------------------------------------
-\subsection{Classification and Class Prediction using Between Group Analysis}
+\section{Classification and Class Prediction using Between Group Analysis}
 %--------------------------------------------------------------------------------
 Between Group Analysis (BGA) is a supervised classification method \citep{DoledecChessel1987}. The basis of BGA is to ordinate the groups rather than the individual samples. 
 In tests on two microarray gene expression datasets, BGA performed comparably to supervised classification methods, including support vector machines and artifical neural networks \citep{Culhane2002}.   To train a dataset, use \Rfunction{bga}, the projection of test data can be assessed using \Rfunction{suppl}. One leave out cross validation can be performed using \Rfunction{bga.jackknife}. See the BGA vignette for more details on this method.
@@ -333,9 +434,10 @@ Sometimes its useful to visualise 1 axes of an analysis. To do this use \Rfuncti
 between.graph(k.bga, ax=1)  # Show the separation on the first axes(ax)
 @
 
+\clearpage
 
 %-----------------------------
-\subsection{Meta-analysis of microarray gene expression }
+\section{Meta-analysis of microarray gene expression }
 %-----------------------------
 Coinertia analysis \Rfunction{cia} \citep{DoledecChessel1994} has been successfully applied to the cross-platform 
 comparison (meta-analysis) of microarray gene expression datasets \citep{Culhane2003}. CIA is a multivariate method 
@@ -411,6 +513,8 @@ between.graph & Plot 1D graph of results from between group analysis \\
 \end{tabular}
 \end{table}
 
+
+
 \noindent \textsc{Meta analysis of two or more datasets using Coinertia Analysis} 
 \begin{table}[h!]
 \begin{tabular}{p{3.5cm} p{12cm}}
@@ -434,15 +538,20 @@ heatplot & Draws heatmap with dendrograms (of eigenvalues) \\
 \noindent \textsc{Graphical Visualisation of results: 2D Visualisation}
 \begin{table}[h!]
 \begin{tabular}{p{3.5cm} p{12cm}}
-plotgenes & Graph xy plot of variable (gene) projections from PCA or COA. Only label variables at ends of axes \\
-s.var &	Graph xy plot of variables (genes or arrays).  Derived from ADE4 graphics module s.label.  \\
-s.groups  &	Graph xy plot of groups of variables (genes or arrays) and colour by group. Derived from ADE4 graphics module s.class \\
-s.match.col &	Graph xy plot of 2 sets of variables (normally genes) from CIA.  Derived from ADE4 graphics module s.match\\
-plot.bga & Plot results of between group analysis using plotgenes, s.groups and s.var \\
-plot.cia & Plot results of coinertia analysis showing s.match.col, and plotgenes \\
+plotgenes & Graph xy plot of variable (gene or row) projections from PCA or COA. Only label variables at ends of axes \\
+plotarrays & Graph xy plot of the arrays (column) projections from an ordination analysis. There are several graph types, these are "groups", "simple", "labels", "groups2", "coinertia","coinertia2".
 \end{tabular}
 \end{table}
 
+
+
+\noindent \textsc{Graphical Visualisation of results:Cluster Analysis}
+\begin{table}[h!]
+\begin{tabular}{p{3.5cm} p{12cm}}
+overview & Graph of dendrogram from hierarchical cluster analysis (1-Pearson correlation coefficient distance metric, average linkage joining), boxplot and histrogram of data \\
+pretty.dend & Graph of dendrogram from hierarchical cluster analysis (1-Pearson correlation coefficient distance metrix, average linkage joining). If a class vector or many class vectors (covariates) are given in a data.frame or factor,these are represented by a color bar is drawn underneath the dendrogram.\\
+\end{tabular}
+\end{table}
 
 \noindent \textsc{Graphical Visualisation of results: 3D Visualisation}
 \begin{table}[h!]
