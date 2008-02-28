@@ -66,7 +66,7 @@ on.exit( {options(oldopt)} )
 The package \Rpackage{made4} facilitates multivariate analysis of microarray gene expression data.  The package provides a set of 
 functions that utilise and extend multivariate statistical and graphical functions available in \Rpackage{ade4}, \citep{Thioulouse1997}.  
 \Rpackage{made4} accepts gene expression data is a wide variety of input formats, including Bioconductor formats, 
-\Rclass{AffyBatch}, \Rclass{exprSet}, \Rclass{marrayRaw}, and \Robject{data.frame} or \Robject{matrix}.  
+\Rclass{AffyBatch}, \Rclass{ExpressionSet}, \Rclass{marrayRaw}, and \Robject{data.frame} or \Robject{matrix}.  
 
 %------------------------------------------------------------
 \subsection{Installation}
@@ -380,7 +380,7 @@ dataset 2 (Affy).  Genes and samples projected in the same direction from the or
 \noindent \textsc{Data Input}
 \begin{table}[h!]
 \begin{tabular}{p{3.5cm} p{12cm}}
-array2ade4 & Converts matrix, data.frame, exprSet, marrayRaw microarray 
+array2ade4 & Converts matrix, data.frame, ExpressionSet, marrayRaw microarray 
 gene expression data input data into a data frame suitable for analysis in 
 ADE4. The  rows and columns are expected to contain the variables (genes) 
 and cases (array samples)  \\

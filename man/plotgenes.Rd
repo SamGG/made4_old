@@ -6,27 +6,25 @@ Graph xy plot of variables but only label variables at ends of X and Y axes. Use
 coordinates (\$co) resulting from PCA or COA of microarray data.
 }
 \usage{
-plotgenes(coord, nlab = 10, axis1 = 1, axis2 = 2, 
-genelabels = row.names(coord), boxes = TRUE, 
-colpoints = "black", ...)
+plotgenes(coord, nlab = 10, axis1 = 1, axis2 = 2, genelabels = row.names(coord), boxes = TRUE, 
+colpoints = "black", \dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{coord}{a  \code{\link{data.frame}} or \code{\link{matrix}} or object from \code{ord}
     \code{bga} or \code{cia} analysis with at least two
-    columns, containing x, y coordinates to be plotted}
+    columns, containing x, y coordinates to be plotted.}
   \item{nlab}{Numeric. An integer indicating the number of variables at ends of axes to
-  be labelled}
+  be labelled.}
   \item{axis1}{An integer, the column number for the x-axis. Default is 1, 
-  so axis 1 is dudivar[,1]}
+  so axis 1 is dudivar[,1].}
   \item{axis2}{An integer, the column number for the y-axis. Default is 2, 
-   so axis 2 is dudivar[,2]}
+   so axis 2 is dudivar[,2].}
   \item{genelabels}{A vector of gene (variable) labels. Default is row.names(coord)}
   \item{boxes}{A logical, indicating whether a box should be plotted surrounding
-   each variable label. The default is TRUE.}
-  \item{colpoints}{The colour of the points on the plot. The
-    default is "black"}
-  \item{\dots}{ further arguments passed to or from other method }
+   each variable label. The default is \code{TRUE}.}
+  \item{colpoints}{The colour of the points on the plot. The default is "black".}
+  \item{\dots}{ further arguments passed to or from other method.}
 }
 \details{
 \code{plotgenes} calls the function \code{genes} which return an index of the "top"
@@ -34,20 +32,15 @@ variables at the ends of the x and y axes.
 
 If you wish to return a table or list of the top genes at
 the end of an axis, use the function \code{\link[made4:topgenes]{topgenes}}.
-
-
 }
 \value{
 An xy plot
 }
-\note{ 
-
+\note{
 \code{plotgenes} plots variables using \code{\link[made4:s.var]{s.var}}, which is a modified version 
-of \code{\link[ade4:s.label]{s.label}}.} 
-
-
+of \code{\link[ade4:s.label]{s.label}}.
 }
-\author{ Aedin Culhane }
+\author{Aedin Culhane}
 \seealso{See Also as \code{\link[made4:s.var]{s.var}} and \code{\link[ade4:s.label]{s.label}}}
 \examples{
 data(khan)
@@ -59,8 +52,6 @@ par(mfrow=c(2,2))
 plotgenes(khan.ord, colpoints="red")
 plotgenes(khan.ord, colpoints="red", genelabels=khan$annotation$Symbol)
 plotgenes(khan.ord, colpoints="gray", genelabels=khan$annotation$Symbol,boxes=FALSE)
-
-
 }
-\keyword{multivariate }% at least one, from doc/KEYWORDS
+\keyword{multivariate}% at least one, from doc/KEYWORDS
 \keyword{hplot}% __ONLY ONE__ keyword per line

@@ -1,5 +1,5 @@
 Package: made4
-Version: 1.13.1
+Version: 1.13.2
 Date: 2007/03/10
 Title: Multivariate analysis of microarray data using ADE4
 Author: Aedin Culhane
@@ -13,5 +13,3 @@ Reference: Culhane AC, Thioulouse J, Perriere G, Higgins DG. (2005) MADE4: an R 
 biocViews: Statistics, Clustering, Classification, MultipleComparisons
 License: Artistic-2.0
 URL: http://www.hsph.harvard.edu/researchers/aculhane.html
-
-

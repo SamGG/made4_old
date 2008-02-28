@@ -13,9 +13,6 @@ function(arraydata) {
                                  },
                   ExpressionSet = { if (require(affy, quiet = TRUE)) data.frame(exprs(arraydata))
                                 },
-		   exprSet = { if (require(affy, quiet = TRUE))   data.frame(exprs(arraydata))
-                                },
-
                   marrayRaw = {
                                if (require(affy, quiet = TRUE)) {
                                   nrslides = as.integer(ncol(arraydata@maRf))
@@ -30,8 +27,8 @@ function(arraydata) {
                                   }
                                 as.data.frame(tmp)
                                },
-                   stop(paste("Arraydata has class ", class(arraydata), ". Permitted are: matrix, data.frame, exprSet, marrayRaw", sep=""))
+                   stop(paste("Arraydata has class ", class(arraydata), ". Permitted are: matrix, data.frame, ExpressionSet, marrayRaw", sep=""))
         )  ## end of switch statement
   
         return(y)
-        }
+}

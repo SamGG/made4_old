@@ -6,37 +6,37 @@
 Culhane et al., 2002.} 
 
 \usage{
-bga(dataset, classvec, type = "coa", ...)
-plot.bga(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, 
-         genelabels= NULL, ...)
+bga(dataset, classvec, type = "coa", \dots)
+\method{plot}{bga}(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, 
+         genelabels= NULL, \dots)
 }
 
 \arguments{
   \item{dataset}{Training dataset. A \code{\link{matrix}}, \code{\link{data.frame}}, 
-     \code{\link[Biobase:exprSet-class]{exprSet}} or \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
+     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.
     }
-  \item{classvec}{A \code{factor} or \code{vector} which describes the classes in the training dataset}
+  \item{classvec}{A \code{factor} or \code{vector} which describes the classes in the training dataset.}
   \item{type}{Character, "coa", "pca" or "nsc" indicating which data
-    transformation is required. The default value is type="coa"}
+    transformation is required. The default value is type="coa".}
   \item{x}{An object of class \code{bga}.  The output from \code{bga} or 
     \code{\link[made4:bga.suppl]{bga.suppl}}. It contains the projection coordinates from \code{bga}, 
-    the \$ls, \$co or \$li coordinates to be plotted}
+    the \$ls, \$co or \$li coordinates to be plotted.}
    \item{arraycol, genecol}{Character, colour of points on plot. If arraycol is NULL, 
    arraycol will obtain a set of contrasting colours using \code{getcol}, for each classes 
    of cases (microarray samples) on the array (case) plot.  genecol is the colour of the 
-    points for each variable (genes) on gene plot}
+    points for each variable (genes) on gene plot.}
   \item{nlab}{Numeric. An integer indicating the number of variables (genes) at the end of
     axes to be labelled, on the gene plot.}
   \item{axis1}{Integer, the column number for the x-axis. The default is 1.}
   \item{axis2}{Integer, the column number for the y-axis, The default is 2.}
-  \item{genelabels}{A vector of variables labels, if \code{genelabels}=NULL the row.names 
-   of input matrix \code{dataset} will be used}
-  \item{\dots}{further arguments passed to or from other methods }
+  \item{genelabels}{A vector of variables labels, if \code{genelabels=NULL} the row.names 
+   of input matrix \code{dataset} will be used.}
+  \item{\dots}{further arguments passed to or from other methods.}
 }
-
 \details{
 \code{bga} performs a between group analysis on the input dataset. This function
 calls \code{\link[ade4:between]{between}}.  The input format of the dataset 
@@ -87,7 +87,6 @@ the input \code{classvec}, which is a \code{factor} or \code{vector}.
  a vector of coordinates.
  
 
-
 \bold{Analysis of the distribution of variance among axes:}
 
  It is important to know which cases (microarray samples) are discriminated by the axes.  
@@ -101,7 +100,6 @@ These can be visualised using a scree plot, using \code{\link[ade4:scatter]{scat
  heatmap. In MADE4 the function \code{\link[made4:heatplot]{heatplot}} will plot a heatmap with nicer default colours.
 
 
-
 \bold{Extracting list of top variables (genes):}
 
  Use \code{\link[made4:topgenes]{topgenes}}  to get list of variables or cases at the ends of axes.  It will return a list
@@ -111,27 +109,21 @@ These can be visualised using a scree plot, using \code{\link[ade4:scatter]{scat
 
 
 For more details see Culhane et al., 2002 and \url{http://bioinf.ucd.ie/research/BGA}. 
-
 }
 \value{
   A list with a class \code{bga} containing:
 
   \item{ord}{Results of initial ordination. A list of class "dudi" (see \code{\link[ade4:dudi]{dudi}} )}
   \item{bet}{Results of between group analysis. A list of class "dudi"  (see \code{\link[ade4:dudi]{dudi}}),
-  "between" (see \code{\link[ade4:between]{between}}) }
+  "between" (see \code{\link[ade4:between]{between}})}
   \item{fac}{The input classvec, the \code{factor} or \code{vector} which described the classes in the input dataset}
-   }
-  
-
-
-\references{Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.  }
-\author{ Aedin Culhane }
-
+}
+\references{Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.}
+\author{Aedin Culhane}
 \seealso{See Also  \code{\link[made4:bga]{bga}},
   \code{\link[made4:suppl]{suppl}}, \code{\link[made4:suppl.bga]{suppl.bga}}, \code{\link[ade4:between]{between}},
-  \code{\link[made4:bga.jackknife]{bga.jackknife}} }
+  \code{\link[made4:bga.jackknife]{bga.jackknife}}}
 \examples{
-
 data(khan)
 
 if (require(ade4, quiet = TRUE)) {
@@ -143,13 +135,6 @@ plot(khan.bga, genelabels=khan$annotation$Symbol)
 
 # Provide a view of the principal components (axes) of the bga  
 heatplot(khan.bga$bet$ls, dend="none")   
-
-
-
 }
 \keyword{manip}
 \keyword{multivariate}
-
-
-
-
