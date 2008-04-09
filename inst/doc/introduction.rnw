@@ -95,8 +95,9 @@ is available through the ADE4 mailing list. The \Rpackage{ade4} homepage is \url
 This tutorial assumes a basic knowledge of R, but we have found that Emmanuel Paradis's \textbf{R for Beginners} is a 
 very good guide to those unfamiliar with R. This is available at \url{http://cran.r-project.org/doc/contrib/rdebuts_en.pdf}.
 
-This documents assumes that data is normalised and preprocessed.  Please refer to the Bioconductor packages \Rpackage{affy}, \Rpackage{arrayMagic} 
-and \Rpackage{limma}, for input and initial pre\--processing of microarray data.  The Bioconductor project website is \url{http://www.bioconductor.org}.
+This documents assumes that data is normalised and preprocessed.  Please refer to the Bioconductor packages \Rpackage{affy}
+and \Rpackage{limma}, for input and initial pre\--processing of microarray data.  The Bioconductor project website is
+\url{http://www.bioconductor.org}.
 
 
 %------------------------------------------------------------
