@@ -32,8 +32,8 @@ Function which performs a hierarchical cluster analysis of data, drawing a dendr
   pretty.dend(logkhan, classvec=khan$train.classes, labels=khan$train.classes)
  
  # Get a character vector which defines which khan samples are cell lines or tissue sample
-  cellType = sapply((strsplit(colnames(khan$train), "\\.")), function(x) substr(x[[2]],1,1))
-  khanAnnot= cbind(khan$train.classes,cellType)
+  cellType = cellType=sapply((strsplit(colnames(khan$train), "\\.")), function(x) substr(x[[2]],1,1))
+  khanAnnot= cbind(as.character(khan$train.classes),cellType)
   print(khanAnnot[1:3,])
 
 # Add 2 color bar, one for cancer subtype, another for cell type under dendrogram
