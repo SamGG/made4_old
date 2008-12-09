@@ -22,7 +22,7 @@
 \item{s.nam}{Vector. labels of dfx, The default is row.names(dfx)}
 \item{n}{Numeric. Whether all rows should be plotted, n=10 would label only the 10 variables at the
 end of the axis.  By default all variables (row of dfx) are labelled}
-\item{scaled} {A logical indicating whether the plot should be scaled to fit. The default is TRUE}
+\item{scaled}{A logical indicating whether the plot should be scaled to fit. The default is TRUE}
 \item{col}{A character or vector indicating the colour(s) for points or groups of points. If points
 are to be coloured according to a factor, length(col) should equal length(levels(classvec))}
 \item{width}{A vector of length 2, which is the width (of a vertical plot) or height (of a 

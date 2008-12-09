@@ -29,7 +29,7 @@ html3D(df, classvec = NULL, writepdb = FALSE, filenamebase = "output",
   \item{title}{Character, the title (header) of the web page saved if writehtml is TRUE. 
   The default is NULL.}
   \item{scaled}{Logical indicating whether the data should be scaled for best fit. The default is TRUE}
-  \item{xyz.axes} {vector indicating which axes to use for x, y and z axes. By default, the first 3 columns of df.}
+  \item{xyz.axes}{vector indicating which axes to use for x, y and z axes. By default, the first 3 columns of df.}
   \item{\dots}{ further arguments passed to or from other methods }
 }
 \details{

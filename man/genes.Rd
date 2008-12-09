@@ -14,7 +14,7 @@ genes(dudivar,n=5, axis1=1, axis2=2)
     columns, containing the x,y coordinates.}
   \item{axis1}{the column number for the x-axis.}
   \item{axis2}{the column number for the y-axis.}
-  \item{n} {n is the number of genes to be extracted.}
+  \item{n}{n is the number of genes to be extracted.}
 }
 \details{
 Genes returns an index of the "top" variables at the ends of the x and y axes.  

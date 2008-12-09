@@ -23,7 +23,7 @@ plotarrays(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,  grap
  \item{graph}{A character of type  "groups", "simple", "labels", "groups2", "coinertia" or "coinertia2" which
   specifies the type of plot type or "graph" to be drawn. By default the  graph
   will be selected depending on the class of cooord, and whether a classvector is specified}
- \item{labelsize} {Size of sample labels, by default=1}
+ \item{labelsize}{Size of sample labels, by default=1}
   \item{star}{If drawing groups, whether to join samples to centroid creating a "star"}
   \item{ellipse}{If drawing groups, whether to draw an ellipse or ring around the samples}
   \item{\dots}{ further arguments passed to or from other method }
