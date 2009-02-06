@@ -37,8 +37,9 @@ A list of class \code{bet.cia} of length 5
     \code{\link[ade4:coinertia]{coinertia}}}
   \item{coa1, pca1}{An object of class 'nsc' or 'pca', with sub-class
     'dudi'. See \code{\link[ade4:dudi]{dudi}},
-      \code{\link[ade4:dudi.pca]{dudi.pca}} or \code{\link[ade4:dudi.nsc]{dudi.nsc}}}
-  \item(coa2, pca2){An object of class 'nsc' or 'pca', with sub-class
+      \code{\link[ade4:dudi.pca]{dudi.pca}} or
+      \code{\link[ade4:dudi.nsc]{dudi.nsc}}} 
+  \item{coa2, pca2}{An object of class 'nsc' or 'pca', with sub-class
     'dudi'. See \code{\link[ade4:dudi]{dudi}},
     \code{\link[ade4:dudi.pca]{dudi.pca}} or
     \code{\link[ade4:dudi.nsc]{dudi.nsc}}}
