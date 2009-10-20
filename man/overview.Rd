@@ -27,8 +27,8 @@ data}
 \references{  }
 \author{Aedin Culhane}
 \note{}
-\seealso{See also as \code{\link[boxplot]{boxplot}}, \code{\link[hclust]{hclust}}, 
-\code{\link[hist]{hist}}}
+\seealso{See also as \code{\link[graphics:boxplot]{boxplot}}, \code{\link[stats:hclust]{hclust}}, 
+\code{\link[graphics:hist]{hist}}}
 \examples{
   data(khan)
 

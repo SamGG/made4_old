@@ -3,8 +3,8 @@
 \alias{sumstats}
 \title{Summary statistics on xy co-ordinates, returns the slopes and distance from origin of each co-ordinate.}
 \description{
-Given a \code{\link[data.frame]{data.frame}} or
-\code{\link[matrix]{matrix}} containing xy coordinates, it returns the slope and distance from
+Given a \code{\link{data.frame}} or
+\code{\link{matrix}} containing xy coordinates, it returns the slope and distance from
 origin of each coordinate.
 }
 \usage{
@@ -12,8 +12,8 @@ sumstats(array, xax = 1, yax = 2)
 }
 
 \arguments{
-  \item{array}{A \code{\link[data.frame]{data.frame}} or
-   \code{\link[matrix]{matrix}} containing xy coordinates, normally a \$co, \$li
+  \item{array}{A \code{\link{data.frame}} or
+   \code{\link{matrix}} containing xy coordinates, normally a \$co, \$li
     from \code{\link[ade4:dudi]{dudi}} such as PCA or COA, or \$ls from 
     \code{\link[made4:bga]{bga}}}
   \item{xax}{Numeric, an integer indicating the column of the x axis

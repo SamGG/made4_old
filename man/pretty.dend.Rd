@@ -25,7 +25,7 @@ Function which performs a hierarchical cluster analysis of data, drawing a dendr
 \references{  }
 \author{Aedin Culhane}
 \note{}
-\seealso{ See also as \code{\link[overview]{overview}}, \code{\link[hclust]{hclust}}}
+\seealso{ See also as \code{\link[made4:overview]{overview}}, \code{\link[stats:hclust]{hclust}}}
 \examples{
   data(khan)
   logkhan<-log2(khan$train)

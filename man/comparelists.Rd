@@ -23,7 +23,8 @@ comparelists(dx,dy, \dots)
  An object of class \code{comparelists}:
 
   \item{intersect}{Vector containing the intersect between x and y}
-  \item{Set.Diff}{Vector containing the elements unique to X obtained using \code{\link[setdiff]{setdiff}} }
+  \item{Set.Diff}{Vector containing the elements unique to X obtained using \code{\link{setdiff}} 
+  }
   \item{XinY}{Numeric, indicating the number of elements of x in y}
   \item{YinX}{Numeric, indicating the number of elements of y in x}
   \item{Length.X}{Numeric, the number of elements in x}
@@ -31,7 +32,7 @@ comparelists(dx,dy, \dots)
   \item{\dots}{Further arguments passed to or from other methods}
 }
 \author{Aedin Culhane}
-\seealso{See also  \code{\link{intersect}}, \code{\link[setdiff]{setdiff}}}
+\seealso{See also  \code{\link{intersect}}, \code{\link{setdiff}}}
 \examples{
 a<-sample(LETTERS,20)
 b<-sample(LETTERS,10)
