@@ -50,7 +50,7 @@ function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
        if (dudi.bga$bet$nf>1) {
        		par(mfrow=c(2,2))			        # Display 2x2 graphs
        		s.var(dudi.bga$bet$ls,  xax = axis1, yax = axis2, col = as.vector(factor(dudi.bga$fac, labels=arraycol)), ...)
-      		plotarrays(dudi.bga, axis1, axis2, ...)    # Draw plot of arrays
+      		plotarrays(dudi.bga, axis1, axis2,arraycol=arraycol, ...)    # Draw plot of arrays
       		plotgenes(dudi.bga$bet$co, nlab=nlab,axis1=axis1,  axis2=axis2, genelabels=genelabels, colpoints=genecol, ...)   # Draw plot of genes label top genes
       		s.groups(dudi.bga$bet$ls, dudi.bga$fac,cellipse=0,col=arraycol,
                	 add.plot=TRUE, xax = axis1, yax = axis2,...)  # To gene plot, add arrays

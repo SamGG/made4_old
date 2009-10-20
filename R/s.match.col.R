@@ -50,9 +50,8 @@ function (df1xy, df2xy, xax = 1, yax = 2, pch = 20, cpoint = 1,
 
     if (!is.null(classvec)) {
          classvec<-as.factor(classvec)
-         arraycol=col
-         if (!length(arraycol)== length(levels(classvec)) ) arraycol=getcol(1:length(levels(classvec)))
-         col<-as.vector(factor(classvec, labels=arraycol))
+         #print(col)
+         if (length(col)== length(levels(classvec))) col<-as.vector(factor(classvec, labels=col))
         }
   
     if(is.factor(col))col=as.vector(col)

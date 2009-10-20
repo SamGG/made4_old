@@ -6,7 +6,7 @@ overview<- function(dataset, labels = NULL, title = "", classvec = NULL, hc = TR
     if (sum(boxplot, hist, hc)==3) layout(matrix(c(1, 1, 2, 3), 2, 2, byrow = TRUE))
     if (sum(boxplot, hist, hc)==2) layout(matrix(c(1, 1, 2, 2), 2, 2, byrow = TRUE))
     
-  
+    classvec=as.factor(classvec)
     if (is.null(labels)) 
         labels = colnames(dataset)
     if (!is.null(labels)) 
@@ -30,18 +30,22 @@ overview<- function(dataset, labels = NULL, title = "", classvec = NULL, hc = TR
         par(mar = margins)
     }
     if (hc) {
-        if (!inherits(dataset, "AffyBatch")) {
-            dataset <- array2ade4(dataset, trans = FALSE)
-        }
-        if (inherits(dataset, "AffyBatch")) {
-            dataset = exprs(dataset)
-        }
+         if (!inherits(dataset, "matrix")) {
+            if (!inherits(dataset, "AffyBatch")) {
+              dataset <- array2ade4(dataset, trans = FALSE)
+              }
+            if (inherits(dataset, "AffyBatch")) {
+               dataset = exprs(dataset)
+               }
+            }
         hc = hclust(distEisen(dataset), method = "ave")
         plot(hc, hang = -1, labels = labels, main = paste("Histogram", 
             title, sep = " "), sub="", xlab="")
         if (!missing(classvec)) 
             colhc(hc, classvec)
     }
+
+
     if (boxplot) {
         if (!inherits(dataset, "AffyBatch")) {
             dataset <- array2ade4(dataset, trans = FALSE)
