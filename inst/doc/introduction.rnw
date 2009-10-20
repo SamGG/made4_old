@@ -12,7 +12,7 @@
 \usepackage{amsmath}
 \usepackage{times}
 \usepackage{hyperref}
-\usepackage[authoryear,round]{natbib}
+\usepackage[numbers]{natbib}
 
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
@@ -82,11 +82,12 @@ biocLite("made4")
 %------------------------------------------------------------
 \subsection{Further help}
 %------------------------------------------------------------ 
-More information about \Rpackage{made4} is available at \url{http://bioinf.ucd.ie/people/aedin/R}. This document provides an overview of \Rpackage{made4} 
-functions. These are described in more detail in the RNews newletter, December 2006.
+The package \Rpackage{made4} is described in more detail in the RNews newletter, December 2006.
 
 Culhane AC and Thioulouse J. (2006) A multivariate approach to integrating datasets using made4 and ade4.\textit{R News}, \textbf{6(5)} 54-58.
 \url{http://cran.r-project.org/doc/Rnews/Rnews_2006-5.pdf}
+
+We also have a tutorials on our website at \url{http://compbio.dfci.harvard.edu/courses/bioconductor/}
 
 Extensive tutorials, examples and documentation on multivariate statistical methods are available from the ade4 website 
 \url{http://pbil.univ-lyon1.fr/ADE-4} and \Rpackage{ade4} user support  
