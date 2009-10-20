@@ -11,13 +11,13 @@ bga.suppl(dataset, supdata, classvec, supvec = NULL, suponly = FALSE, type="coa"
 \arguments{
   \item{dataset}{Training dataset. A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.}
   \item{supdata}{Test or blind dataset. A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.  The test dataset \code{supdata} and the training dataset \code{dataset} must contain 

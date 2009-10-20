@@ -1,0 +1,5 @@
+#importFrom("scatterplot3d", "scatterplot3d")
+#importFrom("gplots", "heatmap.2")
+#importFrom("RColorBrewer", "colorRampPalette")
+
+export(array2ade4,bet.coinertia,between.graph,bga,bga.jackknife,bga.suppl,cia,commonMap,comparelists,do3d,getcol,graph1D,heatplot,html3D,ord,overview,plot.bga,plot.cia,plot.ord,plot.suppl,plotarrays,plotgenes,pretty.dend,print.comparelists,randomiser,rotate3d,sumstats,suppl,topgenes, s.var, s.groups)

@@ -28,7 +28,7 @@ topgenes(x, n = 10, axis = 1, labels = row.names(x), ends = "both", ...)
   \item{\dots}{further arguments passed to or from other methods }
 }
 \details{
-\code{topgenes} calls \code{\link[ade4:genes1d]{genes1d}}. \code{genes1d} is similar to
+\code{topgenes} calls \code{\link[made4:genes1d]{genes1d}}. \code{genes1d} is similar to
 \code{\link[made4:genes]{genes}}, but returns an index of genes at the ends of
 one axis not two axes.  Given a \$co or \$li file it will return that variables at the ends of the axis.
 }

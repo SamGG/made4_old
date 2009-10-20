@@ -12,7 +12,7 @@ getdata(arraydata)
 \arguments{
   \item{arraydata}{A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.}
@@ -23,16 +23,15 @@ generally not necessary to call this directly.
 \code{\link[made4:array2ade4]{array2ade4}} calls \code{\link[made4:getdata]{getdata}}, and 
 will accept a \code{\link{matrix}},\code{\link{data.frame}},
 \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-\code{\link[marrayClasses:marrayRaw-class]{marrayRaw}} format. It will also transpose data or add a
+\code{\link[marray:marrayRaw-class]{marrayRaw-class}} format. It will also transpose data or add a
 integer to generate a positive data matrix. If the input data contains NA, these must first be removed 
 or imputed (see the R libraries impute() or pamr()).  \code{getdata} is very similar 
-to \code{\link[vsn:getIntensityMatrix]{getIntensityMatrix}} in \code{\link[vsn:vsn]{vsn}}.
-}
+to getIntensityMatrix in \code{\link[vsn:vsn]{vsn}}.}
 \value{
  Returns a data.frame suitable for analysis by ade4 or made4 functions.
 }
 \author{Aedin Culhane}
 \note{This is not normally called by a user. Internal function.}
-\seealso{ \code{\link[made4:array2ade4]{array2ade4}}, \code{\link[vsn:getIntensityMatrix]{getIntensityMatrix}}}
+\seealso{ \code{\link[made4:array2ade4]{array2ade4}}, getIntensityMatrix in the package vsn}
 \examples{}
 \keyword{internal}% at least one, from doc/KEYWORDS

@@ -13,7 +13,7 @@ array2ade4(dataset, pos = FALSE, trans = FALSE)
 \arguments{
   \item{dataset}{A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.
@@ -27,7 +27,7 @@ array2ade4(dataset, pos = FALSE, trans = FALSE)
 generally \strong{not} necessary to call \code{array2ade4} this directly.
 
 array2ade4 calls \code{\link[made4:getdata]{getdata}}, and will accept a \code{\link{matrix}}, \code{\link{data.frame}}, 
-\code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}} format.
+\code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or \code{\link[marray:marrayRaw-class]{marrayRaw-class}} format.
 It  will also transpose data or add a integer to generate a positive data matrix. 
 
 If the input data contains missing values (NA), these must first be removed or imputed (see the R libraries impute() or pamr()).  
@@ -37,7 +37,7 @@ If the input data contains missing values (NA), these must first be removed or i
 }
 \references{ }
 \author{Aedin Culhane}
-\seealso{\code{\link[made4:getdata]{getdata}}, \code{\link[vsn:getIntensityMatrix]{getIntensityMatrix}}}
+\seealso{\code{\link[made4:getdata]{getdata}},\code{\link[convert:coerce]{as}} in the Bioconductor package convert.}
 \examples{
 library(affy)
 data(geneData)

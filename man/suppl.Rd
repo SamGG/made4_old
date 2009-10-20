@@ -15,7 +15,7 @@ suppl(dudi.bga, supdata, supvec = NULL, assign=TRUE, \dots)
   \item{dudi.bga}{ An object returned by \code{\link[made4:bga]{bga}}.}
   \item{supdata}{Test or blind dataset. Accepted formats are a \code{\link{matrix}}, 
    \code{\link{data.frame}}, \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or 
-   \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.}
+   \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.}
   \item{supvec}{A factor or vector which describes the classes in the
   training dataset.}
    \item{supvec.pred}{A factor or vector which describes the classes which were predicted

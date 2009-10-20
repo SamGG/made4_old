@@ -61,7 +61,7 @@ if (require(ade4, quiet = TRUE)) {
 
 khan.bga<-bga(khan$train, khan$train.classes)}
 
-s.var(khan.bga$bet$ls, col=as.numeric(khan$train.classes), clabel=0.8)
+plotarrays(khan.bga$bet$ls, classvec=khan$train.classes)
 st.out<-sumstats(khan.bga$bet$ls)
 
 # Get stats on classes  EWS and BL

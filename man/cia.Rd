@@ -12,13 +12,13 @@ cia(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE,\dots)
 \arguments{
   \item{df1}{The first dataset.  A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.}
   \item{df2}{The second dataset.  A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+    \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.}

@@ -9,7 +9,7 @@ function(arraydata) {
                                  },
                    data.frame = {  if (!all(sapply(arraydata, is.numeric)))
                                      stop("Arraydata was found to be a data.frame, but contains non-numeric columns.")
-                                   intensities
+                                   arraydata
                                  },
                   ExpressionSet = { if (require(affy, quiet = TRUE)) data.frame(exprs(arraydata))
                                 },

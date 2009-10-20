@@ -29,12 +29,12 @@ Returns a list of class 'coa', 'rwcoa', and 'dudi' (see \code{\link[ade4:dudi]{d
   the two gene expression datasets. However it is now recommended to perform
   two non-symmetric COA, instead of two COA. This avoids having to force
 the row weights from one analysis on the second.  To perform
-non-symmetric correspondence coinertia analysis, use \code{\link[made4:nsc.coinertia]{nsc.coinertia}}.}
+non-symmetric correspondence coinertia analysis, use \code{\link[made4:bet.coinertia]{bet.coinertia}}.}
 
 
  \seealso{ See Also as
-   \code{\link[ade4:dudi]{dudi}},\code{\link[ade4:dudicoa]{dudi.coa}},\code{\link[ade4:dudi.pca]{dudi.pca}}
- \code{\link[made4:nsc.coinertia]{nsc.coinertia}} }
+   \code{\link[ade4:dudi]{dudi}},\code{\link[ade4:dudi.coa]{dudi.coa}},\code{\link[ade4:dudi.pca]{dudi.pca}}
+ \code{\link[made4:bet.coinertia]{bet.coinertia}} }
 \examples{
 
 }

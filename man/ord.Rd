@@ -11,7 +11,7 @@ ord(dataset, type="coa", classvec=NULL,ord.nf=NULL, trans=FALSE, \dots)
 \arguments{
   \item{dataset}{Training dataset. A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.
@@ -49,14 +49,12 @@ If the user defines microarray sample groupings, these are colours on plots prod
 \bold{Plotting and visualising bga results:}
 
  \emph{2D plots:} 
- \code{s.var} and \code{s.groups} to draw an xy plot of cases (\$ls). 
- \code{s.var} and \code{s.groups} are modifications of the ADE4 graphing functions 
- \code{\link[ade4:s.label]{s.label}} and \code{\link[ade4:s.class]{s.class}}.  
+ \code{\link[made4:plotarrays]{plotarrays}} to draw an xy plot of cases (\$ls).   
 \code{\link[made4:plotgenes]{plotgenes}}, is used to draw an xy plot of the variables (genes). 
 
  
  \emph{3D plots:}
- 3D graphs can be generated using \code{\link[made4:do3D]{do3D}} and \code{\link[made4:html3D]{html3D}}. 
+ 3D graphs can be generated using \code{\link[made4:do3d]{do3D}} and \code{\link[made4:html3D]{html3D}}. 
  \code{\link[made4:html3D]{html3D}} produces a web page in which a 3D plot can be interactively rotated, zoomed,
  and in which classes or groups of cases can be easily highlighted. 
 

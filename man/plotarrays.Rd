@@ -6,7 +6,7 @@ Graph xy plot of variables using s.var, s.groups or s.match.col. Useful for visu
 coordinates (\$li) resulting from ord, bga or cia of microarray data.
 }
 \usage{
-plotarrays(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,  graph = c("groups", "simple", "labels", "groups2", "coinertia","coinertia2"), labelsize=1, star=1, ellipse=1, ...)
+plotarrays(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,  graph = c("groups", "simple", "labels", "groups2", "coinertia","coinertia2"), labelsize=1, star=1, ellipse=1, arraycol=NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -26,6 +26,7 @@ plotarrays(coord, axis1 = 1, axis2 = 2, arraylabels = NULL, classvec=NULL,  grap
  \item{labelsize}{Size of sample labels, by default=1}
   \item{star}{If drawing groups, whether to join samples to centroid creating a "star"}
   \item{ellipse}{If drawing groups, whether to draw an ellipse or ring around the samples}
+  \item{arraycol}{Character with length equal to the number of levels in the factor classvec. Colors for each of the levels in the factor classvec}
   \item{\dots}{ further arguments passed to or from other method }
 }
 \details{

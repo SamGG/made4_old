@@ -14,7 +14,7 @@ bga(dataset, classvec, type = "coa", \dots)
 \arguments{
   \item{dataset}{Training dataset. A \code{\link{matrix}}, \code{\link{data.frame}}, 
      \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or
-     \code{\link[marrayClasses:marrayRaw-class]{marrayRaw}}.  
+     \code{\link[marray:marrayRaw-class]{marrayRaw-class}}.  
      If the input is gene expression data in a \code{\link{matrix}} or \code{\link{data.frame}}. The 
      rows and columns are expected to contain the variables (genes) and cases (array samples) 
      respectively.
@@ -64,21 +64,6 @@ the input \code{classvec}, which is a \code{factor} or \code{vector}.
  
 
 \bold{Plotting and visualising bga results:}
-
- \emph{2D plots:}
- Use \code{plot.bga} to plot results from \code{bga}. plot.bga calls the functions 
- \code{s.var} and \code{s.groups} to draw an xy plot of cases (\$ls). 
- \code{s.var} and \code{s.groups} are modifications of the ADE4 graphing functions 
- \code{\link[ade4:s.label]{s.label}} and \code{\link[ade4:s.class]{s.class}}.  
-\code{\link[made4:plotgenes]{plotgenes}}, is used to draw an xy plot of the variables (genes). 
-
- 
- \emph{3D plots:}
- 3D graphs can be generated using \code{\link[made4:do3D]{do3D}} and \code{\link[made4:html3D]{html3D}}. 
- \code{\link[made4:html3D]{html3D}} produces a web page in which a 3D plot can be interactively rotated, zoomed,
- and in which classes or groups of cases can be easily highlighted. 
-
-
  \emph{1D plots, show one axis only:}
  1D graphs can be plotted using \code{\link[made4:between.graph]{between.graph}} and
  \code{\link[made4:graph1D]{graph1D}}. \code{\link[made4:between.graph]{between.graph}} is used for plotting the cases,
@@ -86,6 +71,20 @@ the input \code{classvec}, which is a \code{factor} or \code{vector}.
  \code{\link[made4:graph1D]{graph1D}} can be used to plot either cases (microarrays) or variables (genes) and only requires
  a vector of coordinates.
  
+ \emph{2D plots:}
+ Use \code{plot.bga} to plot results from \code{bga}. plot.bga calls the functions 
+ \code{\link[made4:plotarrays]{plotarrays}} to draw an xy plot of cases (\$ls).   
+ \code{\link[made4:plotgenes]{plotgenes}}, is used to draw an xy plot of the variables (genes).
+ \code{\link[made4:plotgenes]{plotgenes}}, is used to draw an xy plot of the variables (genes). 
+
+ 
+ \emph{3D plots:}
+ 3D graphs can be generated using \code{\link[made4:do3d]{do3D}} and \code{\link[made4:html3D]{html3D}}. 
+ \code{\link[made4:html3D]{html3D}} produces a web page in which a 3D plot can be interactively rotated, zoomed,
+ and in which classes or groups of cases can be easily highlighted. 
+
+
+
 
 \bold{Analysis of the distribution of variance among axes:}
 
@@ -121,7 +120,7 @@ For more details see Culhane et al., 2002 and \url{http://bioinf.ucd.ie/research
 \references{Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.}
 \author{Aedin Culhane}
 \seealso{See Also  \code{\link[made4:bga]{bga}},
-  \code{\link[made4:suppl]{suppl}}, \code{\link[made4:suppl.bga]{suppl.bga}}, \code{\link[ade4:between]{between}},
+  \code{\link[made4:suppl]{suppl}}, \code{\link[made4:bga.suppl]{suppl.bga}}, \code{\link[ade4:between]{between}},
   \code{\link[made4:bga.jackknife]{bga.jackknife}}}
 \examples{
 data(khan)
