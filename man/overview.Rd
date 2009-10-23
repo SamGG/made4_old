@@ -34,8 +34,8 @@ data}
 
   logkhan<-log2(khan$train)
   print(class(logkhan))
-  overview(logkhan, title="Subset of Khan Training data")
-  overview(logkhan, classvec=khan$train.classes, labels=khan$train.classes)
+  overview(logkhan, title="Subset of Khan Train")
+  overview(logkhan, classvec=khan$train.classes, labels=khan$train.classes,title="Subset of Khan Train")
 }
 \keyword{hplot}% at least one, from doc/KEYWORDS
 \keyword{manip}% __ONLY ONE__ keyword per line

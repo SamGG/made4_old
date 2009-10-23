@@ -106,7 +106,7 @@ khan.coa
 plot(khan.coa, genelabels=khan$annotation$Symbol)
 plotarrays(khan.coa)
 # Provide a view of the first 5 principal components (axes) of the correspondence analysis
-heatplot(khan.coa$ord$co[,1:5], dend=FALSE,lowcol="blue")
+heatplot(khan.coa$ord$co[,1:5], dend="none",dualScale=FALSE)
 }
 \keyword{manip}
 \keyword{multivariate}
