@@ -55,6 +55,14 @@ savefiles = FALSE, classvec = NULL, classcol = NULL, col = NULL, ...)
   \item{\dots}{further arguments passed to or from other methods }
 }
 \details{
+This calls scatterplot3d to plot a 3d representation of results.  
+
+It is also worth exploring the package \code{rgl} which enables dynamic 3d plot (that can be rotated)
+
+library(rgl)
+plot3d(khan.coa$co[,1], khan.coa$co[,2],khan.coa$co[,3], size=4, col=khan$train.classes)
+rgl.snapshot(file="test.png", top=TRUE)
+rgl.close()
 
 }
 \value{

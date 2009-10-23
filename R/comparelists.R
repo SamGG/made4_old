@@ -3,12 +3,22 @@ function(dx,dy, ...) {
         # Given two vectors, report on there similarity and difference
         # Often used if comparing genelists after filtering
   
+
+        facChar<-function(x) {
+            if(is.factor(x)) x<-as.character(x)
+            return(x)
+            }
+
+        dx<-facChar(dx)
+        dy<-facChar(dy)
+
         if(!is.vector(dx)) 
              stop("the first vector is not a vector")
 
         if(!is.vector(dy)) 
              stop("the second vector is not a vector")
 	
+        
 	inter<-intersect(dx, dy)
 	setd <- setdiff(dx, dy)
 

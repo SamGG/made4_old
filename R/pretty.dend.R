@@ -1,5 +1,5 @@
 pretty.dend<- function (dataset, labels = NULL, title = "", classvec = NULL,
-    covars = 1, returnTree = FALSE, ...)
+    covars = 1, returnTree = FALSE, getPalette=getcol, ...)
 {
     cols = NULL
 
@@ -27,7 +27,9 @@ pretty.dend<- function (dataset, labels = NULL, title = "", classvec = NULL,
         classvec = as.factor(classvec)
         groups = as.character(levels(classvec))
         groups = groups[order(groups, decreasing = TRUE)]
-        cols = topo.colors(length(groups))
+        cols =  getPalette(length(groups))
+        if (length(groups)==2)  cols = c("black", "grey60")
+       # if (length(groups)==3)  cols = c("black", "grey60", "yellow")
         fac.col = cbind(groups, cols)
         fac.col[fac.col[, 1] == " ", 2] = "white"
         cols = unlist(sapply(classvec, function(x) fac.col[grep(x,
