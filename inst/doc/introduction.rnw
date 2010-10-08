@@ -298,6 +298,16 @@ do3d(k.coa$ord$co, classvec=k.class, cex.symbols=3)
 html3D(k.coa$ord$co, k.class, writehtml=TRUE)
 @
 
+It is also worth exploring the package \Rpackage{rgl} which enables dynamic 3d plot (can be rotated).
+\begin{verbatim}
+library(rgl)
+plot3d(k.coa$co[,1], k.coa$co[,2],k.coa$co[,3], size=4, col=khan$train.
+classes)
+rgl.snapshot(file="test.png", top=TRUE)
+rgl.close()
+\end{verbatim}
+
+
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics{html3D}
@@ -437,11 +447,13 @@ heatplot & Draws heatmap with dendrograms (of eigenvalues) \\
 \begin{table}[h!]
 \begin{tabular}{p{3.5cm} p{12cm}}
 plotgenes & Graph xy plot of variable (gene) projections from PCA or COA. Only label variables at ends of axes \\
-s.var &	Graph xy plot of variables (genes or arrays).  Derived from ADE4 graphics module s.label.  \\
-s.groups  &	Graph xy plot of groups of variables (genes or arrays) and colour by group. Derived from ADE4 graphics module s.class \\
-s.match.col &	Graph xy plot of 2 sets of variables (normally genes) from CIA.  Derived from ADE4 graphics module s.match\\
+plotarrays & Graph xy plot of case (samples) projections from PCA or COA,and colour by group  \\
 plot.bga & Plot results of between group analysis using plotgenes, s.groups and s.var \\
 plot.cia & Plot results of coinertia analysis showing s.match.col, and plotgenes \\
+
+s.var &	Use plotarrays instead. Graph xy plot of variables (genes or arrays).  Derived from ADE4 graphics module s.label.  \\
+s.groups  & Use plotarrays instead. Graph xy plot of groups of variables (genes or arrays) and colour by group. Derived from ADE4 graphics module s.class \\
+s.match.col &	Use plotarrays instead. Graph xy plot of 2 sets of variables (normally genes) from CIA.  Derived from ADE4 graphics module s.match\\
 \end{tabular}
 \end{table}
 

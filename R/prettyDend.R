@@ -1,4 +1,4 @@
-pretty.dend<- function (dataset, labels = NULL, title = "", classvec = NULL,
+prettyDend<- function (dataset, labels = NULL, title = "", classvec = NULL,
     covars = 1, returnTree = FALSE, getPalette=getcol, ...)
 {
     cols = NULL
