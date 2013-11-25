@@ -13,7 +13,7 @@ function(dataset, classvec, type="coa",...){
         ord.class= class(data.ord$ord)
 
         # Run Between Group analysis, and return class dudi.bga
-	data.bet<-between(data.ord$ord,classvec, scannf=FALSE, nf=nclasses-1)
+	data.bet<-bca(data.ord$ord,classvec, scannf=FALSE, nf=nclasses-1)
 
 
         res<-list(ord=data.ord, bet=data.bet, fac=classvec)
