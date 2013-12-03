@@ -33,7 +33,7 @@ This analysis is repeated until all samples have been removed and predicted.}
 \seealso{See Also  \code{\link[made4:bga]{bga}},
   \code{\link[made4:bga.suppl]{bga.suppl}},
   \code{\link[made4:suppl]{suppl}},\code{\link[made4:bga]{bga}},
-  \code{\link[ade4:between]{between}},
+  \code{\link[ade4:bca]{bca}},
   \code{\link[made4:plot.bga]{plot.bga}}}
 \examples{
 data(khan)

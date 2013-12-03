@@ -38,17 +38,18 @@ A list of class \code{bet.cia} of length 5
   \item{coa1, pca1}{An object of class 'nsc' or 'pca', with sub-class
     'dudi'. See \code{\link[ade4:dudi]{dudi}},
       \code{\link[ade4:dudi.pca]{dudi.pca}} or
-      \code{\link[ade4:dudi.nsc]{dudi.nsc}}} 
+      \code{\link[ade4:dudi.nsc]{dudi.nsc}}}
+ 
   \item{coa2, pca2}{An object of class 'nsc' or 'pca', with sub-class
     'dudi'. See \code{\link[ade4:dudi]{dudi}},
     \code{\link[ade4:dudi.pca]{dudi.pca}} or
     \code{\link[ade4:dudi.nsc]{dudi.nsc}}}
   \item{bet1}{An object of class 'bga', with sub-class
     'dudi'. See \code{\link[ade4:dudi]{dudi}},
-      \code{\link[made4:bga]{bga}} or \code{\link[ade4:between]{between}}}
+      \code{\link[made4:bga]{bga}} or \code{\link[ade4:bca]{bca}}}
   \item{bet2}{An object of class 'bga', with sub-class
     'dudi'. See \code{\link[ade4:dudi]{dudi}},
-      \code{\link[made4:bga]{bga}} or \code{\link[ade4:between]{between}}.}
+      \code{\link[made4:bga]{bga}} or \code{\link[ade4:bca]{bca}}.}
 }
 \references{
 Culhane AC, et al., 2003 Cross platform comparison and

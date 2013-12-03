@@ -44,7 +44,7 @@ The input format of both the training dataset and test dataset are verified usin
 \references{Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.  }
 \author{Aedin Culhane}
 \seealso{See Also  \code{\link[made4:bga]{bga}},
-  \code{\link[ade4:between]{between}}, \code{\link[made4:plot.bga]{plot.bga}}, 
+  \code{\link[ade4:bca]{bca}}, \code{\link[made4:plot.bga]{plot.bga}}, 
   \code{\link[made4:bga.jackknife]{bga.jackknife}} }
 \examples{
 data(khan)

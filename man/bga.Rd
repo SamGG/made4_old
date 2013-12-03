@@ -39,7 +39,7 @@ bga(dataset, classvec, type = "coa", \dots)
 }
 \details{
 \code{bga} performs a between group analysis on the input dataset. This function
-calls \code{\link[ade4:between]{between}}.  The input format of the dataset 
+calls \code{\link[ade4:bca]{bca}}.  The input format of the dataset 
 is verified using \code{\link[made4:array2ade4]{array2ade4}}. 
 
 Between group analysis is a supervised method for sample discrimination and class prediction. 
@@ -114,13 +114,13 @@ For more details see Culhane et al., 2002 and \url{http://bioinf.ucd.ie/research
 
   \item{ord}{Results of initial ordination. A list of class "dudi" (see \code{\link[ade4:dudi]{dudi}} )}
   \item{bet}{Results of between group analysis. A list of class "dudi"  (see \code{\link[ade4:dudi]{dudi}}),
-  "between" (see \code{\link[ade4:between]{between}})}
+  "between" (see \code{\link[ade4:bca]{bca}})}
   \item{fac}{The input classvec, the \code{factor} or \code{vector} which described the classes in the input dataset}
 }
 \references{Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.}
 \author{Aedin Culhane}
 \seealso{See Also  \code{\link[made4:bga]{bga}},
-  \code{\link[made4:suppl]{suppl}}, \code{\link[made4:bga.suppl]{suppl.bga}}, \code{\link[ade4:between]{between}},
+  \code{\link[made4:suppl]{suppl}}, \code{\link[made4:bga.suppl]{suppl.bga}}, \code{\link[ade4:bca]{bca}},
   \code{\link[made4:bga.jackknife]{bga.jackknife}}}
 \examples{
 data(khan)

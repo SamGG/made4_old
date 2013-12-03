@@ -49,7 +49,7 @@ Use \code{\link[made4:plot.bga]{plot.bga}} to plot results from bga.
   the results of the \code{bga} of the training dataset and the results of the projection of the test dataset onto the bga axes-
   \item{ord}{Results of initial ordination. A list of class "dudi" (see \code{\link[ade4:dudi]{dudi}}). }
   \item{bet}{Results of between group analysis. A list of class "dudi"
-    (see \code{\link[ade4:dudi]{dudi}}),"between" (see \code{\link[ade4:between]{between}}),and 
+    (see \code{\link[ade4:dudi]{dudi}}),"between" (see \code{\link[ade4:bca]{bca}}),and 
     "dudi.bga"(see \code{\link[made4:bga]{bga}})}
   \item{fac}{The input classvec, the factor or vector which described the classes in the input dataset}
   \item{suppl}{An object returned by \code{\link[made4:suppl]{suppl}}}
@@ -59,7 +59,7 @@ Use \code{\link[made4:plot.bga]{plot.bga}} to plot results from bga.
 \references{Culhane AC, et al., 2002 Between-group analysis of microarray data. Bioinformatics. 18(12):1600-8.  }
 \author{Aedin Culhane}
 \seealso{See Also  \code{\link[made4:bga]{bga}},
-  \code{\link[made4:suppl]{suppl}}, \code{\link[ade4:between]{between}},
+  \code{\link[made4:suppl]{suppl}}, \code{\link[ade4:bca]{bca}},
   \code{\link[made4:plot.bga]{plot.bga}}, \code{\link[made4:bga.jackknife]{bga.jackknife}} }
 \examples{
 data(khan)
