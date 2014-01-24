@@ -17,7 +17,7 @@ function(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE, ...){
           coa1<-dudi.nsc(df1, scannf=FALSE, nf=cia.nf)	
           coa2<-dudi.nsc(df2, scan=FALSE, nf=cia.nf)
           #print(cia.nf)
-          coin<-coinertia(t.dudi(coa1), t.dudi(coa2), nf=cia.nf, scan=cia.scan, ...)
+          coin<-coinertia(t(coa1), t(coa2), nf=cia.nf, scan=cia.scan, ...)
         }
 
         if(!nsc){

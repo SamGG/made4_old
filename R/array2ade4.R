@@ -18,10 +18,10 @@ function(dataset, pos=FALSE,  trans=FALSE){
 
         if(trans) {
                # Transpose matrix  (as BGA, CIA expects the samples to be in the rows)
-               # dudi.nsc should not be transposed, use t.dudi instead to ensure row weight are equal
+               # dudi.nsc should not be transposed, use t instead to ensure row weight are equal
                # There is a horrible bug is dudi.pca/coa etc, if a dataset with vars>>cases is given
                # It can end abruptly crashing the session. This is a bug in sweep
-               # There will now use t.dudi rather than transpose the data
+               # There will now use t rather than transpose the data
               
                # using t convert data.frame to matrix and messes up affymetrix probe ID names
                # It changes all of the "-" to "." in probeids like AFFX-CreX-5_at
