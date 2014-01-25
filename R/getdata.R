@@ -11,7 +11,7 @@ function(arraydata) {
                                      stop("Arraydata was found to be a data.frame, but contains non-numeric columns.")
                                    arraydata
                                  },
-                  ExpressionSet = { if (require(affy, quiet = TRUE)) data.frame(exprs(arraydata))
+                  ExpressionSet = { if (require(affy, quietly = TRUE)) data.frame(exprs(arraydata))
                                 },
                   marrayRaw = {
                                if (require(affy, quiet = TRUE)) {

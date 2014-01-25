@@ -232,13 +232,13 @@ plot.suppl<-function(x, dudi.bga, axis1=1, axis2=2, supvec=sup$true.class, supve
 
          if (!is.null(supvec.pred)) {
 	   colsup= as.character(factor(supvec.pred, labels=getcol(length(levels(supvec.pred)))))
-           s.var(sup, col=colsup, sub="Supplementary data only (Colors:Predicted)", xax=axis1, yax=axis2, boxes=FALSE,...)       
+           s.var(sup, colpoints=colsup, sub="Supplementary data only (Colors:Predicted)", xax=axis1, yax=axis2, boxes=FALSE,...)       
 	   plotarrays(sup, classvec=supvec.pred, graph="labels", axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
           }        
 
          if (!is.null(supvec)) {
            colsup= as.character(factor(supvec, labels=getcol(length(levels(supvec)))))
-           s.var(sup,  col=colsup, sub="Supplementary data only (colors:true classes)", xax=axis1, yax=axis2, boxes=FALSE)
+           s.var(sup,  colpoints=colsup, sub="Supplementary data only (colors:true classes)", xax=axis1, yax=axis2, boxes=FALSE)
            plotarrays(sup, classvec=supvec, graph="labels", axis1=axis1, axis2=axis2, add.plot=TRUE, ...)
           }
       

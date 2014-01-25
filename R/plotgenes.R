@@ -29,7 +29,7 @@ function(coord, nlab=10, axis1=1, axis2=2, genelabels=row.names(coord), boxes=TR
         # Plot using s.var, the first call of s.var uses points, the second uses
         # scatterutil.eti to draw the labels
         
-	s.var(coord, xax = axis1, yax = axis2, clab=0, colpoints=rep(colpoints, nrow(coord)),...)
+	s.var(coord, xax = axis1, yax = axis2, clabel=0, colpoints=rep(colpoints, nrow(coord)),...)
 	s.var(specMat, xax = axis1, yax = axis2, label=specLab,  boxes=boxes, cpoint=0, add.plot=TRUE, ...)
 	}
 

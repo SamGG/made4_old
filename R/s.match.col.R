@@ -20,7 +20,7 @@ function (df1xy, df2xy, xax = 1, yax = 2, pch = 20, cpoint = 1,
             x0 <- x1 - h * (x1 - x0)/d0
             y0 <- y1 - h * (y1 - y0)/d0
             if (edge) 
-                arrows(x0, y0, x1, y1, ang = ang, len = len, 
+                arrows(x0, y0, x1, y1, angle = ang, length = len, 
                   lty = 1, col=col)
         }
     }

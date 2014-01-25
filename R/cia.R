@@ -15,9 +15,9 @@ function(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE, ...){
           df2<-array2ade4(df2, pos=TRUE, trans=FALSE)
 
           coa1<-t(dudi.nsc(df1, scannf=FALSE, nf=cia.nf))
-          coa2<-t(dudi.nsc(df2, scan=FALSE, nf=cia.nf))
+          coa2<-t(dudi.nsc(df2, scannf=FALSE, nf=cia.nf))
           #print(cia.nf)
-          coin<-coinertia(coa1, coa2, nf=cia.nf, scan=cia.scan, ...)
+          coin<-coinertia(coa1, coa2, nf=cia.nf, scannf=cia.scan, ...)
         }
 
         if(!nsc){
@@ -26,7 +26,7 @@ function(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE, ...){
         
           coa1 = dudi.coa(df1, scannf=FALSE, nf=cia.nf)
 	  coa2 = dudi.rwcoa(df2, rowweights=coa1$lw, scannf=FALSE, nf=cia.nf)
-          coin<-coinertia(coa1, coa2, scan=cia.scan, nf=cia.nf, ...)
+          coin<-coinertia(coa1, coa2, scannf=cia.scan, nf=cia.nf, ...)
         }
         
         # ciares$RV will give the RV-coefficient, the greater (scale 0-1) the better   
