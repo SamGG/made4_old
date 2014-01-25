@@ -14,7 +14,7 @@ function(arraydata) {
                   ExpressionSet = { if (require(affy, quietly = TRUE)) data.frame(exprs(arraydata))
                                 },
                   marrayRaw = {
-                               if (require(affy, quiet = TRUE)) {
+                               if (require(affy, quietly = TRUE)) {
                                   nrslides = as.integer(ncol(arraydata@maRf))
                                   nrspots = as.integer(nrow(arraydata@maRf))
                                   tmp = matrix(NA, nrow = nrspots, ncol = 2 * nrslides)
