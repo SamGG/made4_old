@@ -65,7 +65,7 @@ function(dudi.bga, supdata,supvec=NULL, assign=TRUE, ...){
 
 	  # edited June 2006.
           suptrans <- suprow(dudi.bga$ord$ord, data.tr)$tabsup  
-          supResults = suprow.default(dudi.bga$bet, suptrans)
+          supResults = suprow(dudi.bga$bet, suptrans)
 
           return(supResults$lisup)
 	}	
