@@ -14,10 +14,10 @@ function(df1, df2, cia.nf=2, cia.scan=FALSE, nsc=TRUE, ...){
           df1<-array2ade4(df1, pos=TRUE, trans=FALSE)
           df2<-array2ade4(df2, pos=TRUE, trans=FALSE)
 
-          coa1<-dudi.nsc(df1, scannf=FALSE, nf=cia.nf)	
-          coa2<-dudi.nsc(df2, scan=FALSE, nf=cia.nf)
+          coa1<-t(dudi.nsc(df1, scannf=FALSE, nf=cia.nf))
+          coa2<-t(dudi.nsc(df2, scan=FALSE, nf=cia.nf))
           #print(cia.nf)
-          coin<-coinertia(t(coa1), t(coa2), nf=cia.nf, scan=cia.scan, ...)
+          coin<-coinertia(coa1, coa2, nf=cia.nf, scan=cia.scan, ...)
         }
 
         if(!nsc){
