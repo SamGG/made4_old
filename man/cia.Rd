@@ -110,11 +110,13 @@ data(NCI60)
 print("This will take a few minutes, please wait...")
 
 if (require(ade4, quiet = TRUE)) {
-# Example data are "G1_Ross_1375.txt" and "G5_Affy_1517.txt"
-coin <- cia(NCI60$Ross, NCI60$Affy)
+	# Example data are "G1_Ross_1375.txt" and "G5_Affy_1517.txt"
+	coin <- cia(NCI60$Ross, NCI60$Affy)
 }
-coin
-# ciares$RV will give the RV-coefficient, the greater (scale 0-1) the better   
+attach(coin)
+summary(coin)
+summary(coin$coinertia)
+# $coinertia$RV will give the RV-coefficient, the greater (scale 0-1) the better   
 cat(paste("The RV coefficient is a measure of global similarity between the datasets.\n",
 "The two datasets analysed are very similar. ",
 "The RV coefficient of this coinertia analysis is: ", coin$coinertia$RV,"\n", sep= ""))
