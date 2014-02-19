@@ -69,19 +69,19 @@ function(x, axis1=1, axis2=2, arraycol=NULL, genecol="gray25", nlab=10, genelabe
 	s.var(dudi.ord$co,  xax = axis1, yax = axis2, col = cols.array ,label=arraylabels, ...) 
 
 	# Draw genes 
-        plotgenes(dudi.ord$li, genelabels=genelabels,nlab=nlab, colpoints=genecol, axis1=axis1,  axis2=axis2,...)   # Draw plot of genes label top genes
+        plotgenes(dudi.ord$li, genelabels=genelabels,nlab=nlab, col=genecol, axis1=axis1,  axis2=axis2,...)   # Draw plot of genes label top genes
 
 	
        	# do biplot
 	if (inherits(dudi.ord, "coa")) {
-    		plotgenes(dudi.ord$li, genelabels=genelabels,nlab=nlab, colpoints=genecol, axis1=axis1,  axis2=axis2, ...)   # Draw plot of genes label top genes	
+    		plotgenes(dudi.ord$li, genelabels=genelabels,nlab=nlab, col=genecol, axis1=axis1,  axis2=axis2, ...)   # Draw plot of genes label top genes	
 				
 		if (biplot=="type2") {
        			s.groups(dudi.ord$co, fac, cellipse=0,col=arraycol,add.plot=TRUE,  xax = axis1, yax = axis2,  ...)  # To gene plot, add arrays
 			}
 
 		if (biplot=="type1") {
-			s.var(dudi.ord$co, col=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, label=arraylabels, xax = axis1, yax = axis2,...)  # To gene plot, add arrays
+			s.var(dudi.ord$co, colpoints=rep(arraycol, nrow(dudi.ord$li)), add.plot=TRUE, label=arraylabels, xax = axis1, yax = axis2,...)  # To gene plot, add arrays
 			}
 		}
       	

@@ -36,10 +36,10 @@ function(df1, df2, fac1, fac2, cia.nf=2, type="nsc", ...){
 
              if(inherits(dudi.bet.cia, "nsc")){
                if (!inherits(dudi.bet.cia$nsc1, "dudi"))  stop("Object of class dudi expected")
-               dudiX<-t.dudi(dudi.bet.cia$nsc1)
+               dudiX<-t(dudi.bet.cia$nsc1)
              
                if (!inherits(dudi.bet.cia$nsc2, "dudi")) stop("Object of class dudi expected")
-               dudiY<-t.dudi(dudi.bet.cia$nsc2)
+               dudiY<-t(dudi.bet.cia$nsc2)
              }
              
              U <- as.matrix(dudiC$c1) * unlist(dudiC$cw)
@@ -69,9 +69,9 @@ function(df1, df2, fac1, fac2, cia.nf=2, type="nsc", ...){
                        df1<-array2ade4(df1, pos=TRUE, trans=FALSE)
                        df2<-array2ade4(df2, pos=TRUE, trans=FALSE)
                        nsc1<-dudi.nsc(df1, scannf=FALSE, ...)
-                       bet1<-bca(t.dudi(nsc1), fac1, scannf=FALSE, nf=nf, ...)
+                       bet1<-bca(t(nsc1), fac1, scannf=FALSE, nf=nf, ...)
                        nsc2<-dudi.nsc(df2, scannf=FALSE, ...)
-                       bet2<-bca(t.dudi(nsc2), fac2, scannf=FALSE, nf=nf,...)
+                       bet2<-bca(t(nsc2), fac2, scannf=FALSE, nf=nf,...)
                        coin<-coinertia(bet1,bet2, scannf=FALSE, nf=cia.nf, ...)
                        out<-list("coin"=coin, "nsc1"=nsc1, "nsc2"=nsc2, "bet1"=bet1, "bet2"=bet2)
                        class(out)<-c("bet.cia", "nsc")
@@ -79,7 +79,7 @@ function(df1, df2, fac1, fac2, cia.nf=2, type="nsc", ...){
                "pca"={
                      df1<-array2ade4(df1)
                      df2<-array2ade4(df2)
-                     pca1<-dudi.pca(df1, scan=FALSE)
+                     pca1<-dudi.pca(df1, scannf=FALSE)
                      bet1<-bca(pca1, fac1, scannf=FALSE, nf=nf, ...)
                      pca2<-dudi.pca(df2, scannf=FALSE, ...)
                      bet2<-bca(pca2, fac2, scannf=FALSE, nf=nf, ...)
