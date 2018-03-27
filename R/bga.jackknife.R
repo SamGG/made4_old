@@ -1,5 +1,5 @@
 "bga.jackknife" <-
-function(data, classvec,  ...){
+function(data, classvec, type="coa",  ...){
 	ntrain<-ncol(data)  # Microarray data, samples in columns
         if (!ntrain ==length(classvec)) stop("ncol in training data not equal to length classvec")
         classvec<-checkfac(classvec)             
@@ -23,7 +23,7 @@ function(data, classvec,  ...){
 		testdata<- as.matrix(data[,ind$test])
 		trainvec<- classvec[ind$train]
 		testvec <- classvec[ind$test]
-                bga.res <- bga.suppl(traindata, testdata, trainvec, testvec, suponly=TRUE)
+                bga.res <- bga.suppl(traindata, testdata, trainvec, testvec, suponly=TRUE, type=type)
  		out[i,]<-as.matrix(bga.res)
 	  	}
         colnames(out)<-colnames(bga.res)
