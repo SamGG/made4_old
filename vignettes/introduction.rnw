@@ -75,8 +75,9 @@ functions that utilise and extend multivariate statistical and graphical functio
 \Rpackage{made4} requires that \Rpackage{ade4} is installed. \Rpackage{made4} also calls \Rpackage{scatterplot3d}.  These should be installed automatically when you install \Rpackage{made4}. To install \Rpackage{made4}, source biocLite from bioconductor
 
 \begin{verbatim}
-source("http://www.bioconductor.org/biocLite.R")
-biocLite("made4")
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("made4")
 \end{verbatim}
 
 %------------------------------------------------------------
