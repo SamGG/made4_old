@@ -1,6 +1,17 @@
-#importFrom("scatterplot3d", "scatterplot3d")
-#importFrom("gplots", "heatmap.2")
-#importFrom("RColorBrewer", "colorRampPalette")
+
+import(ade4)
+importFrom("grDevices", "col2rgb", "colorRampPalette", "dev.copy",
+             "dev.cur", "dev.off", "pdf", "rgb")
+importFrom("graphics", "abline", "arrows", "box", "image", "layout",
+             "mtext", "par", "plot.new", "points", "segments",
+             "strheight", "text", "title")
+importFrom("stats", "as.dendrogram", "as.dist", "cor", "dist",
+             "hclust", "sd")
+importFrom("SummarizedExperiment", "assay")
+importFrom("scatterplot3d", "scatterplot3d")
+importFrom("gplots", "heatmap.2")
+importFrom("RColorBrewer", "brewer.pal")
+importFrom("Biobase”, “exprs”)
 
 export(array2ade4,bet.coinertia,between.graph,bga,bga.jackknife,bga.suppl,cia,commonMap,comparelists,do3d,getcol,graph1D,heatplot,html3D,ord,overview,plot.bga,plot.cia,plot.ord,plot.suppl,plotarrays,plotgenes,prettyDend,print.comparelists,randomiser,rotate3d,sumstats,suppl,topgenes, s.var, s.groups)
 
@@ -8,3 +19,7 @@ export(array2ade4,bet.coinertia,between.graph,bga,bga.jackknife,bga.suppl,cia,co
 S3method(plot, ord)
 S3method(plot, bga)
 S3method(plot, cia)
+S3method(plot, suppl)
+S3method(print, comparelists)
+
+

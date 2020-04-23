@@ -2,7 +2,7 @@ heatplot<-function (dataset, dend = c("both", "row", "column", "none"),
     cols.default = TRUE, lowcol = "green", highcol = "red", scale = "none",
     classvec = NULL, classvecCol=NULL, classvec2 = NULL,distfun=NULL, returnSampleTree=FALSE,method="ave", dualScale=TRUE, zlim=c(-3,3),scaleKey=TRUE, ...)
 {
-    library(gplots)
+    #library(gplots)
     data <- array2ade4(dataset)
     data <- as.matrix(data)
 
@@ -31,8 +31,7 @@ heatplot<-function (dataset, dend = c("both", "row", "column", "none"),
         return(col)
     }
     cols.gentleman <- function() {
-        library(RColorBrewer)
-        hmcol <- colorRampPalette(brewer.pal(10, "RdBu"))(256)
+        hmcol <- RColorBrewer::colorRampPalette(RColorBrewer::brewer.pal(10, "RdBu"))(256)
         return(rev(hmcol))
     }
     if (cols.default)
@@ -112,21 +111,21 @@ heatplot<-function (dataset, dend = c("both", "row", "column", "none"),
 
       ## NEED TO ADD BACK Dendrogram parameters
         if (all(is.null(RSideColors), is.null(CSideColors)))
-            heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
+            gplots::heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
                 scale = scale, trace = "none", density.info = "none", zlim=zlim,
                 dendrogram = dend, ...)
         if (all(!is.null(RSideColors), is.null(CSideColors)))
-            heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
+             gplots::heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
                 scale = scale, trace = "none", density.info = "none",
                 RowSideColors = RSideColors, dendrogram = dend,zlim=zlim,
                 ...)
         if (all(is.null(RSideColors), !is.null(CSideColors)))
-            heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
+            gplots::heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
                 scale = scale, trace = "none", density.info = "none",
                 ColSideColors = CSideColors, dendrogram = dend,zlim=zlim,
                 ...)
         if (all(!is.null(RSideColors), !is.null(CSideColors)))
-            heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
+            gplots::heatmap.2(data, Colv = Colv, Rowv = Rowv, col = plotcols,
                 scale = scale, trace = "none", density.info = "none",
                 RowSideColors = RSideColors, ColSideColors = CSideColors,zlim=zlim,
                 dendrogram = dend, ...)

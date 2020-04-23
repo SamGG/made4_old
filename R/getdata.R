@@ -1,6 +1,5 @@
 "getdata" <-
-function(arraydata) {
-        # Edited from vsn function getIntensityMatrix() from W. Huber
+function(arraydata) {      
         # To run ade4 the arraydata needs to be in a data.frame format.
         y = switch(class(arraydata),
                     matrix    = { if (!is.numeric(arraydata))
@@ -11,10 +10,9 @@ function(arraydata) {
                                      stop("Arraydata was found to be a data.frame, but contains non-numeric columns.")
                                    arraydata
                                  },
-                  ExpressionSet = { if (require(affy, quietly = TRUE)) data.frame(exprs(arraydata))
-                                },
+                  ExpressionSet = {data.frame(affy::exprs(arraydata))},
                   marrayRaw = {
-                               if (require(affy, quietly = TRUE)) {
+			          {
                                   nrslides = as.integer(ncol(arraydata@maRf))
                                   nrspots = as.integer(nrow(arraydata@maRf))
                                   tmp = matrix(NA, nrow = nrspots, ncol = 2 * nrslides)
@@ -27,7 +25,10 @@ function(arraydata) {
                                   }
                                 as.data.frame(tmp)
                                },
-                   stop(paste("Arraydata has class ", class(arraydata), ". Permitted are: matrix, data.frame, ExpressionSet, marrayRaw", sep=""))
+               RangedSummarizedExperiment= SummarizedExperiment::assay(arraydata),
+		SummarizedExperiment =  SummarizedExperiment::assay(arraydata),
+
+               stop(paste("Arraydata has class ", class(arraydata), ". Permitted are: matrix, data.frame, ExpressionSet, marrayRaw", sep=""))
         )  ## end of switch statement
   
         return(y)
