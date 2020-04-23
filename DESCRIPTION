@@ -3,7 +3,7 @@ Version: 1.61.0
 Title: Multivariate analysis of microarray data using ADE4
 Author: Aedin Culhane
 Maintainer: Aedin Culhane <Aedin@jimmy.harvard.edu>
-Depends: ade4, RColorBrewer,gplots,scatterplot3d
+Depends: ade4, RColorBrewer,gplots,scatterplot3d, Biobase, SummarizedExperiment
 Suggests: affy
 Description: Multivariate data analysis and graphical display of
         microarray data. Functions include between group analysis and
