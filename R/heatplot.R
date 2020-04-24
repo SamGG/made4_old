@@ -31,7 +31,7 @@ heatplot<-function (dataset, dend = c("both", "row", "column", "none"),
         return(col)
     }
     cols.gentleman <- function() {
-        hmcol <- RColorBrewer::colorRampPalette(RColorBrewer::brewer.pal(10, "RdBu"))(256)
+        hmcol <- grDevices::colorRampPalette(RColorBrewer::brewer.pal(10, "RdBu"))(256)
         return(rev(hmcol))
     }
     if (cols.default)
