@@ -1,11 +1,10 @@
 \name{array2ade4}
 \alias{array2ade4}
-\title{Converts microarray input data into a data frame suitable for analysis
-  in ADE4.}
+\title{Converts microarray input data into a data frame suitable for analysis in ADE4.}
 \description{
   Converts input data into a data.frame suitable for analysis
   in ADE4. This function is called by \code{bga} and other made4
-  function.
+  function
 }
 \usage{
 array2ade4(dataset, pos = FALSE, trans = FALSE)
@@ -23,8 +22,7 @@ array2ade4(dataset, pos = FALSE, trans = FALSE)
   \item{trans}{Logical indicating whether \code{dataset} should be transposed. Default is \code{FALSE}.}
 }
 \details{
-\code{\link[made4:bga]{bga}} and other functions in made4 call this function and it is
-generally \strong{not} necessary to call \code{array2ade4} this directly.
+\code{\link[made4:bga]{bga}} and other functions in made4 call this function and it is generally \strong{not} necessary to call \code{array2ade4} this directly.
 
 array2ade4 calls \code{\link[made4:getdata]{getdata}}, and will accept a \code{\link{matrix}}, \code{\link{data.frame}}, 
 \code{\link[Biobase:ExpressionSet-class]{ExpressionSet}} or \code{\link[marray:marrayRaw-class]{marrayRaw-class}} format.
@@ -39,7 +37,6 @@ If the input data contains missing values (NA), these must first be removed or i
 \author{Aedin Culhane}
 \seealso{\code{\link[made4:getdata]{getdata}},\code{\link[convert:coerce]{as}} in the Bioconductor package convert.}
 \examples{
-library(affy)
 data(geneData)
 class(geneData)
 dim(geneData)

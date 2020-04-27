@@ -4,6 +4,7 @@ importFrom("grDevices", "col2rgb", "colorRampPalette", "dev.copy",
 importFrom("graphics", "abline", "arrows", "box", "image", "layout",
              "mtext", "par", "plot.new", "points", "segments",
              "strheight", "text", "title")
+importFrom("graphics", "plot")
 importFrom("stats", "as.dendrogram", "as.dist", "cor", "dist",
              "hclust", "sd")
 importFrom("SummarizedExperiment", "assay")
@@ -12,7 +13,7 @@ importFrom("gplots", "heatmap.2")
 importFrom("RColorBrewer", "brewer.pal")
 importFrom("Biobase", "exprs")
 
-export(array2ade4,bet.coinertia,between.graph,bga,bga.jackknife,bga.suppl,cia,commonMap,comparelists,do3d,getcol,graph1D,heatplot,html3D,ord,overview,plot.bga,plot.cia,plot.ord,plot.suppl,plotarrays,plotgenes,prettyDend,print.comparelists,randomiser,rotate3d,sumstats,suppl,topgenes, s.var, s.groups)
+export(array2ade4,bet.coinertia,between.graph,bga,bga.jackknife,bga.suppl,cia,commonMap,comparelists,do3d,getcol,getdata, graph1D,heatplot,html3D,ord,overview,plot.bga,plot.cia,plot.ord,plot.suppl,plotarrays,plotgenes,prettyDend,print.comparelists,randomiser,rotate3d,sumstats,suppl,topgenes, s.var, s.groups)
 
 
 S3method(plot, ord)
