@@ -1,5 +1,5 @@
 Package: made4
-Version: 1.63.0
+Version: 1.63.1
 Title: Multivariate analysis of microarray data using ADE4
 Author: Aedin Culhane
 Maintainer: Aedin Culhane <Aedin@jimmy.harvard.edu>
@@ -20,3 +20,4 @@ License: Artistic-2.0
 VignetteBuilder: knitr
 URL: http://www.hsph.harvard.edu/aedin-culhane/
 biocViews: Clustering, Classification, MultipleComparison
+PackageStatus: Deprecated
